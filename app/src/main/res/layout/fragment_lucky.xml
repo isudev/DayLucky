@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorF9FAF9"
+    android:overScrollMode="never">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorE6E9F3"
+                android:orientation="vertical">
+
+
+                <com.zaotao.daylucky.widget.appview.AppFakeBoldTextView
+                    android:id="@+id/fragment_lucky_text_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_17"
+                    android:layout_marginTop="@dimen/dp_64"
+                    android:text="1 October  Thursay"
+                    android:textColor="@color/color333333"
+                    android:textSize="@dimen/sp_24"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/fragment_lucky_text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_90"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:text="月亮刑太阳 月亮冲本星 月亮刑火星"
+                    android:layout_marginStart="@dimen/dp_20"
+                    android:textColor="@color/color666666"
+                    android:textSize="@dimen/sp_10"
+                    app:layout_constraintStart_toStartOf="@id/fragment_lucky_text_date"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_lucky_text_date" />
+
+                <com.zaotao.base.view.CircleImageView
+                    android:id="@+id/fragment_lucky_image_click"
+                    android:layout_width="@dimen/dp_45"
+                    android:layout_height="@dimen/dp_45"
+                    android:layout_marginEnd="@dimen/dp_18"
+                    android:src="@drawable/ic_astro_image0"
+                    app:layout_constraintBottom_toBottomOf="@id/fragment_lucky_text1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/fragment_lucky_text_date" />
+
+                <TextView
+                    android:id="@+id/fragment_lucky_text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_50"
+                    android:text="贵人多助的一天"
+                    android:textColor="@color/color333333"
+                    android:textSize="@dimen/sp_17"
+                    app:layout_constraintStart_toStartOf="@id/fragment_lucky_text_date"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_lucky_text_date"
+
+                    />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_10"
+                    android:background="#6385E9E6"
+                    app:layout_constraintBottom_toBottomOf="@id/fragment_lucky_text2"
+                    app:layout_constraintEnd_toEndOf="@id/fragment_lucky_text2"
+                    app:layout_constraintStart_toStartOf="@id/fragment_lucky_text2" />
+
+
+                <TextView
+                    android:id="@+id/fragment_lucky_text3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_18"
+                    android:layout_marginTop="@dimen/dp_13"
+                    android:layout_marginEnd="@dimen/dp_50"
+                    android:paddingBottom="@dimen/dp_60"
+                    android:maxLines="2"
+                    android:text="在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感。"
+                    android:textColor="@color/color333333"
+                    android:textSize="@dimen/sp_14"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_lucky_text2" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_76"
+                android:layout_marginStart="@dimen/dp_15"
+                android:layout_marginTop="@dimen/dp_244"
+                android:layout_marginEnd="@dimen/dp_15"
+                android:background="@drawable/ic_item_shape_bg"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_fragment_lucky_middle_image0"
+                        android:drawablePadding="@dimen/dp_2"
+                        android:text="宜"
+                        android:textColor="@color/color666666"
+                        android:textSize="@dimen/sp_12" />
+
+                    <TextView
+                        android:id="@+id/fragment_lucky_middle_text0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:text="积极沟通"
+                        android:textColor="@color/color85E9E6"
+                        android:textSize="@dimen/sp_15" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="21dp"
+                    android:layout_gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_fragment_lucky_middle_image1"
+                        android:drawablePadding="@dimen/dp_2"
+                        android:text="忌"
+                        android:textColor="@color/color666666"
+                        android:textSize="@dimen/sp_12" />
+
+                    <TextView
+                        android:id="@+id/fragment_lucky_middle_text1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:text="生气吵架"
+                        android:textColor="@color/colorFF9696"
+                        android:textSize="@dimen/sp_15" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="21dp"
+                    android:layout_gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_fragment_lucky_middle_image2"
+                        android:drawablePadding="@dimen/dp_2"
+                        android:text="今日忠告"
+                        android:textColor="@color/color666666"
+                        android:textSize="@dimen/sp_12" />
+
+                    <TextView
+                        android:id="@+id/fragment_lucky_middle_text2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:text="积极沟通"
+                        android:textColor="@color/colorFFD88F"
+                        android:textSize="@dimen/sp_15" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        <com.zaotao.indicator.MagicIndicator
+            android:id="@+id/tab_fragment_lucky"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_45"
+            android:layout_marginStart="@dimen/dp_20"
+            tools:background="@color/colorAccent" />
+
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager_fragment_lucky"
+            android:layout_width="match_parent"
+            android:layout_height="1750dp" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

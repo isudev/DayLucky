@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <!-- {@deprecated Use civ_circlebackground_color instead.} -->
+        <attr name="civ_fill_color" format="color" />
+        <attr name="civ_circle_background_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundImageView">
+        <attr name="radius" format="dimension|reference" />
+
+    </declare-styleable>
+
+    <declare-styleable name="PullToRefreshLayout">
+        <attr name="PtrResistance" format="float" />
+        <attr name="PtrRatioHeightToRefresh" format="float" />
+        <attr name="PtrCloseDuration" format="integer" />
+        <attr name="PtrCloseHeaderDuration" format="integer" />
+        <attr name="PtrPullToRefresh" format="boolean" />
+        <attr name="PtrKeepHeaderWhenRefresh" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundTextView">
+        <attr name="cornerRadius" format="dimension|reference" />
+        <attr name="backgroundColor" format="color|reference" />
+        <attr name="strokeWidth" format="dimension|reference"/>
+        <attr name="strokeColor" format="color|reference"/>
+        <attr name="enableBackColor" format="color|reference" />
+        <attr name="contentPressedColor" format="color|reference"/>
+        <attr name="followTextColor" format="boolean"/>
+    </declare-styleable>
+</resources>

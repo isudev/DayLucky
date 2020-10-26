@@ -1,0 +1,4 @@
+include ':base'
+include ':indicator'
+include ':app'
+rootProject.name = "DayLucky"

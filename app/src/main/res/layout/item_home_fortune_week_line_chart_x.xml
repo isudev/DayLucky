@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <com.zaotao.daylucky.widget.progress.VerticalProgressBar
+        android:id="@+id/item_home_fortune_line_verticalProgressBar"
+        android:layout_width="@dimen/dp_8"
+        android:layout_height="@dimen/dp_110"
+        android:layout_gravity="center"
+        android:layout_marginEnd="@dimen/dp_2"
+        app:vpt_max="100"
+        app:vpt_progress="50"
+        app:vpt_unfinished_color="@color/colorEDEDED"
+        app:vpt_finished_color="@color/colorAccent"/>
+
+    <TextView
+        android:id="@+id/item_home_fortune_line_chart_x_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="@dimen/dp_14"
+        android:textColor="@color/color666666"
+        android:textSize="@dimen/sp_10"
+        tools:text="星期一" />
+</LinearLayout>
