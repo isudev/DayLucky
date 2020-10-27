@@ -58,6 +58,17 @@ public class ThemeFragment extends BaseFragment<MainHomePresenter> implements Ma
             @Override
             public void onClick(int position) {
                 ThemeEntity themeEntity = themeEntityList.get(position);
+                if (position>0){
+                    themeEntity.setDayColor(ColorManager.normalWhiteColor);
+                    themeEntity.setWeekColor(ColorManager.normalWhiteColor);
+                    themeEntity.setMonthColor(ColorManager.normalWhiteColor);
+                    themeEntity.setTextColor(ColorManager.normalWhiteColor);
+                    themeEntity.setLuckyColor(ColorManager.normalWhiteColor);
+                }else {
+                    themeEntity.setLuckyColor(ColorManager.normalLuckColor);
+                    themeEntity.setTextColor(ColorManager.colorTextContent);
+                }
+
                 LocalDataManager.getInstance().saveThemeData(themeEntity);
                 RxBus.getDefault().post(themeEntity);
                 showToast("change style success");
@@ -89,12 +100,17 @@ public class ThemeFragment extends BaseFragment<MainHomePresenter> implements Ma
             themeEntity.setText(this.themeEntity.getText());
             themeEntity.setLucky(this.themeEntity.getLucky());
             themeEntity.setBad(this.themeEntity.getBad());
+            themeEntity.setLuckyColor(this.themeEntity.getLuckyColor());
             themeEntityList.add(themeEntity);
         }
         for (int i = 0; i < ColorManager.colorsLineBg.length; i++) {
             for (int j = 0; j < ColorManager.colorsLineBg[i].length; j++) {
                 if (j == 0) {
                     themeEntityList.get(i).setLineColor(ColorManager.colorsLineBg[i][j]);
+                    themeEntityList.get(i).setBadColor(ColorManager.colorsLineBg[i][j]);
+                    if (i == 0) {
+                        themeEntityList.get(i).setBadColor(ColorManager.normalBadColor);
+                    }
                 } else if (j == 1) {
                     themeEntityList.get(i).setBgColor(ColorManager.colorsLineBg[i][j]);
                 }

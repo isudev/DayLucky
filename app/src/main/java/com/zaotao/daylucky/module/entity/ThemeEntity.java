@@ -14,6 +14,9 @@ public class ThemeEntity {
     private String lucky;
     private String bad;
     private String text;
+    private int luckyColor;
+    private int badColor;
+    private int textColor;
 
     public String getDay() {
         return day;
@@ -101,5 +104,29 @@ public class ThemeEntity {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public int getLuckyColor() {
+        return luckyColor;
+    }
+
+    public void setLuckyColor(int luckyColor) {
+        this.luckyColor = luckyColor;
+    }
+
+    public int getBadColor() {
+        return badColor;
+    }
+
+    public void setBadColor(int badColor) {
+        this.badColor = badColor;
+    }
+
+    public int getTextColor() {
+        return textColor;
+    }
+
+    public void setTextColor(int textColor) {
+        this.textColor = textColor;
     }
 }

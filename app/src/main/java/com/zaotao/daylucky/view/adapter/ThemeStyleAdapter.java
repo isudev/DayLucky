@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -67,7 +68,7 @@ public class ThemeStyleAdapter extends RecyclerView.Adapter<ThemeStyleAdapter.Vi
         private TextView itemThemeStyleDayBad;
         private TextView itemThemeStyleDayLuckyText;
         private TextView itemThemeStyleDayBadText;
-        private View itemThemeStyleLine;
+        private ImageView itemThemeStyleLine;
 
         ViewHolder(View view) {
             super(view);
@@ -104,6 +105,8 @@ public class ThemeStyleAdapter extends RecyclerView.Adapter<ThemeStyleAdapter.Vi
                 itemThemeStyleWeekText.setTextColor(ContextCompat.getColor(context, R.color.color333333));
                 itemThemeStyleContentText.setTextColor(ContextCompat.getColor(context, R.color.color909094));
                 itemThemeStyleDayLuckyText.setTextColor(ContextCompat.getColor(context, R.color.color85E9E6));
+                itemThemeStyleDayLucky.setTextColor(ContextCompat.getColor(context, R.color.color333333));
+                itemThemeStyleDayBad.setTextColor(ContextCompat.getColor(context, R.color.color333333));
 
             } else {
 
@@ -115,7 +118,7 @@ public class ThemeStyleAdapter extends RecyclerView.Adapter<ThemeStyleAdapter.Vi
                 itemThemeStyleDayLucky.setTextColor(Color.WHITE);
                 itemThemeStyleDayBad.setTextColor(Color.WHITE);
             }
-            itemThemeStyleDayBadText.setTextColor(themeEntity.getLineColor());
+            itemThemeStyleDayBadText.setTextColor(themeEntity.getBadColor());
 
             itemView.setOnClickListener(v -> onItemPositionClickListener.onClick(position));
         }

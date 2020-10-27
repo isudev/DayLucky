@@ -155,7 +155,7 @@ public class StyleFragment extends BaseFragment<MainHomePresenter> implements Ma
         itemThemeStyleContentText.setText(themeEntity.getText());
         itemThemeStyleDayLuckyText.setText(themeEntity.getLucky());
         itemThemeStyleDayBadText.setText(themeEntity.getBad());
-        itemThemeStyleDayBadText.setTextColor(themeEntity.getLineColor());
+        itemThemeStyleDayBadText.setTextColor(themeEntity.getBadColor());
         itemThemeStyleLine.setBackgroundColor(themeEntity.getLineColor());
         itemThemeStyleBg.setImageDrawable(new ColorDrawable(themeEntity.getBgColor()));
 
@@ -165,11 +165,13 @@ public class StyleFragment extends BaseFragment<MainHomePresenter> implements Ma
             itemThemeStyleWeekText.setTextColor(ContextCompat.getColor(mContext, R.color.color333333));
             itemThemeStyleContentText.setTextColor(ContextCompat.getColor(mContext, R.color.color909094));
             itemThemeStyleDayLuckyText.setTextColor(ContextCompat.getColor(mContext, R.color.color85E9E6));
+            itemThemeStyleDayLucky.setTextColor(ContextCompat.getColor(mContext,R.color.color333333));
+            itemThemeStyleDayBad.setTextColor(ContextCompat.getColor(mContext,R.color.color333333));
         } else {
-            itemThemeStyleDayText.setTextColor(Color.WHITE);
-            itemThemeStyleMonthText.setTextColor(Color.WHITE);
-            itemThemeStyleWeekText.setTextColor(Color.WHITE);
-            itemThemeStyleContentText.setTextColor(Color.WHITE);
+            itemThemeStyleDayText.setTextColor(themeEntity.getDayColor());
+            itemThemeStyleWeekText.setTextColor(themeEntity.getWeekColor());
+            itemThemeStyleMonthText.setTextColor(themeEntity.getMonthColor());
+            itemThemeStyleContentText.setTextColor(themeEntity.getTextColor());
             itemThemeStyleDayLuckyText.setTextColor(Color.WHITE);
             itemThemeStyleDayLucky.setTextColor(Color.WHITE);
             itemThemeStyleDayBad.setTextColor(Color.WHITE);

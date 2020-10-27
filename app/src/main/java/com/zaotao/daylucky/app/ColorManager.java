@@ -25,4 +25,8 @@ public class ColorManager {
     };
 
     public static int colorTextView = Color.parseColor("#333333");
+    public static int colorTextContent = Color.parseColor("#909094");
+    public static int normalBadColor = Color.parseColor("#FF9696");
+    public static int normalLuckColor = Color.parseColor("#85E9E6");
+    public static int normalWhiteColor = Color.parseColor("#FFFFFF");
 }

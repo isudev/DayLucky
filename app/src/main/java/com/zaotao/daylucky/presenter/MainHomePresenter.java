@@ -101,6 +101,13 @@ public class MainHomePresenter extends BasePresenter<MainHomeContract.View> impl
                         themeEntity.setWeek(DateUtils.formatWeekText());
                         themeEntity.setLineColor(ColorManager.colorsLineBg[0][0]);
                         themeEntity.setBgColor(ColorManager.colorsLineBg[0][1]);
+                        themeEntity.setDayColor(ColorManager.colorTextView);
+                        themeEntity.setWeekColor(ColorManager.colorTextView);
+                        themeEntity.setMonthColor(ColorManager.colorTextView);
+                        themeEntity.setTextColor(ColorManager.colorTextContent);
+                        themeEntity.setLuckyColor(ColorManager.normalLuckColor);
+                        themeEntity.setBadColor(ColorManager.normalBadColor);
+
 
                         if (LocalDataManager.getInstance().isEmptyLocalTheme()) {
                             RxBus.getDefault().post(themeEntity);
