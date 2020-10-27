@@ -93,6 +93,7 @@ public class StyleFragment extends BaseFragment<MainHomePresenter> implements Ma
         settingStyleEntityList.add(new SettingStyleEntity("运势"));
         settingStyleEntityList.add(new SettingStyleEntity("宜"));
         settingStyleEntityList.add(new SettingStyleEntity("忌"));
+        settingStyleEntityList.add(new SettingStyleEntity("分割线"));
 
         settingStyleAdapter = new SettingStyleAdapter(mContext);
         settingStyleAdapter.notifyDataSetChanged(settingStyleEntityList);
@@ -141,6 +142,9 @@ public class StyleFragment extends BaseFragment<MainHomePresenter> implements Ma
                                         break;
                                     case 6:
                                         themeEntity.setBadColor(color);
+                                        break;
+                                    case 7:
+                                        themeEntity.setLineColor(color);
                                         break;
                                 }
                                 LocalDataManager.getInstance().saveThemeData(themeEntity);
@@ -208,6 +212,7 @@ public class StyleFragment extends BaseFragment<MainHomePresenter> implements Ma
         settingStyleEntityList.get(4).setColor(themeEntity.getTextColor());
         settingStyleEntityList.get(5).setColor(themeEntity.getLuckyColor());
         settingStyleEntityList.get(6).setColor(themeEntity.getBadColor());
+        settingStyleEntityList.get(7).setColor(themeEntity.getLineColor());
         settingStyleAdapter.notifyDataSetChanged(settingStyleEntityList);
 
         UpdateAppWidget.getInstance().updateAppWidget();
