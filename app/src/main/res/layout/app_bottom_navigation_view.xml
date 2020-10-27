@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/main_bottom_bar_animation0"
-            android:layout_width="@dimen/dp_24"
-            android:layout_height="@dimen/dp_24"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dp_25"
             app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +31,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/dp_19"
+            android:layout_marginBottom="@dimen/dp_22"
             android:includeFontPadding="false"
             android:text="运势"
             android:textColor="@color/color23242D"
@@ -46,8 +46,8 @@
 
         <ImageView
             android:id="@+id/main_bottom_bar_animation1"
-            android:layout_width="@dimen/dp_24"
-            android:layout_height="@dimen/dp_24"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dp_25"
             app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +62,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/dp_19"
+            android:layout_marginBottom="@dimen/dp_22"
             android:includeFontPadding="false"
             android:text="主题"
             android:textColor="@color/color23242D"
@@ -77,8 +77,8 @@
 
         <ImageView
             android:id="@+id/main_bottom_bar_animation2"
-            android:layout_width="@dimen/dp_24"
-            android:layout_height="@dimen/dp_24"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dp_25"
             app:layout_constraintEnd_toEndOf="parent"
@@ -93,7 +93,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/dp_19"
+            android:layout_marginBottom="@dimen/dp_22"
             android:includeFontPadding="false"
             android:text="风格"
             android:textColor="@color/color23242D"

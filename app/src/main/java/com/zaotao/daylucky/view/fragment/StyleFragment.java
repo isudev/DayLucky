@@ -79,6 +79,9 @@ public class StyleFragment extends BaseFragment<MainHomePresenter> implements Ma
         settingStyleEntityList.add(new SettingStyleEntity("日期"));
         settingStyleEntityList.add(new SettingStyleEntity("星期"));
         settingStyleEntityList.add(new SettingStyleEntity("月份"));
+        settingStyleEntityList.add(new SettingStyleEntity("运势"));
+        settingStyleEntityList.add(new SettingStyleEntity("宜"));
+        settingStyleEntityList.add(new SettingStyleEntity("忌"));
 
         settingStyleAdapter = new SettingStyleAdapter(mContext);
         settingStyleAdapter.notifyDataSetChanged(settingStyleEntityList);
@@ -106,12 +109,9 @@ public class StyleFragment extends BaseFragment<MainHomePresenter> implements Ma
                                 settingStyleEntityList.get(position).setColor(color);
                                 settingStyleAdapter.notifyDataSetChanged(settingStyleEntityList);
                                 ThemeEntity themeEntity = LocalDataManager.getInstance().getThemeData();
-
                                 switch (position) {
                                     case 0:
-
                                         themeEntity.setBgColor(color);
-
                                         break;
                                     case 1:
                                         dayColor = color;
@@ -125,8 +125,15 @@ public class StyleFragment extends BaseFragment<MainHomePresenter> implements Ma
                                         monthColor = color;
                                         themeEntity.setMonthColor(color);
                                         break;
-
-
+                                    case 4:
+                                        themeEntity.setTextColor(color);
+                                        break;
+                                    case 5:
+                                        themeEntity.setLuckyColor(color);
+                                        break;
+                                    case 6:
+                                        themeEntity.setBadColor(color);
+                                        break;
                                 }
                                 LocalDataManager.getInstance().saveThemeData(themeEntity);
                                 onSuccessThemeInfo(themeEntity);
@@ -172,7 +179,8 @@ public class StyleFragment extends BaseFragment<MainHomePresenter> implements Ma
             itemThemeStyleWeekText.setTextColor(themeEntity.getWeekColor());
             itemThemeStyleMonthText.setTextColor(themeEntity.getMonthColor());
             itemThemeStyleContentText.setTextColor(themeEntity.getTextColor());
-            itemThemeStyleDayLuckyText.setTextColor(Color.WHITE);
+            itemThemeStyleDayLuckyText.setTextColor(themeEntity.getLuckyColor());
+            itemThemeStyleDayBadText.setTextColor(themeEntity.getBadColor());
             itemThemeStyleDayLucky.setTextColor(Color.WHITE);
             itemThemeStyleDayBad.setTextColor(Color.WHITE);
         }
@@ -186,5 +194,17 @@ public class StyleFragment extends BaseFragment<MainHomePresenter> implements Ma
         if (monthColor != 0) {
             itemThemeStyleMonthText.setTextColor(monthColor);
         }
+
+        /**
+         * set list item showing color square
+         */
+        settingStyleEntityList.get(0).setColor(themeEntity.getBgColor());
+        settingStyleEntityList.get(1).setColor(themeEntity.getDayColor());
+        settingStyleEntityList.get(2).setColor(themeEntity.getWeekColor());
+        settingStyleEntityList.get(3).setColor(themeEntity.getMonthColor());
+        settingStyleEntityList.get(4).setColor(themeEntity.getTextColor());
+        settingStyleEntityList.get(5).setColor(themeEntity.getLuckyColor());
+        settingStyleEntityList.get(6).setColor(themeEntity.getBadColor());
+        settingStyleAdapter.notifyDataSetChanged(settingStyleEntityList);
     }
 }
