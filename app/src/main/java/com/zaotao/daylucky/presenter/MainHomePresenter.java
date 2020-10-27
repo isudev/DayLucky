@@ -1,7 +1,5 @@
 package com.zaotao.daylucky.presenter;
 
-import android.app.ProgressDialog;
-import android.graphics.Color;
 import android.widget.ImageView;
 
 import com.zaotao.base.rx.RxBus;

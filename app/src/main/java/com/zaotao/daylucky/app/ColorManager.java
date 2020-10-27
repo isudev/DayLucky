@@ -5,7 +5,7 @@ import android.graphics.Color;
 public class ColorManager {
 
 
-    public static int colorsLineBg[][] = {
+    public static int[][] colorsLineBg = {
             {Color.parseColor("#00D1CB"), Color.parseColor("#FFFFFF")},
             {Color.parseColor("#DC8692"), Color.parseColor("#EBACB5")},
             {Color.parseColor("#82ABEB"), Color.parseColor("#AFCBF1")},

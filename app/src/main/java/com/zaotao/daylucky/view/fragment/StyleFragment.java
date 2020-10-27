@@ -1,29 +1,17 @@
 package com.zaotao.daylucky.view.fragment;
 
-import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.RectF;
 import android.graphics.drawable.ColorDrawable;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RemoteViews;
 import android.widget.TextView;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.zaotao.base.utils.ScreenUtils;
 import com.zaotao.base.view.RoundImageView;
-import com.zaotao.daylucky.App;
 import com.zaotao.daylucky.R;
-import com.zaotao.daylucky.app.ColorManager;
 import com.zaotao.daylucky.app.LocalDataManager;
 import com.zaotao.daylucky.base.BaseFragment;
 import com.zaotao.daylucky.contract.MainHomeContract;
@@ -33,7 +21,6 @@ import com.zaotao.daylucky.module.entity.ThemeEntity;
 import com.zaotao.daylucky.module.listener.OnItemPositionClickListener;
 import com.zaotao.daylucky.presenter.MainHomePresenter;
 import com.zaotao.daylucky.view.adapter.SettingStyleAdapter;
-import com.zaotao.daylucky.widget.core.DayLuckyAppWidget;
 import com.zaotao.daylucky.widget.core.UpdateAppWidget;
 
 import java.util.ArrayList;
