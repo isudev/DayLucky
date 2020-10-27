@@ -154,7 +154,7 @@ public class LuckyFragment extends BaseFragment<MainHomePresenter> implements Ma
                 indicator.setMode(LinePagerIndicator.MODE_EXACTLY);
                 indicator.setYOffset(UIUtil.dip2px(context, 5));
                 indicator.setLineWidth(UIUtil.dip2px(context, 33));
-                indicator.setLineHeight(UIUtil.dip2px(context, 4));
+                indicator.setLineHeight(UIUtil.dip2px(context, 3));
                 indicator.setColors(ContextCompat.getColor(mContext, R.color.color85E9E6));
                 return indicator;
             }

@@ -39,10 +39,10 @@
                     android:id="@+id/fragment_lucky_text1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dp_90"
-                    android:layout_marginTop="@dimen/dp_5"
-                    android:text="月亮刑太阳 月亮冲本星 月亮刑火星"
                     android:layout_marginStart="@dimen/dp_20"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:layout_marginEnd="@dimen/dp_90"
+                    android:text="月亮刑太阳 月亮冲本星 月亮刑火星"
                     android:textColor="@color/color666666"
                     android:textSize="@dimen/sp_10"
                     app:layout_constraintStart_toStartOf="@id/fragment_lucky_text_date"
@@ -80,25 +80,40 @@
                     app:layout_constraintStart_toStartOf="@id/fragment_lucky_text2" />
 
 
-                <TextView
-                    android:id="@+id/fragment_lucky_text3"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dp_18"
-                    android:layout_marginTop="@dimen/dp_13"
-                    android:layout_marginEnd="@dimen/dp_35"
-                    android:lineSpacingExtra="2dp"
-                    android:paddingBottom="@dimen/dp_100"
-                    tools:text="在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感。"
-                    android:textColor="@color/color333333"
-                    android:textSize="@dimen/sp_14"
-                    app:layout_constraintTop_toBottomOf="@id/fragment_lucky_text2" />
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_lucky_text2">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:layout_marginStart="@dimen/dp_18"
+                        android:src="@drawable/ic_fragment_lucky_middle_image3" />
+
+                    <TextView
+                        android:id="@+id/fragment_lucky_text3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_13"
+                        android:layout_marginEnd="@dimen/dp_35"
+                        android:lineSpacingExtra="2dp"
+                        android:layout_marginStart="@dimen/dp_5"
+                        android:paddingBottom="@dimen/dp_100"
+                        android:textColor="@color/color333333"
+                        android:textSize="@dimen/sp_14"
+                        tools:text="在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感。" />
+                </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <RelativeLayout
-                android:layout_alignParentBottom="true"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_76">
+                android:layout_height="@dimen/dp_76"
+                android:layout_alignParentBottom="true">
 
                 <ImageView
                     android:layout_width="match_parent"
