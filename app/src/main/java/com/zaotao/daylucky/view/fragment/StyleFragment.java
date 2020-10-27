@@ -94,7 +94,7 @@ public class StyleFragment extends BaseFragment<MainHomePresenter> implements Ma
             @Override
             public void onClick(int position) {
                 new ColorPickerPopup.Builder(mContext)
-                        .initialColor(Color.RED) // Set initial color
+                        .initialColor(settingStyleEntityList.get(position).getColor()) // Set initial color
                         .enableBrightness(false) // Enable brightness slider or not
                         .enableAlpha(false) // Enable alpha slider or not
                         .okTitle("确认")

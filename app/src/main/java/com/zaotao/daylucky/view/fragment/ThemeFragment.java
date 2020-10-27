@@ -27,7 +27,6 @@ public class ThemeFragment extends BaseFragment<MainHomePresenter> implements Ma
     @BindView(R.id.recycler_view_themes)
     RecyclerView recyclerViewThemes;
 
-    private ThemeEntity themeEntity;
     private List<ThemeEntity> themeEntityList = new ArrayList<>();
 
     private ThemeStyleAdapter themeStyleAdapter;
@@ -58,13 +57,13 @@ public class ThemeFragment extends BaseFragment<MainHomePresenter> implements Ma
             @Override
             public void onClick(int position) {
                 ThemeEntity themeEntity = themeEntityList.get(position);
-                if (position>0){
+                if (position > 0) {
                     themeEntity.setDayColor(ColorManager.normalWhiteColor);
                     themeEntity.setWeekColor(ColorManager.normalWhiteColor);
                     themeEntity.setMonthColor(ColorManager.normalWhiteColor);
                     themeEntity.setTextColor(ColorManager.normalWhiteColor);
                     themeEntity.setLuckyColor(ColorManager.normalWhiteColor);
-                }else {
+                } else {
                     themeEntity.setLuckyColor(ColorManager.normalLuckColor);
                     themeEntity.setTextColor(ColorManager.colorTextContent);
                 }
@@ -88,19 +87,18 @@ public class ThemeFragment extends BaseFragment<MainHomePresenter> implements Ma
 
     @Override
     public void onSuccessThemeInfo(ThemeEntity data) {
-        this.themeEntity = data;
         themeEntityList.clear();
         LocalDataManager.getInstance().saveThemeData(data);
 
         for (int i = 0; i < 16; i++) {
             ThemeEntity themeEntity = new ThemeEntity();
-            themeEntity.setDay(this.themeEntity.getDay());
-            themeEntity.setWeek(this.themeEntity.getWeek());
-            themeEntity.setMonth(this.themeEntity.getMonth());
-            themeEntity.setText(this.themeEntity.getText());
-            themeEntity.setLucky(this.themeEntity.getLucky());
-            themeEntity.setBad(this.themeEntity.getBad());
-            themeEntity.setLuckyColor(this.themeEntity.getLuckyColor());
+            themeEntity.setDay(data.getDay());
+            themeEntity.setWeek(data.getWeek());
+            themeEntity.setMonth(data.getMonth());
+            themeEntity.setText(data.getText());
+            themeEntity.setLucky(data.getLucky());
+            themeEntity.setBad(data.getBad());
+            themeEntity.setLuckyColor(data.getLuckyColor());
             themeEntityList.add(themeEntity);
         }
         for (int i = 0; i < ColorManager.colorsLineBg.length; i++) {
