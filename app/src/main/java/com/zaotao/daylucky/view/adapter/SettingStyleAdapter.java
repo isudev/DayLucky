@@ -2,6 +2,7 @@ package com.zaotao.daylucky.view.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.zaotao.base.view.CircleImageView;
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.module.entity.SettingStyleEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
@@ -59,7 +61,7 @@ public class SettingStyleAdapter extends RecyclerView.Adapter<SettingStyleAdapte
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView itemSettingStyleTextView;
-        private ImageView itemSettingStyleImageView;
+        private CircleImageView itemSettingStyleImageView;
 
         ViewHolder(View view) {
             super(view);
@@ -69,7 +71,7 @@ public class SettingStyleAdapter extends RecyclerView.Adapter<SettingStyleAdapte
 
         public void bind(int position) {
             itemSettingStyleTextView.setText(items.get(position).getName());
-            itemSettingStyleImageView.setBackgroundColor(items.get(position).getColor());
+            itemSettingStyleImageView.setImageDrawable(new ColorDrawable(items.get(position).getColor()));
             itemView.setOnClickListener(v -> onItemPositionClickListener.onClick(position));
         }
     }
