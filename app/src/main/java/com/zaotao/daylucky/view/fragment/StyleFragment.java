@@ -1,10 +1,17 @@
 package com.zaotao.daylucky.view.fragment;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
 import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RemoteViews;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -12,8 +19,11 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.zaotao.base.utils.ScreenUtils;
 import com.zaotao.base.view.RoundImageView;
+import com.zaotao.daylucky.App;
 import com.zaotao.daylucky.R;
+import com.zaotao.daylucky.app.ColorManager;
 import com.zaotao.daylucky.app.LocalDataManager;
 import com.zaotao.daylucky.base.BaseFragment;
 import com.zaotao.daylucky.contract.MainHomeContract;
@@ -23,6 +33,8 @@ import com.zaotao.daylucky.module.entity.ThemeEntity;
 import com.zaotao.daylucky.module.listener.OnItemPositionClickListener;
 import com.zaotao.daylucky.presenter.MainHomePresenter;
 import com.zaotao.daylucky.view.adapter.SettingStyleAdapter;
+import com.zaotao.daylucky.widget.core.DayLuckyAppWidget;
+import com.zaotao.daylucky.widget.core.UpdateAppWidget;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +66,6 @@ public class StyleFragment extends BaseFragment<MainHomePresenter> implements Ma
     @BindView(R.id.recycler_view_fragment_style)
     RecyclerView recyclerViewFragmentStyle;
 
-    private int dayColor, weekColor, monthColor;
     private SettingStyleAdapter settingStyleAdapter;
     private List<SettingStyleEntity> settingStyleEntityList = new ArrayList<>();
 
@@ -114,15 +125,12 @@ public class StyleFragment extends BaseFragment<MainHomePresenter> implements Ma
                                         themeEntity.setBgColor(color);
                                         break;
                                     case 1:
-                                        dayColor = color;
                                         themeEntity.setDayColor(color);
                                         break;
                                     case 2:
-                                        weekColor = color;
                                         themeEntity.setWeekColor(color);
                                         break;
                                     case 3:
-                                        monthColor = color;
                                         themeEntity.setMonthColor(color);
                                         break;
                                     case 4:
@@ -140,6 +148,7 @@ public class StyleFragment extends BaseFragment<MainHomePresenter> implements Ma
 
                             }
                         });
+                UpdateAppWidget.getInstance().updateAppWidget();
             }
         });
     }
@@ -172,8 +181,8 @@ public class StyleFragment extends BaseFragment<MainHomePresenter> implements Ma
             itemThemeStyleWeekText.setTextColor(ContextCompat.getColor(mContext, R.color.color333333));
             itemThemeStyleContentText.setTextColor(ContextCompat.getColor(mContext, R.color.color909094));
             itemThemeStyleDayLuckyText.setTextColor(ContextCompat.getColor(mContext, R.color.color85E9E6));
-            itemThemeStyleDayLucky.setTextColor(ContextCompat.getColor(mContext,R.color.color333333));
-            itemThemeStyleDayBad.setTextColor(ContextCompat.getColor(mContext,R.color.color333333));
+            itemThemeStyleDayLucky.setTextColor(ContextCompat.getColor(mContext, R.color.color333333));
+            itemThemeStyleDayBad.setTextColor(ContextCompat.getColor(mContext, R.color.color333333));
         } else {
             itemThemeStyleDayText.setTextColor(themeEntity.getDayColor());
             itemThemeStyleWeekText.setTextColor(themeEntity.getWeekColor());
@@ -185,15 +194,9 @@ public class StyleFragment extends BaseFragment<MainHomePresenter> implements Ma
             itemThemeStyleDayBad.setTextColor(Color.WHITE);
         }
 
-        if (dayColor != 0) {
-            itemThemeStyleDayText.setTextColor(dayColor);
-        }
-        if (weekColor != 0) {
-            itemThemeStyleWeekText.setTextColor(weekColor);
-        }
-        if (monthColor != 0) {
-            itemThemeStyleMonthText.setTextColor(monthColor);
-        }
+        itemThemeStyleDayText.setTextColor(themeEntity.getDayColor());
+        itemThemeStyleWeekText.setTextColor(themeEntity.getWeekColor());
+        itemThemeStyleMonthText.setTextColor(themeEntity.getMonthColor());
 
         /**
          * set list item showing color square
@@ -206,5 +209,8 @@ public class StyleFragment extends BaseFragment<MainHomePresenter> implements Ma
         settingStyleEntityList.get(5).setColor(themeEntity.getLuckyColor());
         settingStyleEntityList.get(6).setColor(themeEntity.getBadColor());
         settingStyleAdapter.notifyDataSetChanged(settingStyleEntityList);
+
+        UpdateAppWidget.getInstance().updateAppWidget();
+
     }
 }
