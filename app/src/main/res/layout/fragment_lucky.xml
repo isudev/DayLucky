@@ -86,115 +86,131 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dp_18"
                     android:layout_marginTop="@dimen/dp_13"
-                    android:layout_marginEnd="@dimen/dp_50"
-                    android:paddingBottom="@dimen/dp_60"
-                    android:maxLines="2"
-                    android:text="在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感。"
+                    android:layout_marginEnd="@dimen/dp_35"
+                    android:lineSpacingExtra="2dp"
+                    android:paddingBottom="@dimen/dp_100"
+                    tools:text="在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感在今日会有贵人让你对于之前一筹莫展的问题有突发的灵感。"
                     android:textColor="@color/color333333"
                     android:textSize="@dimen/sp_14"
                     app:layout_constraintTop_toBottomOf="@id/fragment_lucky_text2" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
+            <RelativeLayout
+                android:layout_alignParentBottom="true"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_76"
-                android:layout_marginStart="@dimen/dp_15"
-                android:layout_marginTop="@dimen/dp_244"
-                android:layout_marginEnd="@dimen/dp_15"
-                android:background="@drawable/ic_item_shape_bg"
-                android:orientation="horizontal">
+                android:layout_height="@dimen/dp_76">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_38"
+                    android:background="@color/colorE6E9F3" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_38"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/colorF9FAF9" />
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_marginStart="@dimen/dp_15"
+                    android:layout_marginEnd="@dimen/dp_15"
+                    android:background="@drawable/ic_item_shape_bg"
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_fragment_lucky_middle_image0"
-                        android:drawablePadding="@dimen/dp_2"
-                        android:text="宜"
-                        android:textColor="@color/color666666"
-                        android:textSize="@dimen/sp_12" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/fragment_lucky_middle_text0"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp_5"
-                        android:text="积极沟通"
-                        android:textColor="@color/color85E9E6"
-                        android:textSize="@dimen/sp_15" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_fragment_lucky_middle_image0"
+                            android:drawablePadding="@dimen/dp_2"
+                            android:text="宜"
+                            android:textColor="@color/color666666"
+                            android:textSize="@dimen/sp_12" />
+
+                        <TextView
+                            android:id="@+id/fragment_lucky_middle_text0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_5"
+                            android:text="积极沟通"
+                            android:textColor="@color/color85E9E6"
+                            android:textSize="@dimen/sp_15" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="21dp"
+                        android:layout_gravity="center_vertical" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_fragment_lucky_middle_image1"
+                            android:drawablePadding="@dimen/dp_2"
+                            android:text="忌"
+                            android:textColor="@color/color666666"
+                            android:textSize="@dimen/sp_12" />
+
+                        <TextView
+                            android:id="@+id/fragment_lucky_middle_text1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_5"
+                            android:text="生气吵架"
+                            android:textColor="@color/colorFF9696"
+                            android:textSize="@dimen/sp_15" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="21dp"
+                        android:layout_gravity="center_vertical" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_fragment_lucky_middle_image2"
+                            android:drawablePadding="@dimen/dp_2"
+                            android:text="今日忠告"
+                            android:textColor="@color/color666666"
+                            android:textSize="@dimen/sp_12" />
+
+                        <TextView
+                            android:id="@+id/fragment_lucky_middle_text2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_5"
+                            android:text="积极沟通"
+                            android:textColor="@color/colorFFD88F"
+                            android:textSize="@dimen/sp_15" />
+                    </LinearLayout>
+
+
                 </LinearLayout>
 
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="21dp"
-                    android:layout_gravity="center_vertical" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_fragment_lucky_middle_image1"
-                        android:drawablePadding="@dimen/dp_2"
-                        android:text="忌"
-                        android:textColor="@color/color666666"
-                        android:textSize="@dimen/sp_12" />
-
-                    <TextView
-                        android:id="@+id/fragment_lucky_middle_text1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp_5"
-                        android:text="生气吵架"
-                        android:textColor="@color/colorFF9696"
-                        android:textSize="@dimen/sp_15" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="21dp"
-                    android:layout_gravity="center_vertical" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_fragment_lucky_middle_image2"
-                        android:drawablePadding="@dimen/dp_2"
-                        android:text="今日忠告"
-                        android:textColor="@color/color666666"
-                        android:textSize="@dimen/sp_12" />
-
-                    <TextView
-                        android:id="@+id/fragment_lucky_middle_text2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp_5"
-                        android:text="积极沟通"
-                        android:textColor="@color/colorFFD88F"
-                        android:textSize="@dimen/sp_15" />
-                </LinearLayout>
-
-
-            </LinearLayout>
-
+            </RelativeLayout>
         </RelativeLayout>
 
 
