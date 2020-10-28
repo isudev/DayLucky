@@ -106,10 +106,17 @@ public class MainHomePresenter extends BasePresenter<MainHomeContract.View> impl
                         themeEntity.setLuckyColor(ColorManager.normalLuckColor);
                         themeEntity.setBadColor(ColorManager.normalBadColor);
 
-
                         if (LocalDataManager.getInstance().isEmptyLocalTheme()) {
                             RxBus.getDefault().post(themeEntity);
                         }else {
+                            themeEntity = LocalDataManager.getInstance().getThemeData();
+                            themeEntity.setBad(luckyEntity.getToday().getBad());
+                            themeEntity.setLucky(luckyEntity.getToday().getLuck());
+                            themeEntity.setText(luckyEntity.getToday().getCont());
+                            themeEntity.setDay(DateUtils.formatDayText());
+                            themeEntity.setMonth(DateUtils.formatMonthText());
+                            themeEntity.setWeek(DateUtils.formatWeekText());
+                            LocalDataManager.getInstance().saveThemeData(themeEntity);
                             RxBus.getDefault().post(LocalDataManager.getInstance().getThemeData());
                         }
                         getView().onSuccessLucky(luckyEntity);
