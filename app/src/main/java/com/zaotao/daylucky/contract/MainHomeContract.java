@@ -21,6 +21,8 @@ public interface MainHomeContract {
 
         void registerSelectPosition(ImageView imageView);
 
+        void registerLuckyData();
+
         void registerThemeInfo();
 
         void initHomeLucky(int var);

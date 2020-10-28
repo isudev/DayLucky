@@ -55,6 +55,23 @@ public class MainHomePresenter extends BasePresenter<MainHomeContract.View> impl
     }
 
     @Override
+    public void registerLuckyData() {
+        RxBus.getDefault().toObservableSticky(LuckyEntity.class)
+                .compose(RxSchedulers.applySchedulers(getLifecycleProvider()))
+                .subscribe(new RxBusSubscriber<LuckyEntity>() {
+                    @Override
+                    public void onEvent(LuckyEntity luckyEntity) {
+                        getView().onSuccessLucky(luckyEntity);
+                    }
+
+                    @Override
+                    public void onFailure(String errMsg) {
+
+                    }
+                });
+    }
+
+    @Override
     public void registerThemeInfo() {
         RxBus.getDefault().toObservable(ThemeEntity.class)
                 .compose(RxSchedulers.applySchedulers(getLifecycleProvider()))
@@ -119,7 +136,9 @@ public class MainHomePresenter extends BasePresenter<MainHomeContract.View> impl
                             LocalDataManager.getInstance().saveThemeData(themeEntity);
                             RxBus.getDefault().post(LocalDataManager.getInstance().getThemeData());
                         }
+                        RxBus.getDefault().postSticky(luckyEntity);
                         getView().onSuccessLucky(luckyEntity);
+
                     }
 
                     @Override
