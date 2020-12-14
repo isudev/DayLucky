@@ -16,6 +16,7 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity;
+import com.umeng.message.PushAgent;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -71,6 +72,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatA
         initCreate(savedInstanceState);
         //初始化监听
         initListener();
+        //该方法是【友盟+】Push后台进行日活统计及多维度推送的必调用方法
+        PushAgent.getInstance(mContext).onAppStart();
     }
 
     /**

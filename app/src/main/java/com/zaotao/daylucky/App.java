@@ -21,7 +21,7 @@ public class App extends Application {
         //init base module
         Utils.init(this);
         //umeng
-        UMConfigure.init(this, null, null, UMConfigure.DEVICE_TYPE_PHONE, null);
+        UMConfigure.init(this, UMConfigure.DEVICE_TYPE_PHONE, "3b3fa31a954b4ce5415474cc22dabd03");
         MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
     }
 
