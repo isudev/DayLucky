@@ -2,6 +2,7 @@ package com.zaotao.daylucky;
 
 import android.app.Application;
 
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
 import com.zaotao.base.utils.Utils;
 
@@ -21,6 +22,7 @@ public class App extends Application {
         Utils.init(this);
         //umeng
         UMConfigure.init(this, null, null, UMConfigure.DEVICE_TYPE_PHONE, null);
+        MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
     }
 
 }
