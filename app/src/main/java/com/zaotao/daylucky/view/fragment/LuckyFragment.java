@@ -10,8 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
 import com.zaotao.base.view.CircleImageView;
 import com.zaotao.daylucky.R;
@@ -23,10 +21,8 @@ import com.zaotao.daylucky.module.entity.LuckyEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 import com.zaotao.daylucky.presenter.MainHomePresenter;
 import com.zaotao.daylucky.view.activity.SelectActivity;
-import com.zaotao.daylucky.view.adapter.AppFragmentPagerAdapter;
 import com.zaotao.daylucky.widget.appview.AppFakeBoldTextView;
 import com.zaotao.indicator.MagicIndicator;
-import com.zaotao.indicator.ViewPagerHelper;
 import com.zaotao.indicator.buildins.UIUtil;
 import com.zaotao.indicator.buildins.commonnavigator.CommonNavigator;
 import com.zaotao.indicator.buildins.commonnavigator.abs.CommonNavigatorAdapter;
@@ -34,9 +30,6 @@ import com.zaotao.indicator.buildins.commonnavigator.abs.IPagerIndicator;
 import com.zaotao.indicator.buildins.commonnavigator.abs.IPagerTitleView;
 import com.zaotao.indicator.buildins.commonnavigator.indicators.LinePagerIndicator;
 import com.zaotao.indicator.buildins.commonnavigator.titles.SimplePagerBoldTitleView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 
@@ -49,8 +42,6 @@ public class LuckyFragment extends BaseFragment<MainHomePresenter> implements Ma
     TextView fragmentLuckyText2;
     @BindView(R.id.tab_fragment_lucky)
     MagicIndicator tabFragmentLucky;
-    @BindView(R.id.view_pager_fragment_lucky)
-    ViewPager viewPagerFragmentLucky;
     @BindView(R.id.fragment_lucky_text3)
     TextView fragmentLuckyText3;
     @BindView(R.id.fragment_lucky_middle_text0)
@@ -63,6 +54,8 @@ public class LuckyFragment extends BaseFragment<MainHomePresenter> implements Ma
     CircleImageView fragmentLuckyImageClick;
 
     private String[] titles = {"本周运势", "本月运势"};
+    private FortuneWeekFragment fortuneWeekFragment;
+    private FortuneMonthFragment fortuneMonthFragment;
 
     @Override
     protected int getLayoutId() {
@@ -80,7 +73,7 @@ public class LuckyFragment extends BaseFragment<MainHomePresenter> implements Ma
 
         getSupportPresenter().registerSelectPosition(fragmentLuckyImageClick);
 
-        fragmentLuckyTextDate.setText(DateUtils.formatDayText()  + " " + DateUtils.formatMonthText() + " " + DateUtils.formatWeekText());
+        fragmentLuckyTextDate.setText(DateUtils.formatDayText() + " " + DateUtils.formatMonthText() + " " + DateUtils.formatWeekText());
         fragmentLuckyImageClick.setImageResource(LocalDataManager.getInstance().getImageRes());
     }
 
@@ -103,11 +96,9 @@ public class LuckyFragment extends BaseFragment<MainHomePresenter> implements Ma
         fragmentLuckyMiddleText0.setText(luckyEntity.getToday().getLuck());
         fragmentLuckyMiddleText1.setText(luckyEntity.getToday().getBad());
         fragmentLuckyMiddleText2.setText(luckyEntity.getToday().getToday_advice());
-        List<Fragment> mFragments = new ArrayList<>();
-        mFragments.add(FortuneWeekFragment.newInstance(luckyEntity));
-        mFragments.add(FortuneMonthFragment.newInstance(luckyEntity));
-        viewPagerFragmentLucky.setAdapter(new AppFragmentPagerAdapter(getChildFragmentManager(), mFragments));
-        viewPagerFragmentLucky.setCurrentItem(0);
+        fortuneWeekFragment = FortuneWeekFragment.newInstance(luckyEntity);
+        fortuneMonthFragment = FortuneMonthFragment.newInstance(luckyEntity);
+        loadTabFragment(0);
         initIndicator();
     }
 
@@ -139,7 +130,11 @@ public class LuckyFragment extends BaseFragment<MainHomePresenter> implements Ma
                 simplePagerTitleView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        viewPagerFragmentLucky.setCurrentItem(index);
+//                        viewPagerFragmentLucky.setCurrentItem(index);
+                        tabFragmentLucky.onPageSelected(index);
+                        tabFragmentLucky.onPageScrolled(index, 0.0F, 0);
+
+                        loadTabFragment(index);
                     }
                 });
                 return simplePagerTitleView;
@@ -160,6 +155,20 @@ public class LuckyFragment extends BaseFragment<MainHomePresenter> implements Ma
             }
         });
         tabFragmentLucky.setNavigator(commonNavigator);
-        ViewPagerHelper.bind(tabFragmentLucky, viewPagerFragmentLucky);
+    }
+
+
+    public void loadTabFragment(int index){
+        if (index == 0) {
+            getChildFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.view_pager_fragment_lucky, fortuneWeekFragment, FortuneWeekFragment.class.getSimpleName())
+                    .commitAllowingStateLoss();
+        } else if (index == 1) {
+            getChildFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.view_pager_fragment_lucky, fortuneMonthFragment, FortuneMonthFragment.class.getSimpleName())
+                    .commitAllowingStateLoss();
+        }
     }
 }

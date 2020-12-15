@@ -7,13 +7,13 @@ import androidx.fragment.app.Fragment;
 
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.base.BaseActivity;
+import com.zaotao.daylucky.presenter.MainHomePresenter;
+import com.zaotao.daylucky.view.adapter.AppFragmentPagerAdapter;
 import com.zaotao.daylucky.view.fragment.LuckyFragment;
 import com.zaotao.daylucky.view.fragment.StyleFragment;
 import com.zaotao.daylucky.view.fragment.ThemeFragment;
-import com.zaotao.daylucky.presenter.MainHomePresenter;
-import com.zaotao.daylucky.view.adapter.AppFragmentPagerAdapter;
-import com.zaotao.daylucky.widget.viewpager.NoScrollViewPager;
 import com.zaotao.daylucky.widget.navigation.BottomNavigationView;
+import com.zaotao.daylucky.widget.viewpager.NoScrollViewPager;
 
 import java.util.ArrayList;
 import java.util.List;

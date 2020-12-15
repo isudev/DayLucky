@@ -12,50 +12,59 @@
         android:orientation="vertical"
         android:overScrollMode="never">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_15"
-            android:layout_marginTop="@dimen/dp_17"
-            android:layout_marginEnd="@dimen/dp_15"
-            android:background="@drawable/ic_lucky_fragment_item_bg">
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_marginEnd="@dimen/dp_10"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="@dimen/dp_10"
+            app:cardElevation="@dimen/dp_8"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
 
-            <TextView
-                android:id="@+id/fragment_home_fortune_month_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_16"
-                android:layout_marginTop="@dimen/dp_20"
-                android:text="月运概况"
-                android:textColor="@color/color333333"
-                android:textSize="@dimen/sp_17"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="@dimen/dp_10"
-                android:background="#6385E9E6"
-                app:layout_constraintBottom_toBottomOf="@id/fragment_home_fortune_month_text"
-                app:layout_constraintEnd_toEndOf="@id/fragment_home_fortune_month_text"
-                app:layout_constraintStart_toStartOf="@id/fragment_home_fortune_month_text" />
-
-            <TextView
-                android:id="@+id/fragment_home_fortune_month_desc"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_16"
-                android:layout_marginTop="@dimen/dp_60"
-                android:layout_marginEnd="@dimen/dp_16"
-                android:paddingBottom="@dimen/dp_20"
-                android:text="周五，月亮六合金星，月亮三合水星，感情方面，这段时间都有伴侣的水瓶座来说，两个人之间会有更多的交流，在一些话题上能够达成共识。而对于单身的水瓶座来说，自身的魅力大显，有不错的桃花运，可以多去结交新的朋友。"
-                android:textColor="@color/color333333"
-                android:textSize="@dimen/sp_14"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="wrap_content">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/fragment_home_fortune_month_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:text="月运概况"
+                    android:textColor="@color/color333333"
+                    android:textSize="@dimen/sp_17"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp_10"
+                    android:background="#6385E9E6"
+                    app:layout_constraintBottom_toBottomOf="@id/fragment_home_fortune_month_text"
+                    app:layout_constraintEnd_toEndOf="@id/fragment_home_fortune_month_text"
+                    app:layout_constraintStart_toStartOf="@id/fragment_home_fortune_month_text" />
+
+                <TextView
+                    android:id="@+id/fragment_home_fortune_month_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_60"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:paddingBottom="@dimen/dp_20"
+                    android:text="周五，月亮六合金星，月亮三合水星，感情方面，这段时间都有伴侣的水瓶座来说，两个人之间会有更多的交流，在一些话题上能够达成共识。而对于单身的水瓶座来说，自身的魅力大显，有不错的桃花运，可以多去结交新的朋友。"
+                    android:textColor="@color/color333333"
+                    android:textSize="@dimen/sp_14"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_fragment_home_fortune_month"

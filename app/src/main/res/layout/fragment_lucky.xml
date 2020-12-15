@@ -14,7 +14,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -234,12 +234,13 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_45"
             android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginEnd="@dimen/dp_20"
             tools:background="@color/colorAccent" />
 
 
-        <androidx.viewpager.widget.ViewPager
+        <FrameLayout
             android:id="@+id/view_pager_fragment_lucky"
             android:layout_width="match_parent"
-            android:layout_height="1750dp" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
