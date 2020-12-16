@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.zaotao.base.rx.RxBus;
 import com.zaotao.base.utils.ToastUtils;
+import com.zaotao.base.utils.VibrateUtils;
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.app.ColorManager;
 import com.zaotao.daylucky.app.LocalDataManager;
@@ -70,7 +71,7 @@ public class ThemeFragment extends BaseFragment<MainHomePresenter> implements Ma
 
                 LocalDataManager.getInstance().saveThemeData(themeEntity);
                 RxBus.getDefault().post(themeEntity);
-                showToast("change style success");
+                VibrateUtils.vibrate(120);
             }
         });
     }

@@ -91,18 +91,18 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp_16"
                         android:layout_marginStart="@dimen/dp_18"
+                        android:layout_marginTop="@dimen/dp_16"
                         android:src="@drawable/ic_fragment_lucky_middle_image3" />
 
                     <TextView
                         android:id="@+id/fragment_lucky_text3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_5"
                         android:layout_marginTop="@dimen/dp_13"
                         android:layout_marginEnd="@dimen/dp_35"
                         android:lineSpacingExtra="2dp"
-                        android:layout_marginStart="@dimen/dp_5"
                         android:paddingBottom="@dimen/dp_100"
                         android:textColor="@color/color333333"
                         android:textSize="@dimen/sp_14"
@@ -155,6 +155,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dp_5"
+                            android:maxLength="4"
+                            android:maxLines="1"
+                            android:singleLine="true"
                             android:text="积极沟通"
                             android:textColor="@color/color85E9E6"
                             android:textSize="@dimen/sp_15" />
@@ -186,6 +189,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dp_5"
+                            android:maxLength="4"
+                            android:maxLines="1"
+                            android:singleLine="true"
                             android:text="生气吵架"
                             android:textColor="@color/colorFF9696"
                             android:textSize="@dimen/sp_15" />
@@ -217,6 +223,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dp_5"
+                            android:maxLength="4"
+                            android:maxLines="1"
+                            android:singleLine="true"
                             android:text="积极沟通"
                             android:textColor="@color/colorFFD88F"
                             android:textSize="@dimen/sp_15" />
