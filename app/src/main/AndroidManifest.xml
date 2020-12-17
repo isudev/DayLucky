@@ -27,7 +27,7 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
-        <receiver android:name=".widget.core.DayLuckyAppWidget">
+        <receiver android:name=".widget.launcher.DayLuckyAppWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>

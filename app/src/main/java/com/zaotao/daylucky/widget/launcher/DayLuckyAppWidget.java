@@ -1,24 +1,8 @@
-package com.zaotao.daylucky.widget.core;
+package com.zaotao.daylucky.widget.launcher;
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RemoteViews;
-
-import com.zaotao.base.utils.ImageUtils;
-import com.zaotao.base.utils.ScreenUtils;
-import com.zaotao.daylucky.R;
-import com.zaotao.daylucky.app.ColorManager;
-import com.zaotao.daylucky.app.LocalDataManager;
-import com.zaotao.daylucky.module.entity.ThemeEntity;
 
 /**
  * Implementation of App Widget functionality.

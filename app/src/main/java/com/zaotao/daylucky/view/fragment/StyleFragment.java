@@ -21,7 +21,7 @@ import com.zaotao.daylucky.module.entity.ThemeEntity;
 import com.zaotao.daylucky.module.listener.OnItemPositionClickListener;
 import com.zaotao.daylucky.presenter.MainHomePresenter;
 import com.zaotao.daylucky.view.adapter.SettingStyleAdapter;
-import com.zaotao.daylucky.widget.core.UpdateAppWidget;
+import com.zaotao.daylucky.widget.launcher.UpdateAppWidget;
 
 import java.util.ArrayList;
 import java.util.List;

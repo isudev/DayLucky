@@ -1,4 +1,4 @@
-package com.zaotao.daylucky.widget.core;
+package com.zaotao.daylucky.widget.launcher;
 
 
 import android.appwidget.AppWidgetManager;
