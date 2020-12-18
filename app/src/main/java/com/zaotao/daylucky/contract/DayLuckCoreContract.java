@@ -2,8 +2,6 @@ package com.zaotao.daylucky.contract;
 
 import android.widget.ImageView;
 
-import androidx.fragment.app.Fragment;
-
 import com.zaotao.daylucky.base.BaseSimplePresenter;
 import com.zaotao.daylucky.base.IView;
 import com.zaotao.daylucky.module.entity.LuckyEntity;
@@ -32,9 +30,9 @@ public interface DayLuckCoreContract {
 
         void registerThemeInfo();
 
-        void initHomeLucky(int var);
+        void initHomeLucky();
 
-        List<Fragment> initMainFragments();
+        void initHomeLucky(int var);
 
         List<SettingSelectEntity> initSelectConstellationData();
 

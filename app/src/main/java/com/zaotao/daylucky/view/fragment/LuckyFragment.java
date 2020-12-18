@@ -69,7 +69,9 @@ public class LuckyFragment extends BaseFragment<DayLuckCorePresenter> implements
 
     @Override
     protected void initViewData(View view) {
-        getSupportPresenter().initHomeLucky(LocalDataManager.getInstance().getSelectLocalData());
+        getSupportPresenter().initHomeLucky();
+
+        getSupportPresenter().initHomeLucky(LocalDataManager.getInstance().getSelectConstellationIndex());
 
         getSupportPresenter().registerSelectPosition(fragmentLuckyImageClick);
 
@@ -158,7 +160,7 @@ public class LuckyFragment extends BaseFragment<DayLuckCorePresenter> implements
     }
 
 
-    public void loadTabFragment(int index){
+    public void loadTabFragment(int index) {
         if (index == 0) {
             getChildFragmentManager()
                     .beginTransaction()

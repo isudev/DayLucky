@@ -2,11 +2,12 @@ package com.zaotao.daylucky.presenter;
 
 import android.widget.ImageView;
 
-import androidx.fragment.app.Fragment;
-
+import com.google.gson.Gson;
 import com.zaotao.base.rx.RxBus;
 import com.zaotao.base.rx.RxBusSubscriber;
 import com.zaotao.base.rx.RxSchedulers;
+import com.zaotao.base.utils.NetworkUtils;
+import com.zaotao.daylucky.App;
 import com.zaotao.daylucky.app.ColorManager;
 import com.zaotao.daylucky.app.Constants;
 import com.zaotao.daylucky.app.DateUtils;
@@ -23,13 +24,15 @@ import com.zaotao.daylucky.module.entity.SettingSelectEntity;
 import com.zaotao.daylucky.module.entity.SettingStyleEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 import com.zaotao.daylucky.module.event.SelectEvent;
-import com.zaotao.daylucky.view.fragment.LuckyFragment;
-import com.zaotao.daylucky.view.fragment.StyleFragment;
-import com.zaotao.daylucky.view.fragment.ThemeFragment;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.Observable;
 import io.reactivex.functions.Function;
 import io.reactivex.functions.Predicate;
 
@@ -101,7 +104,99 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
     }
 
     @Override
+    public void initHomeLucky() {
+        Observable.just("normal.json")
+                .map(new Function<String, LuckyEntity>() {
+                    @Override
+                    public LuckyEntity apply(String fileName) throws Exception {
+                        LuckyEntity luckyEntity = null;
+
+                        try {
+                            InputStream inputStream = App.getApplication().getApplicationContext().getAssets().open(fileName);
+
+                            BufferedReader bufferedReader = new BufferedReader(
+                                    new InputStreamReader(inputStream));
+                            StringBuilder stringBuilder = new StringBuilder();
+                            String line = null;
+
+                            try {
+                                while ((line = bufferedReader.readLine()) != null) {
+                                    stringBuilder.append(line);
+                                }
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } finally {
+                                try {
+                                    inputStream.close();
+                                    bufferedReader.close();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+
+                            String json = stringBuilder.toString();
+
+
+                            Gson gson = new Gson();
+                            luckyEntity = gson.fromJson(json, LuckyEntity.class);
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        return luckyEntity;
+                    }
+                })
+                .compose(RxSchedulers.applySchedulers(getLifecycleProvider()))
+                .subscribe(new ApiSubscriber<LuckyEntity>() {
+                    @Override
+                    public void onSuccess(LuckyEntity luckyEntity) {
+                        ThemeEntity themeEntity = new ThemeEntity();
+                        themeEntity.setBad(luckyEntity.getToday().getBad());
+                        themeEntity.setLucky(luckyEntity.getToday().getLuck());
+                        themeEntity.setText(luckyEntity.getToday().getCont());
+                        themeEntity.setDay(DateUtils.formatDayText());
+                        themeEntity.setMonth(DateUtils.formatMonthText());
+                        themeEntity.setWeek(DateUtils.formatWeekText());
+                        themeEntity.setLineColor(ColorManager.colorsLineBg[0][0]);
+                        themeEntity.setBgColor(ColorManager.colorsLineBg[0][1]);
+                        themeEntity.setDayColor(ColorManager.colorTextView);
+                        themeEntity.setWeekColor(ColorManager.colorTextView);
+                        themeEntity.setMonthColor(ColorManager.colorTextView);
+                        themeEntity.setTextColor(ColorManager.colorTextContent);
+                        themeEntity.setLuckyColor(ColorManager.normalLuckColor);
+                        themeEntity.setBadColor(ColorManager.normalBadColor);
+
+                        if (LocalDataManager.getInstance().isEmptyLocalTheme()) {
+                            RxBus.getDefault().post(themeEntity);
+                        } else {
+                            themeEntity = LocalDataManager.getInstance().getThemeData();
+                            themeEntity.setBad(luckyEntity.getToday().getBad());
+                            themeEntity.setLucky(luckyEntity.getToday().getLuck());
+                            themeEntity.setText(luckyEntity.getToday().getCont());
+                            themeEntity.setDay(DateUtils.formatDayText());
+                            themeEntity.setMonth(DateUtils.formatMonthText());
+                            themeEntity.setWeek(DateUtils.formatWeekText());
+                            LocalDataManager.getInstance().saveThemeData(themeEntity);
+                            RxBus.getDefault().post(LocalDataManager.getInstance().getThemeData());
+                        }
+                        RxBus.getDefault().postSticky(luckyEntity);
+                        getView().onSuccessLucky(luckyEntity);
+                    }
+
+                    @Override
+                    public void onFailure(String errMsg) {
+
+                    }
+                });
+    }
+
+
+    @Override
     public void initHomeLucky(int position) {
+        if (!NetworkUtils.isConnected()) {
+            initHomeLucky();
+        }
         apiService.initHomeLucky(position)
                 .filter(new Predicate<BaseResult<LuckyEntity>>() {
                     @Override
@@ -155,18 +250,9 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
 
                     @Override
                     public void onFailure(String errMsg) {
-
+                        initHomeLucky();
                     }
                 });
-    }
-
-    @Override
-    public List<Fragment> initMainFragments() {
-        List<Fragment> fragments = new ArrayList<>();
-        fragments.add(new LuckyFragment());
-        fragments.add(new ThemeFragment());
-        fragments.add(new StyleFragment());
-        return fragments;
     }
 
     @Override

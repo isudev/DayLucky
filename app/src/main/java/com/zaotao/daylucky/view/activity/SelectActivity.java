@@ -47,7 +47,7 @@ public class SelectActivity extends BaseActivity<DayLuckCorePresenter> {
             @Override
             public void onClick(int position) {
                 RxBus.getDefault().post(new SelectEvent(position));
-                LocalDataManager.getInstance().setTipsFromHomeGuidePage(position);
+                LocalDataManager.getInstance().setSelectConstellationIndex(position);
                 finish();
             }
         });
