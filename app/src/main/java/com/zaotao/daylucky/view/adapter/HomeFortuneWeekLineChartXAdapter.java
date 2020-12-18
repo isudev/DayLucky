@@ -43,7 +43,7 @@ public class HomeFortuneWeekLineChartXAdapter extends RecyclerView.Adapter<HomeF
 
     @Override
     public void onBindViewHolder(HomeFortuneWeekLineChartXAdapter.ViewHolder holder, int position) {
-        holder.itemHomeFortuneLineChartXText.setText(weekTimes[position] + "");
+        holder.itemHomeFortuneLineChartXText.setText(weekTimes[position]);
         holder.itemHomeFortuneLineVerticalProgressBar.setProgress(items.get(position).getY());
         holder.itemHomeFortuneLineVerticalProgressBar.setFinishColor(ContextCompat.getColor(context, R.color.color00D1CB));
         holder.itemView.setOnClickListener(v -> {

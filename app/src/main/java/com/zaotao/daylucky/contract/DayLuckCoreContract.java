@@ -14,7 +14,7 @@ import com.zaotao.daylucky.module.entity.ThemeEntity;
 
 import java.util.List;
 
-public interface MainHomeContract {
+public interface DayLuckCoreContract {
 
     interface View extends IView {
 

@@ -89,7 +89,7 @@ public class ThemeStyleAdapter extends RecyclerView.Adapter<ThemeStyleAdapter.Vi
 
         public void bind(int position) {
             itemThemeStyleTitle.setVisibility(position == 0 || position == 1 ? View.VISIBLE : View.GONE);
-            itemThemeStyleTitle.setText(position == 0 ? "默认" : "其他");
+            itemThemeStyleTitle.setText(position == 0 ? context.getString(R.string.theme_style_normal) : context.getString(R.string.theme_style_other));
             ThemeEntity themeEntity = items.get(position);
             itemThemeStyleDayText.setText(themeEntity.getDay());
             itemThemeStyleMonthText.setText(themeEntity.getMonth());

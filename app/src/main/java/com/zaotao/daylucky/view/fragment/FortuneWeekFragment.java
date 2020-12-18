@@ -10,14 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.zaotao.base.utils.ToastUtils;
 import com.zaotao.daylucky.R;
-import com.zaotao.daylucky.app.Constants;
 import com.zaotao.daylucky.app.DateUtils;
 import com.zaotao.daylucky.base.BaseFragment;
-import com.zaotao.daylucky.contract.MainHomeContract;
+import com.zaotao.daylucky.contract.DayLuckCoreContract;
 import com.zaotao.daylucky.module.entity.LuckyEntity;
 import com.zaotao.daylucky.module.entity.LuckyWeekEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
-import com.zaotao.daylucky.presenter.MainHomePresenter;
+import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
 import com.zaotao.daylucky.view.adapter.HomeFortuneWeekLineChartXAdapter;
 import com.zaotao.daylucky.view.adapter.LuckyItemAdapter;
 
@@ -30,7 +29,7 @@ import butterknife.BindView;
  * Description HomeFortuneWeekFragment
  * Created by wangisu@qq.com on 2020-01-10
  */
-public class FortuneWeekFragment extends BaseFragment<MainHomePresenter> implements MainHomeContract.View {
+public class FortuneWeekFragment extends BaseFragment<DayLuckCorePresenter> implements DayLuckCoreContract.View {
 
     @BindView(R.id.home_fortune_line_chart_text)
     TextView homeFortuneLineChartText;
@@ -59,8 +58,8 @@ public class FortuneWeekFragment extends BaseFragment<MainHomePresenter> impleme
     }
 
     @Override
-    protected MainHomePresenter initPresenter() {
-        return new MainHomePresenter();
+    protected DayLuckCorePresenter initPresenter() {
+        return new DayLuckCorePresenter();
     }
 
     @Override

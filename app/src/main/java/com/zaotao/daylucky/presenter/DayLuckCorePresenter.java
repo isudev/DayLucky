@@ -7,13 +7,12 @@ import androidx.fragment.app.Fragment;
 import com.zaotao.base.rx.RxBus;
 import com.zaotao.base.rx.RxBusSubscriber;
 import com.zaotao.base.rx.RxSchedulers;
-import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.app.ColorManager;
 import com.zaotao.daylucky.app.Constants;
 import com.zaotao.daylucky.app.DateUtils;
 import com.zaotao.daylucky.app.LocalDataManager;
 import com.zaotao.daylucky.base.BasePresenter;
-import com.zaotao.daylucky.contract.MainHomeContract;
+import com.zaotao.daylucky.contract.DayLuckCoreContract;
 import com.zaotao.daylucky.module.api.ApiNetwork;
 import com.zaotao.daylucky.module.api.ApiService;
 import com.zaotao.daylucky.module.api.ApiSubscriber;
@@ -34,7 +33,7 @@ import java.util.List;
 import io.reactivex.functions.Function;
 import io.reactivex.functions.Predicate;
 
-public class MainHomePresenter extends BasePresenter<MainHomeContract.View> implements MainHomeContract.Presenter {
+public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View> implements DayLuckCoreContract.Presenter {
 
     private static final String TAG = "MainHomePresenter";
 

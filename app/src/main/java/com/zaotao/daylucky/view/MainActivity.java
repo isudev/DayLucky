@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment;
 
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.base.BaseActivity;
-import com.zaotao.daylucky.presenter.MainHomePresenter;
+import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
 import com.zaotao.daylucky.view.adapter.AppFragmentPagerAdapter;
 import com.zaotao.daylucky.widget.navigation.BottomNavigationView;
 import com.zaotao.daylucky.widget.viewpager.NoScrollViewPager;
@@ -17,7 +17,7 @@ import java.util.List;
 import butterknife.BindView;
 
 
-public class MainActivity extends BaseActivity<MainHomePresenter>  {
+public class MainActivity extends BaseActivity<DayLuckCorePresenter>  {
 
     @BindView(R.id.view_pager_main)
     NoScrollViewPager viewPagerMain;
@@ -49,8 +49,8 @@ public class MainActivity extends BaseActivity<MainHomePresenter>  {
     }
 
     @Override
-    protected MainHomePresenter initPresenter() {
-        return new MainHomePresenter();
+    protected DayLuckCorePresenter initPresenter() {
+        return new DayLuckCorePresenter();
     }
 
     @Override

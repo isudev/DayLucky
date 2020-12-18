@@ -9,20 +9,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.base.BaseFragment;
-import com.zaotao.daylucky.contract.MainHomeContract;
+import com.zaotao.daylucky.contract.DayLuckCoreContract;
 import com.zaotao.daylucky.module.entity.LuckyEntity;
-import com.zaotao.daylucky.module.entity.LuckyItemEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
-import com.zaotao.daylucky.presenter.MainHomePresenter;
+import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
 import com.zaotao.daylucky.view.adapter.LuckyItemAdapter;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 
-public class FortuneMonthFragment extends BaseFragment<MainHomePresenter> implements MainHomeContract.View {
+public class FortuneMonthFragment extends BaseFragment<DayLuckCorePresenter> implements DayLuckCoreContract.View {
 
     @BindView(R.id.fragment_home_fortune_month_text)
     TextView fragmentHomeFortuneMonthText;
@@ -46,8 +44,8 @@ public class FortuneMonthFragment extends BaseFragment<MainHomePresenter> implem
     }
 
     @Override
-    protected MainHomePresenter initPresenter() {
-        return new MainHomePresenter();
+    protected DayLuckCorePresenter initPresenter() {
+        return new DayLuckCorePresenter();
     }
 
     @Override

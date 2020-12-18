@@ -14,22 +14,21 @@ import com.zaotao.base.view.RoundImageView;
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.app.LocalDataManager;
 import com.zaotao.daylucky.base.BaseFragment;
-import com.zaotao.daylucky.contract.MainHomeContract;
+import com.zaotao.daylucky.contract.DayLuckCoreContract;
 import com.zaotao.daylucky.module.entity.LuckyEntity;
 import com.zaotao.daylucky.module.entity.SettingStyleEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 import com.zaotao.daylucky.module.listener.OnItemPositionClickListener;
-import com.zaotao.daylucky.presenter.MainHomePresenter;
+import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
 import com.zaotao.daylucky.view.adapter.SettingStyleAdapter;
 import com.zaotao.daylucky.widget.launcher.UpdateAppWidget;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import top.defaults.colorpicker.ColorPickerPopup;
 
-public class StyleFragment extends BaseFragment<MainHomePresenter> implements MainHomeContract.View {
+public class StyleFragment extends BaseFragment<DayLuckCorePresenter> implements DayLuckCoreContract.View {
     @BindView(R.id.item_theme_style_day_text)
     TextView itemThemeStyleDayText;
     @BindView(R.id.item_theme_style_month_text)
@@ -62,8 +61,8 @@ public class StyleFragment extends BaseFragment<MainHomePresenter> implements Ma
     }
 
     @Override
-    protected MainHomePresenter initPresenter() {
-        return new MainHomePresenter();
+    protected DayLuckCorePresenter initPresenter() {
+        return new DayLuckCorePresenter();
     }
 
     @Override

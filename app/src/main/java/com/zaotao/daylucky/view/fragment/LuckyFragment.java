@@ -16,10 +16,10 @@ import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.app.DateUtils;
 import com.zaotao.daylucky.app.LocalDataManager;
 import com.zaotao.daylucky.base.BaseFragment;
-import com.zaotao.daylucky.contract.MainHomeContract;
+import com.zaotao.daylucky.contract.DayLuckCoreContract;
 import com.zaotao.daylucky.module.entity.LuckyEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
-import com.zaotao.daylucky.presenter.MainHomePresenter;
+import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
 import com.zaotao.daylucky.view.activity.SelectActivity;
 import com.zaotao.daylucky.widget.appview.AppFakeBoldTextView;
 import com.zaotao.indicator.MagicIndicator;
@@ -33,7 +33,7 @@ import com.zaotao.indicator.buildins.commonnavigator.titles.SimplePagerBoldTitle
 
 import butterknife.BindView;
 
-public class LuckyFragment extends BaseFragment<MainHomePresenter> implements MainHomeContract.View {
+public class LuckyFragment extends BaseFragment<DayLuckCorePresenter> implements DayLuckCoreContract.View {
     @BindView(R.id.fragment_lucky_text_date)
     AppFakeBoldTextView fragmentLuckyTextDate;
     @BindView(R.id.fragment_lucky_text1)
@@ -63,8 +63,8 @@ public class LuckyFragment extends BaseFragment<MainHomePresenter> implements Ma
     }
 
     @Override
-    protected MainHomePresenter initPresenter() {
-        return new MainHomePresenter();
+    protected DayLuckCorePresenter initPresenter() {
+        return new DayLuckCorePresenter();
     }
 
     @Override

@@ -12,11 +12,11 @@ import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.app.ColorManager;
 import com.zaotao.daylucky.app.LocalDataManager;
 import com.zaotao.daylucky.base.BaseFragment;
-import com.zaotao.daylucky.contract.MainHomeContract;
+import com.zaotao.daylucky.contract.DayLuckCoreContract;
 import com.zaotao.daylucky.module.entity.LuckyEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 import com.zaotao.daylucky.module.listener.OnItemPositionClickListener;
-import com.zaotao.daylucky.presenter.MainHomePresenter;
+import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
 import com.zaotao.daylucky.view.adapter.ThemeStyleAdapter;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class ThemeFragment extends BaseFragment<MainHomePresenter> implements MainHomeContract.View {
+public class ThemeFragment extends BaseFragment<DayLuckCorePresenter> implements DayLuckCoreContract.View {
     @BindView(R.id.recycler_view_themes)
     RecyclerView recyclerViewThemes;
 
@@ -38,8 +38,8 @@ public class ThemeFragment extends BaseFragment<MainHomePresenter> implements Ma
     }
 
     @Override
-    protected MainHomePresenter initPresenter() {
-        return new MainHomePresenter();
+    protected DayLuckCorePresenter initPresenter() {
+        return new DayLuckCorePresenter();
     }
 
     @Override

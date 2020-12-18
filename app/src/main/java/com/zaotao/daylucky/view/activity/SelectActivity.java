@@ -8,22 +8,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.zaotao.base.rx.RxBus;
 import com.zaotao.daylucky.R;
-import com.zaotao.daylucky.app.Constants;
 import com.zaotao.daylucky.app.LocalDataManager;
 import com.zaotao.daylucky.base.BaseActivity;
-import com.zaotao.daylucky.module.entity.SettingSelectEntity;
 import com.zaotao.daylucky.module.event.SelectEvent;
 import com.zaotao.daylucky.module.listener.OnItemPositionClickListener;
-import com.zaotao.daylucky.presenter.MainHomePresenter;
+import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
 import com.zaotao.daylucky.view.adapter.SettingSelectAdapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
-public class SelectActivity extends BaseActivity<MainHomePresenter> {
+public class SelectActivity extends BaseActivity<DayLuckCorePresenter> {
 
     @BindView(R.id.recycler_view_select)
     RecyclerView recyclerViewSelect;
@@ -60,19 +54,12 @@ public class SelectActivity extends BaseActivity<MainHomePresenter> {
     }
 
     @Override
-    protected MainHomePresenter initPresenter() {
-        return new MainHomePresenter();
+    protected DayLuckCorePresenter initPresenter() {
+        return new DayLuckCorePresenter();
     }
 
     @Override
     public void showToast(String msg) {
 
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
     }
 }

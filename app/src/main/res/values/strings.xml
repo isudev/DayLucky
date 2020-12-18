@@ -3,4 +3,6 @@
     <string name="main_bottom_bar_text_lucky">运势</string>
     <string name="main_bottom_bar_text_theme">主题</string>
     <string name="main_bottom_bar_text_style">风格</string>
+    <string name="theme_style_normal">默认</string>
+    <string name="theme_style_other">其他</string>
 </resources>

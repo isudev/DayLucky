@@ -8,6 +8,7 @@ import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 
 public class LocalDataManager {
+
     private static volatile LocalDataManager instance;
 
     public static LocalDataManager getInstance() {
