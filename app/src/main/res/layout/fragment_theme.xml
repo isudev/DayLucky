@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="54dp"
-        android:text="主题"
+        android:text="@string/main_bottom_bar_text_theme"
         android:textColor="@color/color333333"
         android:textSize="@dimen/sp_34" />
 

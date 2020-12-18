@@ -54,7 +54,7 @@ public class StyleFragment extends BaseFragment<MainHomePresenter> implements Ma
     RecyclerView recyclerViewFragmentStyle;
 
     private SettingStyleAdapter settingStyleAdapter;
-    private List<SettingStyleEntity> settingStyleEntityList = new ArrayList<>();
+    private List<SettingStyleEntity> settingStyleEntityList;
 
     @Override
     protected int getLayoutId() {
@@ -71,17 +71,7 @@ public class StyleFragment extends BaseFragment<MainHomePresenter> implements Ma
 
 
         getSupportPresenter().registerThemeInfo();
-
-
-        settingStyleEntityList.add(new SettingStyleEntity("背景"));
-        settingStyleEntityList.add(new SettingStyleEntity("日期"));
-        settingStyleEntityList.add(new SettingStyleEntity("星期"));
-        settingStyleEntityList.add(new SettingStyleEntity("月份"));
-        settingStyleEntityList.add(new SettingStyleEntity("运势"));
-        settingStyleEntityList.add(new SettingStyleEntity("宜"));
-        settingStyleEntityList.add(new SettingStyleEntity("忌"));
-        settingStyleEntityList.add(new SettingStyleEntity("分割线"));
-
+        settingStyleEntityList = getSupportPresenter().initSettingStyleData();
         settingStyleAdapter = new SettingStyleAdapter(mContext);
         settingStyleAdapter.notifyDataSetChanged(settingStyleEntityList);
         recyclerViewFragmentStyle.setLayoutManager(new LinearLayoutManager(mContext));

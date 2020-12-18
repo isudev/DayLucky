@@ -33,7 +33,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/dp_22"
             android:includeFontPadding="false"
-            android:text="运势"
+            android:text="@string/main_bottom_bar_text_lucky"
             android:textColor="@color/color23242D"
             android:textSize="@dimen/sp_10" />
     </RelativeLayout>
@@ -64,7 +64,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/dp_22"
             android:includeFontPadding="false"
-            android:text="主题"
+            android:text="@string/main_bottom_bar_text_theme"
             android:textColor="@color/color23242D"
             android:textSize="@dimen/sp_10" />
     </RelativeLayout>
@@ -95,7 +95,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/dp_22"
             android:includeFontPadding="false"
-            android:text="风格"
+            android:text="@string/main_bottom_bar_text_style"
             android:textColor="@color/color23242D"
             android:textSize="@dimen/sp_10" />
     </RelativeLayout>

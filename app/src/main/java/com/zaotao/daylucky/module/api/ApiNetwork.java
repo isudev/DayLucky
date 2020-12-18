@@ -58,15 +58,15 @@ public class ApiNetwork {
                     HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
                     httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
                     File cacheFile = new File(App.getApplication().getCacheDir(), "cache");
-                    Cache cache = new Cache(cacheFile, 1024 * 1024 * 50); //50Mb 缓存的大小
+                    Cache cache = new Cache(cacheFile, 1024 * 1024 * 50);
                     OkHttpClient client = new OkHttpClient
                             .Builder()
                             .addInterceptor(new RequestInterceptor())
-                            .addInterceptor(httpLoggingInterceptor) //日志,所有的请求响应
-                            .cache(cache)  //添加缓存
-                            .connectTimeout(15, TimeUnit.SECONDS)//连接超时时间
-                            .readTimeout(15, TimeUnit.SECONDS)//读取超时时间
-                            .writeTimeout(15, TimeUnit.SECONDS)//写入超时时间
+                            .addInterceptor(httpLoggingInterceptor)
+                            .cache(cache)
+                            .connectTimeout(15, TimeUnit.SECONDS)
+                            .readTimeout(15, TimeUnit.SECONDS)
+                            .writeTimeout(15, TimeUnit.SECONDS)
                             .build();
 
                     retrofit = new Retrofit

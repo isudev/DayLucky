@@ -9,18 +9,13 @@ import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.base.BaseActivity;
 import com.zaotao.daylucky.presenter.MainHomePresenter;
 import com.zaotao.daylucky.view.adapter.AppFragmentPagerAdapter;
-import com.zaotao.daylucky.view.fragment.LuckyFragment;
-import com.zaotao.daylucky.view.fragment.StyleFragment;
-import com.zaotao.daylucky.view.fragment.ThemeFragment;
 import com.zaotao.daylucky.widget.navigation.BottomNavigationView;
 import com.zaotao.daylucky.widget.viewpager.NoScrollViewPager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 
-import static com.zaotao.daylucky.widget.navigation.BottomNavigationView.TAB_LUCKY;
 
 public class MainActivity extends BaseActivity<MainHomePresenter>  {
 
@@ -37,16 +32,12 @@ public class MainActivity extends BaseActivity<MainHomePresenter>  {
 
     @Override
     protected void initCreate(Bundle savedInstanceState) {
-        List<Fragment> mFragments = new ArrayList<>();
-        mFragments.add(new LuckyFragment());
-        mFragments.add(new ThemeFragment());
-        mFragments.add(new StyleFragment());
 
-        viewPagerMain.setAdapter(new AppFragmentPagerAdapter(getSupportFragmentManager(), mFragments));
+        List<Fragment> fragments = getSupportPresenter().initMainFragments();
+        viewPagerMain.setAdapter(new AppFragmentPagerAdapter(getSupportFragmentManager(), fragments));
+        viewPagerMain.setOffscreenPageLimit(fragments.size());
 
-        viewPagerMain.setOffscreenPageLimit(3);
-
-        showFragment(TAB_LUCKY);
+        showFragment(mainBottomView.getTabLuckyIndex());
     }
 
     private void showFragment(int position) {

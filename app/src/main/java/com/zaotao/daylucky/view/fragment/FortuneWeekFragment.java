@@ -10,10 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.zaotao.base.utils.ToastUtils;
 import com.zaotao.daylucky.R;
+import com.zaotao.daylucky.app.Constants;
+import com.zaotao.daylucky.app.DateUtils;
 import com.zaotao.daylucky.base.BaseFragment;
 import com.zaotao.daylucky.contract.MainHomeContract;
 import com.zaotao.daylucky.module.entity.LuckyEntity;
-import com.zaotao.daylucky.module.entity.LuckyItemEntity;
 import com.zaotao.daylucky.module.entity.LuckyWeekEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 import com.zaotao.daylucky.presenter.MainHomePresenter;
@@ -43,7 +44,6 @@ public class FortuneWeekFragment extends BaseFragment<MainHomePresenter> impleme
     TextView fragmentHomeFortuneWeekDate;
     private LuckyEntity homeDataBean;
     private HomeFortuneWeekLineChartXAdapter homeFortuneLineChartXAdapter;
-    private String[] weekTimes = {"星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"};
 
     public static FortuneWeekFragment newInstance(LuckyEntity luckyEntity) {
         Bundle args = new Bundle();
@@ -85,47 +85,21 @@ public class FortuneWeekFragment extends BaseFragment<MainHomePresenter> impleme
                 homeLuckyLineItemResults.add(new LuckyWeekEntity(xyBean.getX(), xyBean.getY()));
             }
         }
-        homeFortuneLineChartXAdapter.notifyDataSetChanged(homeLuckyLineItemResults, weekTimes);
+        homeFortuneLineChartXAdapter.notifyDataSetChanged(homeLuckyLineItemResults, DateUtils.WEEK_TIMES);
 
 
         /**
          * init list data
          */
-        List<LuckyItemEntity> luckyItemEntityList = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            LuckyItemEntity luckyItemEntity = new LuckyItemEntity();
-            luckyItemEntityList.add(luckyItemEntity);
-        }
-        luckyItemEntityList.get(0).setImg(R.drawable.ic_item_lucky_image0);
-        luckyItemEntityList.get(0).setTitle("感情");
-        luckyItemEntityList.get(0).setLineImg(R.drawable.ic_item_lucky_image0s);
-        luckyItemEntityList.get(0).setText(homeDataBeanWeek.getCont1());
-
-        luckyItemEntityList.get(1).setImg(R.drawable.ic_item_lucky_image1);
-        luckyItemEntityList.get(1).setTitle("事业");
-        luckyItemEntityList.get(1).setLineImg(R.drawable.ic_item_lucky_image1s);
-        luckyItemEntityList.get(1).setText(homeDataBeanWeek.getCont3());
-
-
-        luckyItemEntityList.get(2).setImg(R.drawable.ic_item_lucky_image2);
-        luckyItemEntityList.get(2).setTitle("学业");
-        luckyItemEntityList.get(2).setLineImg(R.drawable.ic_item_lucky_image2s);
-        luckyItemEntityList.get(2).setText(homeDataBeanWeek.getCont5());
-
-        luckyItemEntityList.get(3).setImg(R.drawable.ic_item_lucky_image3);
-        luckyItemEntityList.get(3).setTitle("财运");
-        luckyItemEntityList.get(3).setLineImg(R.drawable.ic_item_lucky_image3s);
-        luckyItemEntityList.get(3).setText(homeDataBeanWeek.getCont7());
-
-
-        luckyItemEntityList.get(4).setImg(R.drawable.ic_item_lucky_image4);
-        luckyItemEntityList.get(4).setTitle("健康");
-        luckyItemEntityList.get(4).setLineImg(R.drawable.ic_item_lucky_image4s);
-        luckyItemEntityList.get(4).setText(homeDataBeanWeek.getCont9());
-
+        List<String> contItems = new ArrayList<>();
+        contItems.add(homeDataBeanWeek.getCont1());
+        contItems.add(homeDataBeanWeek.getCont3());
+        contItems.add(homeDataBeanWeek.getCont5());
+        contItems.add(homeDataBeanWeek.getCont7());
+        contItems.add(homeDataBeanWeek.getCont9());
         LuckyItemAdapter luckyItemAdapter = new LuckyItemAdapter(mContext);
         recyclerViewFragmentHomeFortuneWeek.setLayoutManager(new LinearLayoutManager(mContext));
-        luckyItemAdapter.notifyDataSetChanged(luckyItemEntityList);
+        luckyItemAdapter.notifyDataSetChanged(getSupportPresenter().initFortuneLuckyData(contItems));
         recyclerViewFragmentHomeFortuneWeek.setAdapter(luckyItemAdapter);
     }
 
@@ -161,47 +135,21 @@ public class FortuneWeekFragment extends BaseFragment<MainHomePresenter> impleme
                 homeLuckyLineItemResults.add(new LuckyWeekEntity(xyBean.getX(), xyBean.getY()));
             }
         }
-        homeFortuneLineChartXAdapter.notifyDataSetChanged(homeLuckyLineItemResults, weekTimes);
+        homeFortuneLineChartXAdapter.notifyDataSetChanged(homeLuckyLineItemResults, DateUtils.WEEK_TIMES);
 
 
         /**
          * init list data
          */
-        List<LuckyItemEntity> luckyItemEntityList = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            LuckyItemEntity luckyItemEntity = new LuckyItemEntity();
-            luckyItemEntityList.add(luckyItemEntity);
-        }
-        luckyItemEntityList.get(0).setImg(R.drawable.ic_item_lucky_image0);
-        luckyItemEntityList.get(0).setTitle("感情");
-        luckyItemEntityList.get(0).setLineImg(R.drawable.ic_item_lucky_image0s);
-        luckyItemEntityList.get(0).setText(homeDataBeanWeek.getCont1());
-
-        luckyItemEntityList.get(1).setImg(R.drawable.ic_item_lucky_image1);
-        luckyItemEntityList.get(1).setTitle("事业");
-        luckyItemEntityList.get(1).setLineImg(R.drawable.ic_item_lucky_image1s);
-        luckyItemEntityList.get(1).setText(homeDataBeanWeek.getCont3());
-
-
-        luckyItemEntityList.get(2).setImg(R.drawable.ic_item_lucky_image2);
-        luckyItemEntityList.get(2).setTitle("学业");
-        luckyItemEntityList.get(2).setLineImg(R.drawable.ic_item_lucky_image2s);
-        luckyItemEntityList.get(2).setText(homeDataBeanWeek.getCont5());
-
-        luckyItemEntityList.get(3).setImg(R.drawable.ic_item_lucky_image3);
-        luckyItemEntityList.get(3).setTitle("财运");
-        luckyItemEntityList.get(3).setLineImg(R.drawable.ic_item_lucky_image3s);
-        luckyItemEntityList.get(3).setText(homeDataBeanWeek.getCont7());
-
-
-        luckyItemEntityList.get(4).setImg(R.drawable.ic_item_lucky_image4);
-        luckyItemEntityList.get(4).setTitle("健康");
-        luckyItemEntityList.get(4).setLineImg(R.drawable.ic_item_lucky_image4s);
-        luckyItemEntityList.get(4).setText(homeDataBeanWeek.getCont9());
-
+        List<String> contItems = new ArrayList<>();
+        contItems.add(homeDataBeanWeek.getCont1());
+        contItems.add(homeDataBeanWeek.getCont3());
+        contItems.add(homeDataBeanWeek.getCont5());
+        contItems.add(homeDataBeanWeek.getCont7());
+        contItems.add(homeDataBeanWeek.getCont9());
         LuckyItemAdapter luckyItemAdapter = new LuckyItemAdapter(mContext);
         recyclerViewFragmentHomeFortuneWeek.setLayoutManager(new LinearLayoutManager(mContext));
-        luckyItemAdapter.notifyDataSetChanged(luckyItemEntityList);
+        luckyItemAdapter.notifyDataSetChanged(getSupportPresenter().initFortuneLuckyData(contItems));
         recyclerViewFragmentHomeFortuneWeek.setAdapter(luckyItemAdapter);
     }
 

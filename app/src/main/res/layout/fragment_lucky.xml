@@ -29,11 +29,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dp_17"
                     android:layout_marginTop="@dimen/dp_64"
-                    tools:text="1 October  Thursay"
                     android:textColor="@color/color333333"
                     android:textSize="@dimen/sp_24"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="1 October  Thursay" />
 
                 <TextView
                     android:id="@+id/fragment_lucky_text1"
@@ -42,32 +42,32 @@
                     android:layout_marginStart="@dimen/dp_20"
                     android:layout_marginTop="@dimen/dp_5"
                     android:layout_marginEnd="@dimen/dp_90"
-                    tools:text="月亮刑太阳 月亮冲本星 月亮刑火星"
                     android:textColor="@color/color666666"
                     android:textSize="@dimen/sp_10"
                     app:layout_constraintStart_toStartOf="@id/fragment_lucky_text_date"
-                    app:layout_constraintTop_toBottomOf="@id/fragment_lucky_text_date" />
+                    app:layout_constraintTop_toBottomOf="@id/fragment_lucky_text_date"
+                    tools:text="月亮刑太阳 月亮冲本星 月亮刑火星" />
 
                 <com.zaotao.base.view.CircleImageView
                     android:id="@+id/fragment_lucky_image_click"
                     android:layout_width="@dimen/dp_45"
                     android:layout_height="@dimen/dp_45"
                     android:layout_marginEnd="@dimen/dp_18"
-                    android:src="@drawable/ic_astro_image0"
                     app:layout_constraintBottom_toBottomOf="@id/fragment_lucky_text1"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/fragment_lucky_text_date" />
+                    app:layout_constraintTop_toTopOf="@id/fragment_lucky_text_date"
+                    tools:src="@drawable/ic_item_setting_select_view0" />
 
                 <TextView
                     android:id="@+id/fragment_lucky_text2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_50"
-                    tools:text="贵人多助的一天"
                     android:textColor="@color/color333333"
                     android:textSize="@dimen/sp_17"
                     app:layout_constraintStart_toStartOf="@id/fragment_lucky_text_date"
                     app:layout_constraintTop_toBottomOf="@id/fragment_lucky_text_date"
+                    tools:text="贵人多助的一天"
 
                     />
 

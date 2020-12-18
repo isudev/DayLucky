@@ -1,7 +1,5 @@
 package com.zaotao.daylucky.app;
 
-import android.graphics.Color;
-
 import com.zaotao.daylucky.R;
 
 /**
@@ -41,4 +39,38 @@ public class Constants {
             "双鱼座"
     };
 
+    public static final int[] FORTUNE_IMG = {
+            R.drawable.ic_item_lucky_image0,
+            R.drawable.ic_item_lucky_image1,
+            R.drawable.ic_item_lucky_image2,
+            R.drawable.ic_item_lucky_image3,
+            R.drawable.ic_item_lucky_image4
+    };
+
+    public static final int[] FORTUNE_LINE_IMG = {
+            R.drawable.ic_item_lucky_image0s,
+            R.drawable.ic_item_lucky_image1s,
+            R.drawable.ic_item_lucky_image2s,
+            R.drawable.ic_item_lucky_image3s,
+            R.drawable.ic_item_lucky_image4s,
+    };
+
+    public static String[] FORTUNE_DESC = {
+            "感情",
+            "事业",
+            "学业",
+            "财运",
+            "健康"
+    };
+
+    public static String[] SETTING_STYLE={
+            "背景",
+            "日期",
+            "星期",
+            "月份",
+            "运势",
+            "宜",
+            "忌",
+            "分割线",
+    };
 }

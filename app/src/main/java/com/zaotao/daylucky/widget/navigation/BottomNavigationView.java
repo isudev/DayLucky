@@ -34,15 +34,19 @@ public class BottomNavigationView extends LinearLayout {
     private ImageView mainBottomBarAnimation2;
     private TextView mainBottomBarText2;
 
-    public static final int TAB_LUCKY = 0;
-    public static final int TAB_THEME = 1;
-    public static final int TAB_STYLE = 2;
+    private static final int TAB_LUCKY = 0;
+    private static final int TAB_THEME = 1;
+    private static final int TAB_STYLE = 2;
     private Context mContext;
 
     private OnItemPositionClickListener onItemPositionClickListener;
 
     public void setOnItemPositionClickListener(OnItemPositionClickListener onItemPositionClickListener) {
         this.onItemPositionClickListener = onItemPositionClickListener;
+    }
+
+    public int getTabLuckyIndex(){
+        return TAB_LUCKY;
     }
 
     public BottomNavigationView(Context context) {

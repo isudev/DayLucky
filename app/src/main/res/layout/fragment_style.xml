@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_25"
         android:layout_marginTop="@dimen/dp_54"
-        android:text="风格"
+        android:text="@string/main_bottom_bar_text_style"
         android:textColor="@color/color333333"
         android:textSize="@dimen/sp_34" />
 

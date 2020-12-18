@@ -2,9 +2,12 @@ package com.zaotao.daylucky.presenter;
 
 import android.widget.ImageView;
 
+import androidx.fragment.app.Fragment;
+
 import com.zaotao.base.rx.RxBus;
 import com.zaotao.base.rx.RxBusSubscriber;
 import com.zaotao.base.rx.RxSchedulers;
+import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.app.ColorManager;
 import com.zaotao.daylucky.app.Constants;
 import com.zaotao.daylucky.app.DateUtils;
@@ -16,9 +19,14 @@ import com.zaotao.daylucky.module.api.ApiService;
 import com.zaotao.daylucky.module.api.ApiSubscriber;
 import com.zaotao.daylucky.module.api.BaseResult;
 import com.zaotao.daylucky.module.entity.LuckyEntity;
+import com.zaotao.daylucky.module.entity.LuckyItemEntity;
 import com.zaotao.daylucky.module.entity.SettingSelectEntity;
+import com.zaotao.daylucky.module.entity.SettingStyleEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 import com.zaotao.daylucky.module.event.SelectEvent;
+import com.zaotao.daylucky.view.fragment.LuckyFragment;
+import com.zaotao.daylucky.view.fragment.StyleFragment;
+import com.zaotao.daylucky.view.fragment.ThemeFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -130,7 +138,7 @@ public class MainHomePresenter extends BasePresenter<MainHomeContract.View> impl
 
                         if (LocalDataManager.getInstance().isEmptyLocalTheme()) {
                             RxBus.getDefault().post(themeEntity);
-                        }else {
+                        } else {
                             themeEntity = LocalDataManager.getInstance().getThemeData();
                             themeEntity.setBad(luckyEntity.getToday().getBad());
                             themeEntity.setLucky(luckyEntity.getToday().getLuck());
@@ -154,6 +162,15 @@ public class MainHomePresenter extends BasePresenter<MainHomeContract.View> impl
     }
 
     @Override
+    public List<Fragment> initMainFragments() {
+        List<Fragment> fragments = new ArrayList<>();
+        fragments.add(new LuckyFragment());
+        fragments.add(new ThemeFragment());
+        fragments.add(new StyleFragment());
+        return fragments;
+    }
+
+    @Override
     public List<SettingSelectEntity> initSelectConstellationData() {
         List<SettingSelectEntity> settingSelectEntities = new ArrayList<>();
         for (int i = 0; i < 12; i++) {
@@ -163,5 +180,28 @@ public class MainHomePresenter extends BasePresenter<MainHomeContract.View> impl
             settingSelectEntities.add(settingSelectEntity);
         }
         return settingSelectEntities;
+    }
+
+    @Override
+    public List<LuckyItemEntity> initFortuneLuckyData(List<String> contItems) {
+        List<LuckyItemEntity> luckyItemEntityList = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            LuckyItemEntity luckyItemEntity = new LuckyItemEntity();
+            luckyItemEntity.setText(contItems.get(i));
+            luckyItemEntity.setImg(Constants.FORTUNE_IMG[i]);
+            luckyItemEntity.setLineImg(Constants.FORTUNE_LINE_IMG[i]);
+            luckyItemEntity.setTitle(Constants.FORTUNE_DESC[i]);
+            luckyItemEntityList.add(luckyItemEntity);
+        }
+        return luckyItemEntityList;
+    }
+
+    @Override
+    public List<SettingStyleEntity> initSettingStyleData() {
+        List<SettingStyleEntity> settingStyleEntityList = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            settingStyleEntityList.add(new SettingStyleEntity(Constants.SETTING_STYLE[i]));
+        }
+        return settingStyleEntityList;
     }
 }
