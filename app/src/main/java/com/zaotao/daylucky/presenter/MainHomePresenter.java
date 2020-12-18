@@ -6,6 +6,7 @@ import com.zaotao.base.rx.RxBus;
 import com.zaotao.base.rx.RxBusSubscriber;
 import com.zaotao.base.rx.RxSchedulers;
 import com.zaotao.daylucky.app.ColorManager;
+import com.zaotao.daylucky.app.Constants;
 import com.zaotao.daylucky.app.DateUtils;
 import com.zaotao.daylucky.app.LocalDataManager;
 import com.zaotao.daylucky.base.BasePresenter;
@@ -15,8 +16,12 @@ import com.zaotao.daylucky.module.api.ApiService;
 import com.zaotao.daylucky.module.api.ApiSubscriber;
 import com.zaotao.daylucky.module.api.BaseResult;
 import com.zaotao.daylucky.module.entity.LuckyEntity;
+import com.zaotao.daylucky.module.entity.SettingSelectEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 import com.zaotao.daylucky.module.event.SelectEvent;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import io.reactivex.functions.Function;
 import io.reactivex.functions.Predicate;
@@ -146,5 +151,17 @@ public class MainHomePresenter extends BasePresenter<MainHomeContract.View> impl
 
                     }
                 });
+    }
+
+    @Override
+    public List<SettingSelectEntity> initSelectConstellationData() {
+        List<SettingSelectEntity> settingSelectEntities = new ArrayList<>();
+        for (int i = 0; i < 12; i++) {
+            SettingSelectEntity settingSelectEntity = new SettingSelectEntity();
+            settingSelectEntity.setName(Constants.CONSTELLATION_DESC[i]);
+            settingSelectEntity.setImg(Constants.CONSTELLATION_IMG[i]);
+            settingSelectEntities.add(settingSelectEntity);
+        }
+        return settingSelectEntities;
     }
 }

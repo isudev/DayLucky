@@ -5,7 +5,10 @@ import android.widget.ImageView;
 import com.zaotao.daylucky.base.BaseSimplePresenter;
 import com.zaotao.daylucky.base.IView;
 import com.zaotao.daylucky.module.entity.LuckyEntity;
+import com.zaotao.daylucky.module.entity.SettingSelectEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
+
+import java.util.List;
 
 public interface MainHomeContract {
 
@@ -26,6 +29,8 @@ public interface MainHomeContract {
         void registerThemeInfo();
 
         void initHomeLucky(int var);
+
+        List<SettingSelectEntity> initSelectConstellationData();
 
     }
 }

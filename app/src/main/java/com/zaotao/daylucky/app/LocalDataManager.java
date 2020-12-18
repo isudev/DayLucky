@@ -35,8 +35,7 @@ public class LocalDataManager {
 
     public ThemeEntity getThemeData() {
         String themeJson = SPUtils.getInstance().getString("zao_tao_local_select_theme_data");
-        ThemeEntity themeEntity = new Gson().fromJson(themeJson, ThemeEntity.class);
-        return themeEntity;
+        return new Gson().fromJson(themeJson, ThemeEntity.class);
     }
 
     public boolean isEmptyLocalTheme(){
@@ -44,21 +43,7 @@ public class LocalDataManager {
     }
 
     public int getImageRes() {
-        return IMG[getSelectLocalData()];
+        return Constants.CONSTELLATION_IMG[getSelectLocalData()];
     }
 
-    public static final int[] IMG = {
-            R.drawable.ic_item_setting_select_view0,
-            R.drawable.ic_item_setting_select_view1,
-            R.drawable.ic_item_setting_select_view2,
-            R.drawable.ic_item_setting_select_view3,
-            R.drawable.ic_item_setting_select_view4,
-            R.drawable.ic_item_setting_select_view5,
-            R.drawable.ic_item_setting_select_view6,
-            R.drawable.ic_item_setting_select_view7,
-            R.drawable.ic_item_setting_select_view8,
-            R.drawable.ic_item_setting_select_view9,
-            R.drawable.ic_item_setting_select_view10,
-            R.drawable.ic_item_setting_select_view11
-    };
 }
