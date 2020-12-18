@@ -6,7 +6,7 @@
         <attr name="vpt_unfinished_color" format="color" />
         <attr name="vpt_text_color" format="color" />
         <attr name="vpt_finished_color" format="color" />
-        <attr name="vpt_hasline" format="boolean" />
-        <attr name="vpt_hasText" format="boolean" />
+        <attr name="vpt_has_line" format="boolean" />
+        <attr name="vpt_has_text" format="boolean" />
     </declare-styleable>
 </resources>

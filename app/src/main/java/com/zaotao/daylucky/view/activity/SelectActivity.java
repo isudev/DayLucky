@@ -58,8 +58,4 @@ public class SelectActivity extends BaseActivity<DayLuckCorePresenter> {
         return new DayLuckCorePresenter();
     }
 
-    @Override
-    public void showToast(String msg) {
-
-    }
 }

@@ -1,7 +1,6 @@
 package com.zaotao.daylucky.view;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -53,8 +52,4 @@ public class MainActivity extends BaseActivity<DayLuckCorePresenter>  {
         return new DayLuckCorePresenter();
     }
 
-    @Override
-    public void showToast(String msg) {
-        Toast.makeText(mContext,msg,Toast.LENGTH_SHORT).show();
-    }
 }

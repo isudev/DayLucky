@@ -58,9 +58,9 @@ public class VerticalProgressBar extends View {
         //设置未完成进度条颜色
         mUnFinishColor = attributes.getColor(R.styleable.VerticalProgressBar_vpt_unfinished_color, default_unfinished_color);
         //设置是否有边框
-        mHasLine = attributes.getBoolean(R.styleable.VerticalProgressBar_vpt_hasline, false);
+        mHasLine = attributes.getBoolean(R.styleable.VerticalProgressBar_vpt_has_line, false);
         //设置是否有字体
-        mHasText = attributes.getBoolean(R.styleable.VerticalProgressBar_vpt_hasText, false);
+        mHasText = attributes.getBoolean(R.styleable.VerticalProgressBar_vpt_has_text, false);
         setMax(attributes.getFloat(R.styleable.VerticalProgressBar_vpt_max, default_max));
         setProgress(attributes.getFloat(R.styleable.VerticalProgressBar_vpt_progress, 0));
 

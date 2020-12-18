@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
@@ -75,6 +76,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatA
 
     /**
      * fix Caused by: java.lang.IllegalStateException: Only fullscreen opaque activities can request orientation
+     *
      * @param requestedOrientation
      */
     @Override
@@ -149,6 +151,11 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatA
             mPresenter.detachView();
         }
         mUnBinder.unbind();
+    }
+
+    @Override
+    public void showToast(String msg) {
+        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
     }
 
     protected abstract @LayoutRes
