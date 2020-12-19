@@ -12,15 +12,10 @@
         android:id="@+id/item_theme_style_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_24"
-        android:layout_marginBottom="@dimen/dp_11"
+        android:layout_marginBottom="@dimen/dp_25"
         android:text="其他"
         android:textColor="@color/color333333"
         android:textSize="@dimen/sp_17" />
-
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/dp_25" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -150,5 +145,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_25" />
 </LinearLayout>

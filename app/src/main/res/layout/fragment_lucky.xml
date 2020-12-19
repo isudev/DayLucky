@@ -23,7 +23,7 @@
                 android:orientation="vertical">
 
 
-                <com.zaotao.daylucky.widget.appview.AppFakeBoldTextView
+                <TextView
                     android:id="@+id/fragment_lucky_text_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

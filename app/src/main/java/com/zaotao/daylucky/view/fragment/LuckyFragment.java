@@ -21,7 +21,6 @@ import com.zaotao.daylucky.module.entity.LuckyEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
 import com.zaotao.daylucky.view.activity.SelectActivity;
-import com.zaotao.daylucky.widget.appview.AppFakeBoldTextView;
 import com.zaotao.indicator.MagicIndicator;
 import com.zaotao.indicator.buildins.UIUtil;
 import com.zaotao.indicator.buildins.commonnavigator.CommonNavigator;
@@ -35,7 +34,7 @@ import butterknife.BindView;
 
 public class LuckyFragment extends BaseFragment<DayLuckCorePresenter> implements DayLuckCoreContract.View {
     @BindView(R.id.fragment_lucky_text_date)
-    AppFakeBoldTextView fragmentLuckyTextDate;
+    TextView fragmentLuckyTextDate;
     @BindView(R.id.fragment_lucky_text1)
     TextView fragmentLuckyText1;
     @BindView(R.id.fragment_lucky_text2)

@@ -6,7 +6,7 @@
     android:background="@color/colorF9FAF9"
     android:orientation="vertical">
 
-    <com.zaotao.daylucky.widget.appview.AppFakeBoldTextView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_25"

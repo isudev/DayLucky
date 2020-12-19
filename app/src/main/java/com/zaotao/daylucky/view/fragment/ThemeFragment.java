@@ -2,9 +2,11 @@ package com.zaotao.daylucky.view.fragment;
 
 import android.view.View;
 
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.zaotao.base.rx.RxBus;
 import com.zaotao.base.utils.ToastUtils;
 import com.zaotao.base.utils.VibrateUtils;
@@ -27,6 +29,8 @@ import butterknife.BindView;
 public class ThemeFragment extends BaseFragment<DayLuckCorePresenter> implements DayLuckCoreContract.View {
     @BindView(R.id.recycler_view_themes)
     RecyclerView recyclerViewThemes;
+    @BindView(R.id.toolbar_layout)
+    CollapsingToolbarLayout toolbarLayout;
 
     private List<ThemeEntity> themeEntityList = new ArrayList<>();
 
@@ -44,6 +48,9 @@ public class ThemeFragment extends BaseFragment<DayLuckCorePresenter> implements
 
     @Override
     protected void initViewData(View view) {
+        toolbarLayout.setTitle(getString(R.string.main_bottom_bar_text_theme));
+        toolbarLayout.setCollapsedTitleTextColor(ContextCompat.getColor(mContext,R.color.color333333));
+        toolbarLayout.setExpandedTitleColor(ContextCompat.getColor(mContext,R.color.color333333));
         getSupportPresenter().registerThemeInfo();
 
         themeStyleAdapter = new ThemeStyleAdapter(mContext);
