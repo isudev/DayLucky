@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.zaotao.base.view.RoundImageView;
 import com.zaotao.daylucky.R;
-import com.zaotao.daylucky.app.LocalDataManager;
+import com.zaotao.daylucky.app.LuckDataManager;
 import com.zaotao.daylucky.base.BaseFragment;
 import com.zaotao.daylucky.contract.DayLuckCoreContract;
 import com.zaotao.daylucky.module.entity.LuckyEntity;
@@ -96,7 +96,7 @@ public class StyleFragment extends BaseFragment<DayLuckCorePresenter> implements
                             public void onColorPicked(int color) {
                                 settingStyleEntityList.get(position).setColor(color);
                                 settingStyleAdapter.notifyDataSetChanged(settingStyleEntityList);
-                                ThemeEntity themeEntity = LocalDataManager.getInstance().getThemeData();
+                                ThemeEntity themeEntity = LuckDataManager.getInstance().getThemeData();
                                 switch (position) {
                                     case 0:
                                         themeEntity.setBgColor(color);
@@ -123,7 +123,7 @@ public class StyleFragment extends BaseFragment<DayLuckCorePresenter> implements
                                         themeEntity.setLineColor(color);
                                         break;
                                 }
-                                LocalDataManager.getInstance().saveThemeData(themeEntity);
+                                LuckDataManager.getInstance().saveThemeData(themeEntity);
                                 onSuccessThemeInfo(themeEntity);
 
                             }

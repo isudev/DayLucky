@@ -11,7 +11,7 @@ import com.zaotao.daylucky.App;
 import com.zaotao.daylucky.app.ColorManager;
 import com.zaotao.daylucky.app.Constants;
 import com.zaotao.daylucky.app.DateUtils;
-import com.zaotao.daylucky.app.LocalDataManager;
+import com.zaotao.daylucky.app.LuckDataManager;
 import com.zaotao.daylucky.base.BasePresenter;
 import com.zaotao.daylucky.contract.DayLuckCoreContract;
 import com.zaotao.daylucky.module.api.ApiNetwork;
@@ -59,7 +59,7 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
                     @Override
                     public void onEvent(SelectEvent selectEvent) {
                         initHomeLucky(selectEvent.getVar());
-                        imageView.setImageResource(LocalDataManager.getInstance().getImageRes());
+                        imageView.setImageResource(LuckDataManager.getInstance().getImageRes());
                     }
 
                     @Override
@@ -167,18 +167,18 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
                         themeEntity.setLuckyColor(ColorManager.normalLuckColor);
                         themeEntity.setBadColor(ColorManager.normalBadColor);
 
-                        if (LocalDataManager.getInstance().isEmptyLocalTheme()) {
+                        if (LuckDataManager.getInstance().isEmptyLocalTheme()) {
                             RxBus.getDefault().post(themeEntity);
                         } else {
-                            themeEntity = LocalDataManager.getInstance().getThemeData();
+                            themeEntity = LuckDataManager.getInstance().getThemeData();
                             themeEntity.setBad(luckyEntity.getToday().getBad());
                             themeEntity.setLucky(luckyEntity.getToday().getLuck());
                             themeEntity.setText(luckyEntity.getToday().getCont());
                             themeEntity.setDay(DateUtils.formatDayText());
                             themeEntity.setMonth(DateUtils.formatMonthText());
                             themeEntity.setWeek(DateUtils.formatWeekText());
-                            LocalDataManager.getInstance().saveThemeData(themeEntity);
-                            RxBus.getDefault().post(LocalDataManager.getInstance().getThemeData());
+                            LuckDataManager.getInstance().saveThemeData(themeEntity);
+                            RxBus.getDefault().post(LuckDataManager.getInstance().getThemeData());
                         }
                         RxBus.getDefault().postSticky(luckyEntity);
                         getView().onSuccessLucky(luckyEntity);
@@ -230,18 +230,18 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
                         themeEntity.setLuckyColor(ColorManager.normalLuckColor);
                         themeEntity.setBadColor(ColorManager.normalBadColor);
 
-                        if (LocalDataManager.getInstance().isEmptyLocalTheme()) {
+                        if (LuckDataManager.getInstance().isEmptyLocalTheme()) {
                             RxBus.getDefault().post(themeEntity);
                         } else {
-                            themeEntity = LocalDataManager.getInstance().getThemeData();
+                            themeEntity = LuckDataManager.getInstance().getThemeData();
                             themeEntity.setBad(luckyEntity.getToday().getBad());
                             themeEntity.setLucky(luckyEntity.getToday().getLuck());
                             themeEntity.setText(luckyEntity.getToday().getCont());
                             themeEntity.setDay(DateUtils.formatDayText());
                             themeEntity.setMonth(DateUtils.formatMonthText());
                             themeEntity.setWeek(DateUtils.formatWeekText());
-                            LocalDataManager.getInstance().saveThemeData(themeEntity);
-                            RxBus.getDefault().post(LocalDataManager.getInstance().getThemeData());
+                            LuckDataManager.getInstance().saveThemeData(themeEntity);
+                            RxBus.getDefault().post(LuckDataManager.getInstance().getThemeData());
                         }
                         RxBus.getDefault().postSticky(luckyEntity);
                         getView().onSuccessLucky(luckyEntity);

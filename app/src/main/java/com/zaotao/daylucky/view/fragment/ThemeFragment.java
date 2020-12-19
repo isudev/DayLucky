@@ -10,7 +10,7 @@ import com.zaotao.base.utils.ToastUtils;
 import com.zaotao.base.utils.VibrateUtils;
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.app.ColorManager;
-import com.zaotao.daylucky.app.LocalDataManager;
+import com.zaotao.daylucky.app.LuckDataManager;
 import com.zaotao.daylucky.base.BaseFragment;
 import com.zaotao.daylucky.contract.DayLuckCoreContract;
 import com.zaotao.daylucky.module.entity.LuckyEntity;
@@ -69,7 +69,7 @@ public class ThemeFragment extends BaseFragment<DayLuckCorePresenter> implements
                     themeEntity.setTextColor(ColorManager.colorTextContent);
                 }
 
-                LocalDataManager.getInstance().saveThemeData(themeEntity);
+                LuckDataManager.getInstance().saveThemeData(themeEntity);
                 RxBus.getDefault().post(themeEntity);
                 VibrateUtils.vibrate(120);
             }
@@ -89,7 +89,7 @@ public class ThemeFragment extends BaseFragment<DayLuckCorePresenter> implements
     @Override
     public void onSuccessThemeInfo(ThemeEntity data) {
         themeEntityList.clear();
-        LocalDataManager.getInstance().saveThemeData(data);
+        LuckDataManager.getInstance().saveThemeData(data);
 
         for (int i = 0; i < 16; i++) {
             ThemeEntity themeEntity = new ThemeEntity();

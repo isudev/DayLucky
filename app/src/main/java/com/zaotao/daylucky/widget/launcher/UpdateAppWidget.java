@@ -14,7 +14,7 @@ import com.zaotao.base.utils.ScreenUtils;
 import com.zaotao.daylucky.App;
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.app.ColorManager;
-import com.zaotao.daylucky.app.LocalDataManager;
+import com.zaotao.daylucky.app.LuckDataManager;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 
 public class UpdateAppWidget {
@@ -44,7 +44,7 @@ public class UpdateAppWidget {
     }
 
     private RemoteViews getRemoteViews(String packageName){
-        ThemeEntity themeEntity = LocalDataManager.getInstance().getThemeData();
+        ThemeEntity themeEntity = LuckDataManager.getInstance().getThemeData();
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(packageName, R.layout.day_lucky_app_widget);
         views.setTextViewText(R.id.item_theme_style_day_text, themeEntity.getDay());

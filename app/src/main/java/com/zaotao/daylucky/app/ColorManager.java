@@ -4,7 +4,11 @@ import android.graphics.Color;
 
 public class ColorManager {
 
-
+    /**
+     * theme view line & bg color
+     * colorsLineBg[0] setLineColor
+     * colorLineBg[1] setBgColor
+     */
     public static int[][] colorsLineBg = {
             {Color.parseColor("#00D1CB"), Color.parseColor("#FFFFFF")},
             {Color.parseColor("#DC8692"), Color.parseColor("#EBACB5")},

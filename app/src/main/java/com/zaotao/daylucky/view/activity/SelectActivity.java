@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.zaotao.base.rx.RxBus;
 import com.zaotao.daylucky.R;
-import com.zaotao.daylucky.app.LocalDataManager;
+import com.zaotao.daylucky.app.LuckDataManager;
 import com.zaotao.daylucky.base.BaseActivity;
 import com.zaotao.daylucky.module.event.SelectEvent;
 import com.zaotao.daylucky.module.listener.OnItemPositionClickListener;
@@ -47,7 +47,7 @@ public class SelectActivity extends BaseActivity<DayLuckCorePresenter> {
             @Override
             public void onClick(int position) {
                 RxBus.getDefault().post(new SelectEvent(position));
-                LocalDataManager.getInstance().setSelectConstellationIndex(position);
+                LuckDataManager.getInstance().setSelectConstellationIndex(position);
                 finish();
             }
         });

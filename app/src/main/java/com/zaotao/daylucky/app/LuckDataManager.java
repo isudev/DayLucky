@@ -5,18 +5,17 @@ import android.text.TextUtils;
 import com.google.gson.Gson;
 import com.zaotao.base.utils.NetworkUtils;
 import com.zaotao.base.utils.SPUtils;
-import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 
-public class LocalDataManager {
+public class LuckDataManager {
 
-    private static volatile LocalDataManager instance;
+    private static volatile LuckDataManager instance;
 
-    public static LocalDataManager getInstance() {
+    public static LuckDataManager getInstance() {
         if (instance == null) {
-            synchronized (LocalDataManager.class) {
+            synchronized (LuckDataManager.class) {
                 if (instance == null) {
-                    instance = new LocalDataManager();
+                    instance = new LuckDataManager();
                 }
             }
         }
