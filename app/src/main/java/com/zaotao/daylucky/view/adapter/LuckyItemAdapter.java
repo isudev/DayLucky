@@ -1,7 +1,6 @@
 package com.zaotao.daylucky.view.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,13 +8,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.zaotao.daylucky.R;
-import com.zaotao.daylucky.module.entity.LuckyItemEntity;
-import com.zaotao.daylucky.module.entity.ThemeEntity;
+import com.zaotao.daylucky.module.entity.FortuneContentEntity;
 import com.zaotao.daylucky.module.listener.OnItemPositionClickListener;
 import com.zaotao.daylucky.widget.appview.AppFakeBoldTextView;
 
@@ -29,7 +25,7 @@ import java.util.List;
 public class LuckyItemAdapter extends RecyclerView.Adapter<LuckyItemAdapter.ViewHolder> {
 
     private Context context;
-    private List<LuckyItemEntity> items;
+    private List<FortuneContentEntity> items;
 
     private OnItemPositionClickListener onItemPositionClickListener;
 
@@ -78,20 +74,20 @@ public class LuckyItemAdapter extends RecyclerView.Adapter<LuckyItemAdapter.View
         }
 
         public void bind(int position) {
-            LuckyItemEntity luckyItemEntity = items.get(position);
+            FortuneContentEntity fortuneContentEntity = items.get(position);
 
-            itemLuckyViewSmallImageStar.setImageResource(luckyItemEntity.getLineImg());
-            itemLuckyViewSmallImageEnd.setImageResource(luckyItemEntity.getLineImg());
+            itemLuckyViewSmallImageStar.setImageResource(fortuneContentEntity.getLineImg());
+            itemLuckyViewSmallImageEnd.setImageResource(fortuneContentEntity.getLineImg());
 
-            itemLuckyViewTitle.setText(luckyItemEntity.getTitle());
+            itemLuckyViewTitle.setText(fortuneContentEntity.getTitle());
 
-            itemLuckyViewContent.setText(luckyItemEntity.getText());
+            itemLuckyViewContent.setText(fortuneContentEntity.getText());
 
-            itemLuckyViewImage.setImageResource(luckyItemEntity.getImg());
+            itemLuckyViewImage.setImageResource(fortuneContentEntity.getImg());
         }
     }
 
-    public void notifyDataSetChanged(List<LuckyItemEntity> items) {
+    public void notifyDataSetChanged(List<FortuneContentEntity> items) {
         this.items = items;
         notifyDataSetChanged();
     }

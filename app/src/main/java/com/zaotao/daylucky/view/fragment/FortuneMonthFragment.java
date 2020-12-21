@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.base.BaseFragment;
 import com.zaotao.daylucky.contract.DayLuckCoreContract;
+import com.zaotao.daylucky.module.entity.LuckyContentEntity;
 import com.zaotao.daylucky.module.entity.LuckyEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
@@ -54,17 +55,17 @@ public class FortuneMonthFragment extends BaseFragment<DayLuckCorePresenter> imp
 
         homeDataBean = (LuckyEntity) getArguments().getSerializable("fragment_home_fortune_month");
 
-        LuckyEntity.DateResultBean homeDataBeanMonth = homeDataBean.getMonth();
+        LuckyContentEntity luckyContentMonth = homeDataBean.getMonth();
         fragmentHomeFortuneMonthDesc.setText(homeDataBean.getMonth().getCont());
         /**
          * init list data
          */
         List<String> contItems = new ArrayList<>();
-        contItems.add(homeDataBeanMonth.getCont1());
-        contItems.add(homeDataBeanMonth.getCont3());
-        contItems.add(homeDataBeanMonth.getCont5());
-        contItems.add(homeDataBeanMonth.getCont7());
-        contItems.add(homeDataBeanMonth.getCont9());
+        contItems.add(luckyContentMonth.getCont1());
+        contItems.add(luckyContentMonth.getCont3());
+        contItems.add(luckyContentMonth.getCont5());
+        contItems.add(luckyContentMonth.getCont7());
+        contItems.add(luckyContentMonth.getCont9());
         LuckyItemAdapter luckyItemAdapter = new LuckyItemAdapter(mContext);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false) {
             @Override
@@ -92,17 +93,17 @@ public class FortuneMonthFragment extends BaseFragment<DayLuckCorePresenter> imp
 
         homeDataBean = luckyEntity;
 
-        LuckyEntity.DateResultBean homeDataBeanMonth = homeDataBean.getMonth();
+        LuckyContentEntity luckyContentMonth = homeDataBean.getMonth();
         fragmentHomeFortuneMonthDesc.setText(homeDataBean.getMonth().getCont());
         /**
          * init list data
          */
         List<String> contItems = new ArrayList<>();
-        contItems.add(homeDataBeanMonth.getCont1());
-        contItems.add(homeDataBeanMonth.getCont3());
-        contItems.add(homeDataBeanMonth.getCont5());
-        contItems.add(homeDataBeanMonth.getCont7());
-        contItems.add(homeDataBeanMonth.getCont9());
+        contItems.add(luckyContentMonth.getCont1());
+        contItems.add(luckyContentMonth.getCont3());
+        contItems.add(luckyContentMonth.getCont5());
+        contItems.add(luckyContentMonth.getCont7());
+        contItems.add(luckyContentMonth.getCont9());
         LuckyItemAdapter luckyItemAdapter = new LuckyItemAdapter(mContext);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false) {
             @Override

@@ -14,13 +14,13 @@ import java.io.Serializable;
  *             . . .
  *   }
  */
-public class LuckyWeekEntity implements Serializable {
+public class LuckyTodayEntity implements Serializable {
 
 
     private String x;
     private int y;
 
-    public LuckyWeekEntity(String x, int y) {
+    public LuckyTodayEntity(String x, int y) {
         this.x = x;
         this.y = y;
     }

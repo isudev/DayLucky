@@ -19,7 +19,7 @@ import com.zaotao.daylucky.module.api.ApiService;
 import com.zaotao.daylucky.module.api.ApiSubscriber;
 import com.zaotao.daylucky.module.api.BaseResult;
 import com.zaotao.daylucky.module.entity.LuckyEntity;
-import com.zaotao.daylucky.module.entity.LuckyItemEntity;
+import com.zaotao.daylucky.module.entity.FortuneContentEntity;
 import com.zaotao.daylucky.module.entity.SettingSelectEntity;
 import com.zaotao.daylucky.module.entity.SettingStyleEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
@@ -268,17 +268,17 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
     }
 
     @Override
-    public List<LuckyItemEntity> initFortuneLuckyData(List<String> contItems) {
-        List<LuckyItemEntity> luckyItemEntityList = new ArrayList<>();
+    public List<FortuneContentEntity> initFortuneLuckyData(List<String> contItems) {
+        List<FortuneContentEntity> fortuneContentEntityList = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            LuckyItemEntity luckyItemEntity = new LuckyItemEntity();
-            luckyItemEntity.setText(contItems.get(i));
-            luckyItemEntity.setImg(Constants.FORTUNE_IMG[i]);
-            luckyItemEntity.setLineImg(Constants.FORTUNE_LINE_IMG[i]);
-            luckyItemEntity.setTitle(Constants.FORTUNE_DESC[i]);
-            luckyItemEntityList.add(luckyItemEntity);
+            FortuneContentEntity fortuneContentEntity = new FortuneContentEntity();
+            fortuneContentEntity.setText(contItems.get(i));
+            fortuneContentEntity.setImg(Constants.FORTUNE_IMG[i]);
+            fortuneContentEntity.setLineImg(Constants.FORTUNE_LINE_IMG[i]);
+            fortuneContentEntity.setTitle(Constants.FORTUNE_DESC[i]);
+            fortuneContentEntityList.add(fortuneContentEntity);
         }
-        return luckyItemEntityList;
+        return fortuneContentEntityList;
     }
 
     @Override

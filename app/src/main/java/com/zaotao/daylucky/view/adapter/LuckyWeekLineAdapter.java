@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.app.DateUtils;
-import com.zaotao.daylucky.module.entity.LuckyWeekEntity;
+import com.zaotao.daylucky.module.entity.LuckyTodayEntity;
 import com.zaotao.daylucky.widget.progress.VerticalProgressBar;
 
 import java.util.List;
@@ -24,7 +24,7 @@ import java.util.List;
 public class LuckyWeekLineAdapter extends RecyclerView.Adapter<LuckyWeekLineAdapter.ViewHolder> {
 
     private Context context;
-    private List<LuckyWeekEntity> items;
+    private List<LuckyTodayEntity> items;
     private View.OnClickListener onClickListener;
 
     public void setOnClickListener(View.OnClickListener onClickListener) {
@@ -77,7 +77,7 @@ public class LuckyWeekLineAdapter extends RecyclerView.Adapter<LuckyWeekLineAdap
         }
     }
 
-    public void notifyDataSetChanged(List<LuckyWeekEntity> items) {
+    public void notifyDataSetChanged(List<LuckyTodayEntity> items) {
         this.items = items;
         notifyDataSetChanged();
     }

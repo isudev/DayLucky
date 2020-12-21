@@ -12,8 +12,9 @@ import com.zaotao.base.utils.ToastUtils;
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.base.BaseFragment;
 import com.zaotao.daylucky.contract.DayLuckCoreContract;
+import com.zaotao.daylucky.module.entity.LuckyContentEntity;
 import com.zaotao.daylucky.module.entity.LuckyEntity;
-import com.zaotao.daylucky.module.entity.LuckyWeekEntity;
+import com.zaotao.daylucky.module.entity.LuckyTodayEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
 import com.zaotao.daylucky.view.adapter.LuckyItemAdapter;
@@ -68,11 +69,11 @@ public class FortuneWeekFragment extends BaseFragment<DayLuckCorePresenter> impl
         homeDataBean = (LuckyEntity) getArguments().getSerializable("fragment_home_fortune_week");
         fragmentHomeFortuneWeekDesc.setText(homeDataBean.getWeek().getCont());
         fragmentHomeFortuneWeekDate.setText(homeDataBean.getDate().getWeek());
-        LuckyEntity.WeekBean homeDataBeanWeek = homeDataBean.getWeek();
+        LuckyContentEntity luckyContentWeek = homeDataBean.getWeek();
         /**
          * init x data
          */
-        List<LuckyWeekEntity> homeLuckyLineItemResults = new ArrayList<>();
+        List<LuckyTodayEntity> homeLuckyLineItemResults = new ArrayList<>();
         luckyWeekLineAdapter = new LuckyWeekLineAdapter(mContext);
         homeFortuneLineChartBottomRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 7));
         homeFortuneLineChartBottomRecyclerView.setAdapter(luckyWeekLineAdapter);
@@ -87,11 +88,11 @@ public class FortuneWeekFragment extends BaseFragment<DayLuckCorePresenter> impl
          * init list data
          */
         List<String> contItems = new ArrayList<>();
-        contItems.add(homeDataBeanWeek.getCont1());
-        contItems.add(homeDataBeanWeek.getCont3());
-        contItems.add(homeDataBeanWeek.getCont5());
-        contItems.add(homeDataBeanWeek.getCont7());
-        contItems.add(homeDataBeanWeek.getCont9());
+        contItems.add(luckyContentWeek.getCont1());
+        contItems.add(luckyContentWeek.getCont3());
+        contItems.add(luckyContentWeek.getCont5());
+        contItems.add(luckyContentWeek.getCont7());
+        contItems.add(luckyContentWeek.getCont9());
         LuckyItemAdapter luckyItemAdapter = new LuckyItemAdapter(mContext);
         recyclerViewFragmentHomeFortuneWeek.setLayoutManager(new LinearLayoutManager(mContext));
         luckyItemAdapter.notifyDataSetChanged(getSupportPresenter().initFortuneLuckyData(contItems));
@@ -113,11 +114,11 @@ public class FortuneWeekFragment extends BaseFragment<DayLuckCorePresenter> impl
         homeDataBean = luckyEntity;
         fragmentHomeFortuneWeekDesc.setText(homeDataBean.getWeek().getCont());
         fragmentHomeFortuneWeekDate.setText(homeDataBean.getDate().getWeek());
-        LuckyEntity.WeekBean homeDataBeanWeek = homeDataBean.getWeek();
+        LuckyContentEntity luckyContentWeek = homeDataBean.getWeek();
         /**
          * init x data
          */
-        List<LuckyWeekEntity> homeLuckyLineItemResults = new ArrayList<>();
+        List<LuckyTodayEntity> homeLuckyLineItemResults = new ArrayList<>();
         luckyWeekLineAdapter = new LuckyWeekLineAdapter(mContext);
         homeFortuneLineChartBottomRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 7));
         homeFortuneLineChartBottomRecyclerView.setAdapter(luckyWeekLineAdapter);
@@ -132,11 +133,11 @@ public class FortuneWeekFragment extends BaseFragment<DayLuckCorePresenter> impl
          * init list data
          */
         List<String> contItems = new ArrayList<>();
-        contItems.add(homeDataBeanWeek.getCont1());
-        contItems.add(homeDataBeanWeek.getCont3());
-        contItems.add(homeDataBeanWeek.getCont5());
-        contItems.add(homeDataBeanWeek.getCont7());
-        contItems.add(homeDataBeanWeek.getCont9());
+        contItems.add(luckyContentWeek.getCont1());
+        contItems.add(luckyContentWeek.getCont3());
+        contItems.add(luckyContentWeek.getCont5());
+        contItems.add(luckyContentWeek.getCont7());
+        contItems.add(luckyContentWeek.getCont9());
         LuckyItemAdapter luckyItemAdapter = new LuckyItemAdapter(mContext);
         recyclerViewFragmentHomeFortuneWeek.setLayoutManager(new LinearLayoutManager(mContext));
         luckyItemAdapter.notifyDataSetChanged(getSupportPresenter().initFortuneLuckyData(contItems));

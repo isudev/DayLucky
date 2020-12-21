@@ -1,6 +1,6 @@
 package com.zaotao.daylucky.module.entity;
 
-public class LuckyItemEntity {
+public class FortuneContentEntity {
     private String title;
     private String text;
     private int img;
