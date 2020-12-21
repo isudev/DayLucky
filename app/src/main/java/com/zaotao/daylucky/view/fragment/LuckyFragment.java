@@ -74,8 +74,6 @@ public class LuckyFragment extends BaseFragment<DayLuckCorePresenter> implements
 
         getSupportPresenter().registerSelectPosition(fragmentLuckyImageClick);
 
-        fragmentLuckyTextDate.setText(DateUtils.formatDayText() + " " + DateUtils.formatMonthText() + " " + DateUtils.formatWeekText());
-        fragmentLuckyImageClick.setImageResource(LuckDataManager.getInstance().getImageRes());
     }
 
     @Override
@@ -90,6 +88,12 @@ public class LuckyFragment extends BaseFragment<DayLuckCorePresenter> implements
 
     @Override
     public void onSuccessLucky(LuckyEntity luckyEntity) {
+        String dataText = DateUtils.formatDayText(luckyEntity.getDate().getTime()) + " "
+                + DateUtils.formatMonthText(luckyEntity.getDate().getTime()) + " "
+                + DateUtils.formatWeekText(luckyEntity.getDate().getTime());
+        fragmentLuckyTextDate.setText(dataText);
+        fragmentLuckyImageClick.setImageResource(LuckDataManager.getInstance().getImageRes());
+
         fragmentLuckyText1.setText(luckyEntity.getToday().getCont());
         fragmentLuckyText2.setText(luckyEntity.getToday().getTitle());
         fragmentLuckyText3.setText(luckyEntity.getToday().getLuck_desc());

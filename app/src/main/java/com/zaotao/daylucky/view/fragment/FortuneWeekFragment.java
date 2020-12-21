@@ -10,15 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.zaotao.base.utils.ToastUtils;
 import com.zaotao.daylucky.R;
-import com.zaotao.daylucky.app.DateUtils;
 import com.zaotao.daylucky.base.BaseFragment;
 import com.zaotao.daylucky.contract.DayLuckCoreContract;
 import com.zaotao.daylucky.module.entity.LuckyEntity;
 import com.zaotao.daylucky.module.entity.LuckyWeekEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
-import com.zaotao.daylucky.view.adapter.HomeFortuneWeekLineChartXAdapter;
 import com.zaotao.daylucky.view.adapter.LuckyItemAdapter;
+import com.zaotao.daylucky.view.adapter.LuckyWeekLineAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +41,7 @@ public class FortuneWeekFragment extends BaseFragment<DayLuckCorePresenter> impl
     @BindView(R.id.fragment_home_fortune_week_date)
     TextView fragmentHomeFortuneWeekDate;
     private LuckyEntity homeDataBean;
-    private HomeFortuneWeekLineChartXAdapter homeFortuneLineChartXAdapter;
+    private LuckyWeekLineAdapter luckyWeekLineAdapter;
 
     public static FortuneWeekFragment newInstance(LuckyEntity luckyEntity) {
         Bundle args = new Bundle();
@@ -74,17 +73,14 @@ public class FortuneWeekFragment extends BaseFragment<DayLuckCorePresenter> impl
          * init x data
          */
         List<LuckyWeekEntity> homeLuckyLineItemResults = new ArrayList<>();
-        homeFortuneLineChartXAdapter = new HomeFortuneWeekLineChartXAdapter(mContext);
+        luckyWeekLineAdapter = new LuckyWeekLineAdapter(mContext);
         homeFortuneLineChartBottomRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 7));
-        homeFortuneLineChartBottomRecyclerView.setAdapter(homeFortuneLineChartXAdapter);
+        homeFortuneLineChartBottomRecyclerView.setAdapter(luckyWeekLineAdapter);
 
         if (homeDataBean != null && homeDataBean.getToday_affection() != null) {
-            for (LuckyEntity.FortuneXYBean xyBean :
-                    homeDataBean.getToday_affection()) {
-                homeLuckyLineItemResults.add(new LuckyWeekEntity(xyBean.getX(), xyBean.getY()));
-            }
+            homeLuckyLineItemResults.addAll(homeDataBean.getToday_fortune());
         }
-        homeFortuneLineChartXAdapter.notifyDataSetChanged(homeLuckyLineItemResults, DateUtils.WEEK_TIMES);
+        luckyWeekLineAdapter.notifyDataSetChanged(homeLuckyLineItemResults);
 
 
         /**
@@ -114,8 +110,6 @@ public class FortuneWeekFragment extends BaseFragment<DayLuckCorePresenter> impl
 
     @Override
     public void onSuccessLucky(LuckyEntity luckyEntity) {
-
-
         homeDataBean = luckyEntity;
         fragmentHomeFortuneWeekDesc.setText(homeDataBean.getWeek().getCont());
         fragmentHomeFortuneWeekDate.setText(homeDataBean.getDate().getWeek());
@@ -124,17 +118,14 @@ public class FortuneWeekFragment extends BaseFragment<DayLuckCorePresenter> impl
          * init x data
          */
         List<LuckyWeekEntity> homeLuckyLineItemResults = new ArrayList<>();
-        homeFortuneLineChartXAdapter = new HomeFortuneWeekLineChartXAdapter(mContext);
+        luckyWeekLineAdapter = new LuckyWeekLineAdapter(mContext);
         homeFortuneLineChartBottomRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 7));
-        homeFortuneLineChartBottomRecyclerView.setAdapter(homeFortuneLineChartXAdapter);
+        homeFortuneLineChartBottomRecyclerView.setAdapter(luckyWeekLineAdapter);
 
         if (homeDataBean != null && homeDataBean.getToday_affection() != null) {
-            for (LuckyEntity.FortuneXYBean xyBean :
-                    homeDataBean.getToday_affection()) {
-                homeLuckyLineItemResults.add(new LuckyWeekEntity(xyBean.getX(), xyBean.getY()));
-            }
+            homeLuckyLineItemResults.addAll(homeDataBean.getToday_fortune());
         }
-        homeFortuneLineChartXAdapter.notifyDataSetChanged(homeLuckyLineItemResults, DateUtils.WEEK_TIMES);
+        luckyWeekLineAdapter.notifyDataSetChanged(homeLuckyLineItemResults);
 
 
         /**

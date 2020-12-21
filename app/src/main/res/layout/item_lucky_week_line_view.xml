@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <com.zaotao.daylucky.widget.progress.VerticalProgressBar
-        android:id="@+id/item_home_fortune_line_verticalProgressBar"
+        android:id="@+id/item_lucky_week_line_progress_view"
         android:layout_width="@dimen/dp_8"
         android:layout_height="@dimen/dp_110"
         android:layout_gravity="center"
@@ -18,7 +18,7 @@
         app:vpt_finished_color="@color/colorAccent"/>
 
     <TextView
-        android:id="@+id/item_home_fortune_line_chart_x_text"
+        android:id="@+id/item_lucky_week_line_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

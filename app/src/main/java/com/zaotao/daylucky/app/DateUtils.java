@@ -17,18 +17,18 @@ import static android.text.format.DateUtils.formatElapsedTime;
 @SuppressLint("SimpleDateFormat")
 public class DateUtils {
 
-    public static String formatDayText() {
-        return new SimpleDateFormat("dd").format(System.currentTimeMillis());
+    public static String formatDayText(long time) {
+        return new SimpleDateFormat("dd").format(time * 1000);
 
     }
 
-    public static String[] WEEK_TIMES = {"星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"};
+    public static String[] WEEK_TIMES = {"MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"};
 
-    public static String formatWeekText() {
+    public static String formatWeekText(long time) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date(System.currentTimeMillis()));
         String[] week = {"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};
-        String weekString = new SimpleDateFormat(week[calendar.get(Calendar.DAY_OF_WEEK) - 1]).format(System.currentTimeMillis());
+        String weekString = new SimpleDateFormat(week[calendar.get(Calendar.DAY_OF_WEEK) - 1]).format(time * 1000);
         if (weekString.equals("星期日")) {
             weekString = "Sunday";
         } else if (weekString.equals("星期一")) {
@@ -47,8 +47,8 @@ public class DateUtils {
         return weekString;
     }
 
-    public static String formatMonthText() {
-        String monthString = new SimpleDateFormat("MM").format(System.currentTimeMillis());
+    public static String formatMonthText(long time) {
+        String monthString = new SimpleDateFormat("MM").format(time * 1000);
         if (monthString.equals("1")) {
             monthString = "January";
         } else if (monthString.equals("2")) {

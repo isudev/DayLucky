@@ -155,9 +155,9 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
                         themeEntity.setBad(luckyEntity.getToday().getBad());
                         themeEntity.setLucky(luckyEntity.getToday().getLuck());
                         themeEntity.setText(luckyEntity.getToday().getCont());
-                        themeEntity.setDay(DateUtils.formatDayText());
-                        themeEntity.setMonth(DateUtils.formatMonthText());
-                        themeEntity.setWeek(DateUtils.formatWeekText());
+                        themeEntity.setDay(DateUtils.formatDayText(luckyEntity.getDate().getTime()));
+                        themeEntity.setMonth(DateUtils.formatMonthText(luckyEntity.getDate().getTime()));
+                        themeEntity.setWeek(DateUtils.formatWeekText(luckyEntity.getDate().getTime()));
                         themeEntity.setLineColor(ColorManager.colorsLineBg[0][0]);
                         themeEntity.setBgColor(ColorManager.colorsLineBg[0][1]);
                         themeEntity.setDayColor(ColorManager.colorTextView);
@@ -174,9 +174,9 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
                             themeEntity.setBad(luckyEntity.getToday().getBad());
                             themeEntity.setLucky(luckyEntity.getToday().getLuck());
                             themeEntity.setText(luckyEntity.getToday().getCont());
-                            themeEntity.setDay(DateUtils.formatDayText());
-                            themeEntity.setMonth(DateUtils.formatMonthText());
-                            themeEntity.setWeek(DateUtils.formatWeekText());
+                            themeEntity.setDay(DateUtils.formatDayText(luckyEntity.getDate().getTime()));
+                            themeEntity.setMonth(DateUtils.formatMonthText(luckyEntity.getDate().getTime()));
+                            themeEntity.setWeek(DateUtils.formatWeekText(luckyEntity.getDate().getTime()));
                             LuckDataManager.getInstance().saveThemeData(themeEntity);
                             RxBus.getDefault().post(LuckDataManager.getInstance().getThemeData());
                         }
@@ -218,9 +218,9 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
                         themeEntity.setBad(luckyEntity.getToday().getBad());
                         themeEntity.setLucky(luckyEntity.getToday().getLuck());
                         themeEntity.setText(luckyEntity.getToday().getCont());
-                        themeEntity.setDay(DateUtils.formatDayText());
-                        themeEntity.setMonth(DateUtils.formatMonthText());
-                        themeEntity.setWeek(DateUtils.formatWeekText());
+                        themeEntity.setDay(DateUtils.formatDayText(luckyEntity.getDate().getTime()));
+                        themeEntity.setMonth(DateUtils.formatMonthText(luckyEntity.getDate().getTime()));
+                        themeEntity.setWeek(DateUtils.formatWeekText(luckyEntity.getDate().getTime()));
                         themeEntity.setLineColor(ColorManager.colorsLineBg[0][0]);
                         themeEntity.setBgColor(ColorManager.colorsLineBg[0][1]);
                         themeEntity.setDayColor(ColorManager.colorTextView);
@@ -237,9 +237,9 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
                             themeEntity.setBad(luckyEntity.getToday().getBad());
                             themeEntity.setLucky(luckyEntity.getToday().getLuck());
                             themeEntity.setText(luckyEntity.getToday().getCont());
-                            themeEntity.setDay(DateUtils.formatDayText());
-                            themeEntity.setMonth(DateUtils.formatMonthText());
-                            themeEntity.setWeek(DateUtils.formatWeekText());
+                            themeEntity.setDay(DateUtils.formatDayText(luckyEntity.getDate().getTime()));
+                            themeEntity.setMonth(DateUtils.formatMonthText(luckyEntity.getDate().getTime()));
+                            themeEntity.setWeek(DateUtils.formatWeekText(luckyEntity.getDate().getTime()));
                             LuckDataManager.getInstance().saveThemeData(themeEntity);
                             RxBus.getDefault().post(LuckDataManager.getInstance().getThemeData());
                         }

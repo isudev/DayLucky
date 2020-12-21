@@ -16,9 +16,9 @@ public class LuckyEntity implements Serializable {
     private WeekBean week;
     private DateResultBean month;
     private int astro;
-    private List<FortuneXYBean> today_affection;
-    private List<FortuneXYBean> today_bussiness;
-    private List<FortuneXYBean> today_fortune;
+    private List<LuckyWeekEntity> today_affection;
+    private List<LuckyWeekEntity> today_bussiness;
+    private List<LuckyWeekEntity> today_fortune;
     private DateBean date;
 
     public TodayBean getToday() {
@@ -53,27 +53,27 @@ public class LuckyEntity implements Serializable {
         this.astro = astro;
     }
 
-    public List<FortuneXYBean> getToday_affection() {
+    public List<LuckyWeekEntity> getToday_affection() {
         return today_affection;
     }
 
-    public void setToday_affection(List<FortuneXYBean> today_affection) {
+    public void setToday_affection(List<LuckyWeekEntity> today_affection) {
         this.today_affection = today_affection;
     }
 
-    public List<FortuneXYBean> getToday_bussiness() {
+    public List<LuckyWeekEntity> getToday_bussiness() {
         return today_bussiness;
     }
 
-    public void setToday_bussiness(List<FortuneXYBean> today_bussiness) {
+    public void setToday_bussiness(List<LuckyWeekEntity> today_bussiness) {
         this.today_bussiness = today_bussiness;
     }
 
-    public List<FortuneXYBean> getToday_fortune() {
+    public List<LuckyWeekEntity> getToday_fortune() {
         return today_fortune;
     }
 
-    public void setToday_fortune(List<FortuneXYBean> today_fortune) {
+    public void setToday_fortune(List<LuckyWeekEntity> today_fortune) {
         this.today_fortune = today_fortune;
     }
 
@@ -666,34 +666,5 @@ public class LuckyEntity implements Serializable {
             this.week = week;
         }
     }
-
-
-    public static class FortuneXYBean  implements Serializable {
-        /**
-         * y : 44
-         * x : 01.06
-         */
-
-        private int y;
-        private String x;
-
-        public int getY() {
-            return y;
-        }
-
-        public void setY(int y) {
-            this.y = y;
-        }
-
-        public String getX() {
-            return x;
-        }
-
-        public void setX(String x) {
-            this.x = x;
-        }
-    }
-
-
 
 }

@@ -1,6 +1,22 @@
 package com.zaotao.daylucky.module.entity;
 
-public class LuckyWeekEntity {
+import java.io.Serializable;
+/**
+ *  {
+ *                 "y": 78,
+ *                 "x": "今天"
+ *             },
+ *             {
+ *                 "y": 89,
+ *                 "x": "12.22"
+ *             },
+ *
+ *             . . .
+ *   }
+ */
+public class LuckyWeekEntity implements Serializable {
+
+
     private String x;
     private int y;
 
