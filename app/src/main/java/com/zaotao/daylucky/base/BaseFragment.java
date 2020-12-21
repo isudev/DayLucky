@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
@@ -144,6 +145,10 @@ public abstract class BaseFragment<T extends BasePresenter> extends RxFragment i
         startActivity(intent);
     }
 
+    @Override
+    public void showToast(String msg) {
+        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
+    }
 
     protected abstract @LayoutRes
     int getLayoutId();

@@ -86,7 +86,7 @@ public class StyleFragment extends BaseFragment<DayLuckCorePresenter> implements
                         .initialColor(settingStyleEntityList.get(position).getColor()) // Set initial color
                         .enableBrightness(false) // Enable brightness slider or not
                         .enableAlpha(false) // Enable alpha slider or not
-                        .okTitle("确认")
+                        .okTitle(getString(R.string.confirm))
                         .cancelTitle("")
                         .showIndicator(true)
                         .showValue(false)
@@ -131,11 +131,6 @@ public class StyleFragment extends BaseFragment<DayLuckCorePresenter> implements
                 UpdateAppWidget.getInstance().updateAppWidget();
             }
         });
-    }
-
-    @Override
-    public void showToast(String msg) {
-
     }
 
     @Override

@@ -5,4 +5,5 @@
     <string name="main_bottom_bar_text_style">风格</string>
     <string name="theme_style_normal">默认</string>
     <string name="theme_style_other">其他</string>
+    <string name="confirm">确认</string>
 </resources>
