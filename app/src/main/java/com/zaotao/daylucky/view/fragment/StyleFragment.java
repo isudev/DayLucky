@@ -67,8 +67,6 @@ public class StyleFragment extends BaseFragment<DayLuckCorePresenter> implements
 
     @Override
     protected void initViewData(View view) {
-
-
         getSupportPresenter().registerThemeInfo();
         settingStyleEntityList = getSupportPresenter().initSettingStyleData();
         settingStyleAdapter = new SettingStyleAdapter(mContext);
