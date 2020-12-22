@@ -22,7 +22,7 @@ import java.util.List;
  * Description LuckyItemAdapter
  * Created by wangisu@qq.com on 2020/10/23
  */
-public class LuckyItemAdapter extends RecyclerView.Adapter<LuckyItemAdapter.ViewHolder> {
+public class LuckyContentAdapter extends RecyclerView.Adapter<LuckyContentAdapter.ViewHolder> {
 
     private Context context;
     private List<FortuneContentEntity> items;
@@ -34,18 +34,18 @@ public class LuckyItemAdapter extends RecyclerView.Adapter<LuckyItemAdapter.View
         this.onItemPositionClickListener = onItemPositionClickListener;
     }
 
-    public LuckyItemAdapter(Context context) {
+    public LuckyContentAdapter(Context context) {
         this.context = context;
     }
 
     @Override
-    public LuckyItemAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public LuckyContentAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_lucky_view, parent, false);
-        return new LuckyItemAdapter.ViewHolder(view);
+        return new LuckyContentAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(LuckyItemAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(LuckyContentAdapter.ViewHolder holder, int position) {
         holder.bind(position);
     }
 

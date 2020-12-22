@@ -24,6 +24,9 @@ import com.zaotao.daylucky.module.listener.OnItemPositionClickListener;
  * Created by wangisu@qq.com on 2020/10/21
  */
 public class BottomNavigationView extends LinearLayout {
+    private RelativeLayout mainBottomBarParentVip;
+    private ImageView mainBottomBarAnimationVip;
+    private TextView mainBottomBarTextVip;
     private RelativeLayout mainBottomBarParent0;
     private ImageView mainBottomBarAnimation0;
     private TextView mainBottomBarText0;
@@ -34,9 +37,10 @@ public class BottomNavigationView extends LinearLayout {
     private ImageView mainBottomBarAnimation2;
     private TextView mainBottomBarText2;
 
-    private static final int TAB_LUCKY = 0;
-    private static final int TAB_THEME = 1;
-    private static final int TAB_STYLE = 2;
+    private static final int TAB_VIP = 0;
+    private static final int TAB_LUCKY = 1;
+    private static final int TAB_THEME = 2;
+    private static final int TAB_STYLE = 3;
     private Context mContext;
 
     private OnItemPositionClickListener onItemPositionClickListener;
@@ -45,8 +49,8 @@ public class BottomNavigationView extends LinearLayout {
         this.onItemPositionClickListener = onItemPositionClickListener;
     }
 
-    public int getTabLuckyIndex(){
-        return TAB_LUCKY;
+    public int getNormalIndex() {
+        return TAB_VIP;
     }
 
     public BottomNavigationView(Context context) {
@@ -67,6 +71,9 @@ public class BottomNavigationView extends LinearLayout {
     private void init(Context context) {
         mContext = context;
         View view = LayoutInflater.from(context).inflate(R.layout.app_bottom_navigation_view, this);
+        mainBottomBarParentVip = view.findViewById(R.id.main_bottom_bar_parent_vip);
+        mainBottomBarAnimationVip = view.findViewById(R.id.main_bottom_bar_animation_vip);
+        mainBottomBarTextVip = view.findViewById(R.id.main_bottom_bar_text_vip);
         mainBottomBarParent0 = view.findViewById(R.id.main_bottom_bar_parent0);
         mainBottomBarAnimation0 = view.findViewById(R.id.main_bottom_bar_animation0);
         mainBottomBarText0 = view.findViewById(R.id.main_bottom_bar_text0);
@@ -77,6 +84,10 @@ public class BottomNavigationView extends LinearLayout {
         mainBottomBarAnimation2 = view.findViewById(R.id.main_bottom_bar_animation2);
         mainBottomBarText2 = view.findViewById(R.id.main_bottom_bar_text2);
 
+        mainBottomBarParentVip.setOnClickListener(v -> {
+            showBottomView(TAB_VIP);
+            onItemPositionClickListener.onClick(TAB_VIP);
+        });
 
         mainBottomBarParent0.setOnClickListener(v -> {
             showBottomView(TAB_LUCKY);
@@ -95,32 +106,40 @@ public class BottomNavigationView extends LinearLayout {
         });
 
 
-
-        initBottomTabs(TAB_LUCKY);
+        initBottomTabs(TAB_VIP);
     }
 
     private void initBottomTabs(int position) {
+        mainBottomBarAnimationVip.setImageResource(R.drawable.ic_main_bottom_image_unselect_vip);
         mainBottomBarAnimation0.setImageResource(R.drawable.ic_main_bottom_image_unselect0);
         mainBottomBarAnimation1.setImageResource(R.drawable.ic_main_bottom_image_unselect1);
         mainBottomBarAnimation2.setImageResource(R.drawable.ic_main_bottom_image_unselect2);
 
+        mainBottomBarTextVip.setTextColor(ContextCompat.getColor(mContext, R.color.color909094));
         mainBottomBarText0.setTextColor(ContextCompat.getColor(mContext, R.color.color909094));
         mainBottomBarText1.setTextColor(ContextCompat.getColor(mContext, R.color.color909094));
         mainBottomBarText2.setTextColor(ContextCompat.getColor(mContext, R.color.color909094));
 
-        if (position == TAB_LUCKY) {
+        if (position == TAB_VIP) {
+            mainBottomBarAnimationVip.setImageResource(R.drawable.ic_main_bottom_image_select_vip);
+            mainBottomBarTextVip.setTextColor(ContextCompat.getColor(mContext, R.color.color23242D));
+        } else if (position == TAB_LUCKY) {
             mainBottomBarAnimation0.setImageResource(R.drawable.ic_main_bottom_image_select0);
             mainBottomBarText0.setTextColor(ContextCompat.getColor(mContext, R.color.color23242D));
         } else if (position == TAB_THEME) {
             mainBottomBarAnimation1.setImageResource(R.drawable.ic_main_bottom_image_select1);
             mainBottomBarText1.setTextColor(ContextCompat.getColor(mContext, R.color.color23242D));
-        }else if (position == TAB_STYLE) {
+        } else if (position == TAB_STYLE) {
             mainBottomBarAnimation2.setImageResource(R.drawable.ic_main_bottom_image_select2);
             mainBottomBarText2.setTextColor(ContextCompat.getColor(mContext, R.color.color23242D));
         }
     }
 
     public void showBottomView(int position) {
+        mainBottomBarAnimationVip.setImageResource(R.drawable.ic_main_bottom_image_unselect_vip);
+        mainBottomBarTextVip.setTextColor(ContextCompat.getColor(mContext, R.color.color909094));
+        mainBottomBarTextVip.setTypeface(Typeface.DEFAULT);
+
         mainBottomBarAnimation0.setImageResource(R.drawable.ic_main_bottom_image_unselect0);
         mainBottomBarText0.setTextColor(ContextCompat.getColor(mContext, R.color.color909094));
         mainBottomBarText0.setTypeface(Typeface.DEFAULT);
@@ -134,8 +153,11 @@ public class BottomNavigationView extends LinearLayout {
         mainBottomBarText2.setTypeface(Typeface.DEFAULT);
 
 
-
-        if (position == TAB_LUCKY) {
+        if (position == TAB_VIP) {
+            mainBottomBarAnimationVip.setImageResource(R.drawable.ic_main_bottom_image_select_vip);
+            mainBottomBarTextVip.setTextColor(ContextCompat.getColor(mContext, R.color.color23242D));
+            mainBottomBarTextVip.getPaint().setFakeBoldText(true);
+        } else if (position == TAB_LUCKY) {
             mainBottomBarAnimation0.setImageResource(R.drawable.ic_main_bottom_image_select0);
             mainBottomBarText0.setTextColor(ContextCompat.getColor(mContext, R.color.color23242D));
             mainBottomBarText0.getPaint().setFakeBoldText(true);

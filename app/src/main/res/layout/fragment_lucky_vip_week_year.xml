@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:overScrollMode="never">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_100">
+
+                <com.zaotao.daylucky.widget.appview.AppFakeBoldTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dp_24"
+                    android:ems="1"
+                    android:text="概况"
+                    android:textColor="@color/color333333"
+                    android:textSize="@dimen/sp_17" />
+
+                <TextView
+                    android:id="@+id/lucky_vip_week_text0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_54"
+                    android:layout_marginTop="@dimen/dp_26"
+                    android:text="10.11-10.17"
+                    android:textColor="@color/color333333"
+                    android:textSize="@dimen/sp_14" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp_33"
+                    android:layout_height="@dimen/dp_6"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="@dimen/dp_54"
+                    android:layout_marginBottom="@dimen/dp_32"
+                    android:background="@drawable/vip_line" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/dp_18"
+                    android:src="@drawable/ic_vip_survey_image" />
+            </RelativeLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="@dimen/dp_10"
+                app:cardElevation="@dimen/dp_8"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:overScrollMode="never">
+
+                    <RelativeLayout
+                        android:id="@+id/home_fortune_chart_line"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_25"
+                        android:layout_marginEnd="@dimen/dp_25">
+
+                        <com.github.mikephil.charting.charts.LineChart
+                            android:id="@+id/lucky_vip_line_chart"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_137"
+                            android:layout_marginStart="@dimen/dp_25"
+                            tools:background="@color/colorAccent" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/lucky_vip_line_chart_items"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_172"
+                            android:layout_marginStart="@dimen/dp_21"
+                            android:overScrollMode="never" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:layout_marginEnd="@dimen/dp_16"
+                        android:layout_marginBottom="@dimen/dp_24"
+                        android:text="在本周，双鱼座需要在花钱方面多加注意，可以给自己制定一个钱财的花销计划或者是设定一定的限额，避免情绪化消费。"
+                        android:textColor="@color/color333333"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_100">
+
+                <com.zaotao.daylucky.widget.appview.AppFakeBoldTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dp_24"
+                    android:ems="1"
+                    android:text="详情"
+                    android:textColor="@color/color333333"
+                    android:textSize="@dimen/sp_17" />
+
+                <TextView
+                    android:id="@+id/lucky_vip_week_text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_54"
+                    android:layout_marginTop="@dimen/dp_26"
+                    android:text="10.11-10.17"
+                    android:textColor="@color/color333333"
+                    android:textSize="@dimen/sp_14" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp_33"
+                    android:layout_height="@dimen/dp_6"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="@dimen/dp_54"
+                    android:layout_marginBottom="@dimen/dp_32"
+                    android:background="@drawable/vip_line" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/dp_18"
+                    android:src="@drawable/ic_vip_detail_image" />
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lucky_vip_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:id="@+id/vip_week_lock_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_400"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/ic_lock_bg">
+
+        <LinearLayout
+            android:id="@+id/vip_week_lock_button"
+            android:layout_width="@dimen/dp_245"
+            android:layout_height="@dimen/dp_44"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp_24"
+            android:background="@drawable/ic_lock_button"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_lock_image" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_7"
+                android:text="解锁专业周运"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/sp_15" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

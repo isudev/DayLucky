@@ -6,6 +6,13 @@ public class FortuneContentEntity {
     private int img;
     private int lineImg;
 
+    public FortuneContentEntity(String text) {
+        this.text = text;
+    }
+
+    public FortuneContentEntity() {
+    }
+
     public String getTitle() {
         return title;
     }

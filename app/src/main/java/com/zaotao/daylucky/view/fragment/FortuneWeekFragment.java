@@ -17,7 +17,7 @@ import com.zaotao.daylucky.module.entity.LuckyEntity;
 import com.zaotao.daylucky.module.entity.LuckyTodayEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
-import com.zaotao.daylucky.view.adapter.LuckyItemAdapter;
+import com.zaotao.daylucky.view.adapter.LuckyContentAdapter;
 import com.zaotao.daylucky.view.adapter.LuckyWeekLineAdapter;
 
 import java.util.ArrayList;
@@ -93,10 +93,10 @@ public class FortuneWeekFragment extends BaseFragment<DayLuckCorePresenter> impl
         contItems.add(luckyContentWeek.getCont5());
         contItems.add(luckyContentWeek.getCont7());
         contItems.add(luckyContentWeek.getCont9());
-        LuckyItemAdapter luckyItemAdapter = new LuckyItemAdapter(mContext);
+        LuckyContentAdapter luckyContentAdapter = new LuckyContentAdapter(mContext);
         recyclerViewFragmentHomeFortuneWeek.setLayoutManager(new LinearLayoutManager(mContext));
-        luckyItemAdapter.notifyDataSetChanged(getSupportPresenter().initFortuneLuckyData(contItems));
-        recyclerViewFragmentHomeFortuneWeek.setAdapter(luckyItemAdapter);
+        luckyContentAdapter.notifyDataSetChanged(getSupportPresenter().initFortuneLuckyData(contItems));
+        recyclerViewFragmentHomeFortuneWeek.setAdapter(luckyContentAdapter);
     }
 
     @Override
@@ -138,10 +138,10 @@ public class FortuneWeekFragment extends BaseFragment<DayLuckCorePresenter> impl
         contItems.add(luckyContentWeek.getCont5());
         contItems.add(luckyContentWeek.getCont7());
         contItems.add(luckyContentWeek.getCont9());
-        LuckyItemAdapter luckyItemAdapter = new LuckyItemAdapter(mContext);
+        LuckyContentAdapter luckyContentAdapter = new LuckyContentAdapter(mContext);
         recyclerViewFragmentHomeFortuneWeek.setLayoutManager(new LinearLayoutManager(mContext));
-        luckyItemAdapter.notifyDataSetChanged(getSupportPresenter().initFortuneLuckyData(contItems));
-        recyclerViewFragmentHomeFortuneWeek.setAdapter(luckyItemAdapter);
+        luckyContentAdapter.notifyDataSetChanged(getSupportPresenter().initFortuneLuckyData(contItems));
+        recyclerViewFragmentHomeFortuneWeek.setAdapter(luckyContentAdapter);
     }
 
     @Override

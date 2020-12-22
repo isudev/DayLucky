@@ -1,5 +1,7 @@
 package com.zaotao.daylucky.module.api;
 
+import com.zaotao.daylucky.BuildConfig;
+
 /**
  * Description AppBaseURL
  * Created by wangisu@qq.com on 2019/7/15.
@@ -7,8 +9,8 @@ package com.zaotao.daylucky.module.api;
 
 public class AppBaseURL {
 
-//    public static final boolean DEBUG = BuildConfig.DEBUG;
-    public static final boolean DEBUG = false;
+    public static final boolean DEBUG = BuildConfig.DEBUG;
+//    public static final boolean DEBUG = false;
     /**
      * api base url
      */

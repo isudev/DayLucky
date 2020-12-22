@@ -56,7 +56,7 @@ public class LuckyContentEntity implements Serializable {
     private String luck_thing;
     private String luck_colour;
     private String today_advice;
-
+    private int lock;
 
 
     public int getId() {
@@ -249,5 +249,13 @@ public class LuckyContentEntity implements Serializable {
 
     public void setToday_advice(String today_advice) {
         this.today_advice = today_advice;
+    }
+
+    public int getLock() {
+        return lock;
+    }
+
+    public void setLock(int lock) {
+        this.lock = lock;
     }
 }

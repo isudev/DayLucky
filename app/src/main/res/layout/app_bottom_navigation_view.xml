@@ -8,6 +8,37 @@
     android:orientation="horizontal">
 
     <RelativeLayout
+        android:id="@+id/main_bottom_bar_parent_vip"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/main_bottom_bar_animation_vip"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_25"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_main_bottom_image_select0" />
+
+        <TextView
+            android:id="@+id/main_bottom_bar_text_vip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/dp_22"
+            android:includeFontPadding="false"
+            android:text="@string/main_bottom_bar_text_vip"
+            android:textColor="@color/color23242D"
+            android:textSize="@dimen/sp_10" />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/main_bottom_bar_parent0"
         android:layout_width="0dp"
         android:layout_height="match_parent"

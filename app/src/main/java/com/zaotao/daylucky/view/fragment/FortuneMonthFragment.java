@@ -14,7 +14,7 @@ import com.zaotao.daylucky.module.entity.LuckyContentEntity;
 import com.zaotao.daylucky.module.entity.LuckyEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
-import com.zaotao.daylucky.view.adapter.LuckyItemAdapter;
+import com.zaotao.daylucky.view.adapter.LuckyContentAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +66,7 @@ public class FortuneMonthFragment extends BaseFragment<DayLuckCorePresenter> imp
         contItems.add(luckyContentMonth.getCont5());
         contItems.add(luckyContentMonth.getCont7());
         contItems.add(luckyContentMonth.getCont9());
-        LuckyItemAdapter luckyItemAdapter = new LuckyItemAdapter(mContext);
+        LuckyContentAdapter luckyContentAdapter = new LuckyContentAdapter(mContext);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false) {
             @Override
             public boolean canScrollVertically() {
@@ -74,8 +74,8 @@ public class FortuneMonthFragment extends BaseFragment<DayLuckCorePresenter> imp
             }
         };
         recyclerViewFragmentHomeFortuneMonth.setLayoutManager(linearLayoutManager);
-        luckyItemAdapter.notifyDataSetChanged(getSupportPresenter().initFortuneLuckyData(contItems));
-        recyclerViewFragmentHomeFortuneMonth.setAdapter(luckyItemAdapter);
+        luckyContentAdapter.notifyDataSetChanged(getSupportPresenter().initFortuneLuckyData(contItems));
+        recyclerViewFragmentHomeFortuneMonth.setAdapter(luckyContentAdapter);
     }
 
     @Override
@@ -104,7 +104,7 @@ public class FortuneMonthFragment extends BaseFragment<DayLuckCorePresenter> imp
         contItems.add(luckyContentMonth.getCont5());
         contItems.add(luckyContentMonth.getCont7());
         contItems.add(luckyContentMonth.getCont9());
-        LuckyItemAdapter luckyItemAdapter = new LuckyItemAdapter(mContext);
+        LuckyContentAdapter luckyContentAdapter = new LuckyContentAdapter(mContext);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false) {
             @Override
             public boolean canScrollVertically() {
@@ -112,8 +112,8 @@ public class FortuneMonthFragment extends BaseFragment<DayLuckCorePresenter> imp
             }
         };
         recyclerViewFragmentHomeFortuneMonth.setLayoutManager(linearLayoutManager);
-        luckyItemAdapter.notifyDataSetChanged(getSupportPresenter().initFortuneLuckyData(contItems));
-        recyclerViewFragmentHomeFortuneMonth.setAdapter(luckyItemAdapter);
+        luckyContentAdapter.notifyDataSetChanged(getSupportPresenter().initFortuneLuckyData(contItems));
+        recyclerViewFragmentHomeFortuneMonth.setAdapter(luckyContentAdapter);
     }
 
     @Override

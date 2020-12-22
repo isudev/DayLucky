@@ -19,7 +19,7 @@ public class RequestInterceptor implements Interceptor {
         Request request = chain.request();
         if (NetworkUtils.isConnected()) {
             Request.Builder compressedRequest = request.newBuilder();
-            compressedRequest.addHeader("version", "v140");
+            compressedRequest.addHeader("version", "v150");
 
            /* Request compressedRequest = request.newBuilder()
                     .header("version", Constants.HEADER_VERSION)

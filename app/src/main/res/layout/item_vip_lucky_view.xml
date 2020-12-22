@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/dp_10"
+    android:layout_marginEnd="@dimen/dp_10"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="@dimen/dp_10"
+    app:cardElevation="@dimen/dp_8"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/item_vip_lucky_view_title_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_item_lucky_vip_image0" />
+
+            <com.zaotao.daylucky.widget.appview.AppFakeBoldTextView
+                android:id="@+id/item_vip_lucky_title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="感情"
+                android:textColor="@color/colorFF9696"
+                android:textSize="@dimen/sp_17" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/item_vip_lucky_view_line"
+            android:layout_width="match_parent"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:layout_height="@dimen/dp_2"
+            android:background="@color/colorFF9696" />
+
+        <TextView
+            android:id="@+id/item_vip_lucky_view_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_18"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:lineSpacingExtra="@dimen/dp_2"
+            android:paddingBottom="@dimen/dp_34"
+            android:text="周五，月亮六合金星，月亮三合水星，感情方面，这段时间都有伴侣的水瓶座来说，两个人之间会有更多的交流，在一些话题上能够达成共识。而对于单身的水瓶座来说，自身的魅力大显，有不错的桃花运，可以多去结交新的朋友。"
+            android:textColor="#ff333333"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

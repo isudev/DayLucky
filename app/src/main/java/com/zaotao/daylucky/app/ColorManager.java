@@ -2,6 +2,8 @@ package com.zaotao.daylucky.app;
 
 import android.graphics.Color;
 
+import com.zaotao.daylucky.R;
+
 public class ColorManager {
 
     /**
@@ -33,4 +35,21 @@ public class ColorManager {
     public static int normalBadColor = Color.parseColor("#FF9696");
     public static int normalLuckColor = Color.parseColor("#85E9E6");
     public static int normalWhiteColor = Color.parseColor("#FFFFFF");
+
+
+    public static final int[] FORTUNE_VIP_TITLE_TEXT_COLOR = {
+            Color.parseColor("#FF9696"),
+            Color.parseColor("#7F96FE"),
+            Color.parseColor("#85ADFF"),
+            Color.parseColor("#FFD88F"),
+            Color.parseColor("#85E9E6"),
+    };
+
+    public static final int[] FORTUNE_VIP_TITLE_LINE_COLOR = {
+            Color.parseColor("#FFF5F5"),
+            Color.parseColor("#F2F5FF"),
+            Color.parseColor("#F3F7FF"),
+            Color.parseColor("#FFFAEF"),
+            Color.parseColor("#F2FCFC"),
+    };
 }

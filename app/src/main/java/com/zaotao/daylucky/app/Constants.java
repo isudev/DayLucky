@@ -47,6 +47,14 @@ public class Constants {
             R.drawable.ic_item_lucky_image4
     };
 
+    public static final int[] FORTUNE_VIP_IMG = {
+            R.drawable.ic_item_lucky_vip_image0,
+            R.drawable.ic_item_lucky_vip_image1,
+            R.drawable.ic_item_lucky_vip_image2,
+            R.drawable.ic_item_lucky_vip_image3,
+            R.drawable.ic_item_lucky_vip_image4
+    };
+
     public static final int[] FORTUNE_LINE_IMG = {
             R.drawable.ic_item_lucky_image0s,
             R.drawable.ic_item_lucky_image1s,
