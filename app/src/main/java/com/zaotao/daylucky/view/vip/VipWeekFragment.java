@@ -61,9 +61,6 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> {
     @BindView(R.id.lucky_vip_count)
     TextView luckyVipCount;
 
-    private VipLineChartHistogramAdapter vipLineChartHistogramAdapter;
-    private VipLuckyContentAdapter vipLuckyContentAdapter;
-
     public static VipWeekFragment newInstance(LuckyVipEntity luckyVipEntity) {
         Bundle args = new Bundle();
         args.putSerializable("fragment_lucky_vip_week_year", luckyVipEntity);
@@ -121,7 +118,7 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> {
         /**
          * set data
          */
-        vipLineChartHistogramAdapter = new VipLineChartHistogramAdapter(mContext);
+        VipLineChartHistogramAdapter vipLineChartHistogramAdapter = new VipLineChartHistogramAdapter(mContext);
         vipLineChartHistogramAdapter.notifyDataSetChanged(luckyVipWeekData.getWeek_charts());
         luckyVipLineChartItems.setLayoutManager(new GridLayoutManager(mContext, 7));
         luckyVipLineChartItems.setAdapter(vipLineChartHistogramAdapter);
@@ -137,7 +134,7 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> {
             luckyVipContent.setVisibility(View.VISIBLE);
             vipWeekLockView.setVisibility(View.GONE);
             luckyVipContent.setLayoutManager(new LinearLayoutManager(mContext));
-            vipLuckyContentAdapter = new VipLuckyContentAdapter(mContext);
+            VipLuckyContentAdapter vipLuckyContentAdapter = new VipLuckyContentAdapter(mContext);
             luckyVipContent.setAdapter(vipLuckyContentAdapter);
             vipLuckyContentAdapter.notifyDataSetChanged(fortuneContentEntities);
         }

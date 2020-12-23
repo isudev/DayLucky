@@ -82,7 +82,7 @@
                         android:layout_marginBottom="@dimen/dp_20"
                         android:background="@drawable/ic_home_fortune_ring_bg">
 
-                        <com.zaotao.daylucky.widget.ringview.RingChartFortuneView
+                        <com.zaotao.daylucky.widget.ringview.RingChartView
                             android:id="@+id/vip_month_chart_ring1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -92,7 +92,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <com.zaotao.daylucky.widget.ringview.RingChartFortuneView
+                        <com.zaotao.daylucky.widget.ringview.RingChartView
                             android:id="@+id/vip_month_chart_ring2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -102,7 +102,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <com.zaotao.daylucky.widget.ringview.RingChartFortuneView
+                        <com.zaotao.daylucky.widget.ringview.RingChartView
                             android:id="@+id/vip_month_chart_ring3"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"

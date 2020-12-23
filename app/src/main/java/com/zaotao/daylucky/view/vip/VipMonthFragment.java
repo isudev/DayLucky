@@ -6,18 +6,20 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.app.DateUtils;
 import com.zaotao.daylucky.base.BaseFragment;
+import com.zaotao.daylucky.module.entity.FortuneContentEntity;
 import com.zaotao.daylucky.module.entity.LuckyTodayEntity;
 import com.zaotao.daylucky.module.entity.LuckyVipEntity;
-import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
+import com.zaotao.daylucky.presenter.DayLuckVipPresenter;
+import com.zaotao.daylucky.view.adapter.VipLuckyContentAdapter;
 import com.zaotao.daylucky.widget.appview.AppFakeBoldTextView;
-import com.zaotao.daylucky.widget.ringview.RingChartFortuneView;
+import com.zaotao.daylucky.widget.ringview.RingChartView;
 
 import java.util.List;
 
@@ -27,7 +29,7 @@ import butterknife.BindView;
  * Description VipMonthFragment
  * Created by wangisu@qq.com on 12/22/20.
  */
-public class VipMonthFragment extends BaseFragment<DayLuckCorePresenter> {
+public class VipMonthFragment extends BaseFragment<DayLuckVipPresenter> {
 
     @BindView(R.id.lucky_vip_month_text0)
     TextView luckyVipMonthText0;
@@ -42,11 +44,11 @@ public class VipMonthFragment extends BaseFragment<DayLuckCorePresenter> {
     @BindView(R.id.vip_month_lock_view)
     RelativeLayout vipMonthLockView;
     @BindView(R.id.vip_month_chart_ring1)
-    RingChartFortuneView vipMonthChartRing1;
+    RingChartView vipMonthChartRing1;
     @BindView(R.id.vip_month_chart_ring2)
-    RingChartFortuneView vipMonthChartRing2;
+    RingChartView vipMonthChartRing2;
     @BindView(R.id.vip_month_chart_ring3)
-    RingChartFortuneView vipMonthChartRing3;
+    RingChartView vipMonthChartRing3;
     @BindView(R.id.vip_month_chart_ring_text1)
     AppFakeBoldTextView vipMonthChartRingText1;
     @BindView(R.id.vip_month_chart_ring_text2)
@@ -69,15 +71,17 @@ public class VipMonthFragment extends BaseFragment<DayLuckCorePresenter> {
     }
 
     @Override
-    protected DayLuckCorePresenter initPresenter() {
-        return new DayLuckCorePresenter();
+    protected DayLuckVipPresenter initPresenter() {
+        return new DayLuckVipPresenter();
     }
 
     @Override
     protected void initViewData(View view) {
         LuckyVipEntity luckyVipMonthData = (LuckyVipEntity) getArguments().getSerializable("fragment_lucky_vip_month");
         luckyVipCount.setText(luckyVipMonthData.getMonth().getCont());
-
+        String monthDate = luckyVipMonthData.getDate().getYear() + "." + luckyVipMonthData.getDate().getMonth();
+        luckyVipMonthText0.setText(monthDate);
+        luckyVipMonthText1.setText(monthDate);
         /**
          * init data ring view & text
          */
@@ -93,6 +97,21 @@ public class VipMonthFragment extends BaseFragment<DayLuckCorePresenter> {
         vipMonthChartRing1.setProgressNum(ContextCompat.getColor(mContext, R.color.color6983FE), monthCharts.get(0).getY());
         vipMonthChartRing2.setProgressNum(ContextCompat.getColor(mContext, R.color.color6983FE), monthCharts.get(1).getY());
         vipMonthChartRing3.setProgressNum(ContextCompat.getColor(mContext, R.color.color6983FE), monthCharts.get(2).getY());
+        /**
+         * set bottom recycler view data
+         */
+        List<FortuneContentEntity> fortuneContentEntities = getSupportPresenter().initVipWeekFortuneList(luckyVipMonthData);
+        if (fortuneContentEntities.size() == 0) {
+            luckyVipContent.setVisibility(View.GONE);
+            vipMonthLockView.setVisibility(View.VISIBLE);
+        } else {
+            luckyVipContent.setVisibility(View.VISIBLE);
+            vipMonthLockView.setVisibility(View.GONE);
+            luckyVipContent.setLayoutManager(new LinearLayoutManager(mContext));
+            VipLuckyContentAdapter vipLuckyContentAdapter = new VipLuckyContentAdapter(mContext);
+            luckyVipContent.setAdapter(vipLuckyContentAdapter);
+            vipLuckyContentAdapter.notifyDataSetChanged(fortuneContentEntities);
+        }
     }
 
     @Override

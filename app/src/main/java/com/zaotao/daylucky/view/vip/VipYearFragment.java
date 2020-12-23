@@ -62,8 +62,6 @@ public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> {
     @BindView(R.id.vip_week_lock_view)
     RelativeLayout vipWeekLockView;
 
-    private VipLineChartHistogramAdapter vipLineChartHistogramAdapter;
-    private VipLuckyContentAdapter vipLuckyContentAdapter;
     public static VipYearFragment newInstance(LuckyVipEntity luckyVipEntity) {
         Bundle args = new Bundle();
         args.putSerializable("fragment_lucky_vip_week_year", luckyVipEntity);
@@ -86,8 +84,9 @@ public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> {
     @Override
     protected void initViewData(View view) {
         LuckyVipEntity luckyVipYearData = (LuckyVipEntity) getArguments().getSerializable("fragment_lucky_vip_week_year");
-        luckyVipWeekText0.setText(luckyVipYearData.getDate().getWeek());
-        luckyVipWeekText1.setText(luckyVipYearData.getDate().getWeek());
+        String yearDate = luckyVipYearData.getDate().getMonth_abbr() + luckyVipYearData.getDate().getYear();
+        luckyVipWeekText0.setText(yearDate);
+        luckyVipWeekText1.setText(yearDate);
         luckyVipCount.setText(luckyVipYearData.getYear().getCont());
 
         luckyVipLineChart.getDescription().setEnabled(false);
@@ -121,11 +120,11 @@ public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> {
         /**
          * set data
          */
-        vipLineChartHistogramAdapter = new VipLineChartHistogramAdapter(mContext);
+        VipLineChartHistogramAdapter vipLineChartHistogramAdapter = new VipLineChartHistogramAdapter(mContext);
         luckyVipLineChartItems.setLayoutManager(new GridLayoutManager(mContext, 12));
         luckyVipLineChartItems.setAdapter(vipLineChartHistogramAdapter);
         vipLineChartHistogramAdapter.notifyDataSetChanged(luckyVipYearData.getYear_charts());
-        getSupportPresenter().initVipYearChartsList(mContext,luckyVipYearData,luckyVipLineChart);
+        getSupportPresenter().initVipYearChartsList(mContext, luckyVipYearData, luckyVipLineChart);
         /**
          * set bottom recycler view data
          */
@@ -137,7 +136,7 @@ public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> {
             luckyVipContent.setVisibility(View.VISIBLE);
             vipWeekLockView.setVisibility(View.GONE);
             luckyVipContent.setLayoutManager(new LinearLayoutManager(mContext));
-            vipLuckyContentAdapter = new VipLuckyContentAdapter(mContext);
+            VipLuckyContentAdapter vipLuckyContentAdapter = new VipLuckyContentAdapter(mContext);
             luckyVipContent.setAdapter(vipLuckyContentAdapter);
             vipLuckyContentAdapter.notifyDataSetChanged(fortuneContentEntities);
         }

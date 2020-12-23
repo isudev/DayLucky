@@ -38,7 +38,6 @@ import io.reactivex.functions.Predicate;
 
 public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View> implements DayLuckCoreContract.Presenter {
 
-    private static final String TAG = "MainHomePresenter";
 
     private ApiService apiService;
 

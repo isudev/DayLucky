@@ -33,8 +33,6 @@ import io.reactivex.functions.Function;
 
 public class DayLuckVipPresenter extends BasePresenter<DayLuckVipContract.View> implements DayLuckVipContract.Presenter {
 
-    private static final String TAG = "MainHomePresenter";
-
     private ApiService apiService;
 
     @Override
@@ -81,6 +79,26 @@ public class DayLuckVipPresenter extends BasePresenter<DayLuckVipContract.View> 
         String cont7 = luckyVipEntity.getWeek().getCont7();
         String cont9 = luckyVipEntity.getWeek().getCont9();
         if (TextUtils.isEmpty(cont1) || TextUtils.isEmpty(cont3) || TextUtils.isEmpty(cont5) || TextUtils.isEmpty(cont7) || TextUtils.isEmpty(cont9)) {
+            return new ArrayList<>();
+        } else {
+            fortuneContentEntityList.add(new FortuneContentEntity(cont1));
+            fortuneContentEntityList.add(new FortuneContentEntity(cont3));
+            fortuneContentEntityList.add(new FortuneContentEntity(cont5));
+            fortuneContentEntityList.add(new FortuneContentEntity(cont7));
+            fortuneContentEntityList.add(new FortuneContentEntity(cont9));
+        }
+        return fortuneContentEntityList;
+    }
+
+    @Override
+    public List<FortuneContentEntity> initMonthFortuneList(LuckyVipEntity luckyVipEntity) {
+        List<FortuneContentEntity> fortuneContentEntityList = new ArrayList<>();
+        String cont1 = luckyVipEntity.getYear().getCont1();
+        String cont3 = luckyVipEntity.getYear().getCont3();
+        String cont5 = luckyVipEntity.getYear().getCont5();
+        String cont7 = luckyVipEntity.getYear().getCont7();
+        String cont9 = luckyVipEntity.getYear().getCont9();
+        if (luckyVipEntity.getYear().getLock() == 0) {
             return new ArrayList<>();
         } else {
             fortuneContentEntityList.add(new FortuneContentEntity(cont1));

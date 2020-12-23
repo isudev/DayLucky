@@ -17,7 +17,7 @@ import com.zaotao.daylucky.R;
  * Description RingChartFortuneView
  * Created by wangisu@qq.com on 12/23/20.
  */
-public class RingChartFortuneView extends View {
+public class RingChartView extends View {
     public final static int TYPE_RECT = 0;
     public final static int TYPE_CIRCLE = 1;
     public final static int TYPE_ROUND_RECT = 2;
@@ -49,17 +49,17 @@ public class RingChartFortuneView extends View {
     private Point mCenterPoint;
 
 
-    public RingChartFortuneView(Context context) {
+    public RingChartView(Context context) {
         super(context);
         setup(context);
     }
 
-    public RingChartFortuneView(Context context, AttributeSet attrs) {
+    public RingChartView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setup(context);
     }
 
-    public RingChartFortuneView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RingChartView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         setup(context);
     }

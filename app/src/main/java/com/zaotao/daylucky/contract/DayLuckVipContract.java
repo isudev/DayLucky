@@ -27,6 +27,8 @@ public interface DayLuckVipContract {
 
         List<FortuneContentEntity> initVipWeekFortuneList(LuckyVipEntity luckyVipEntity);
 
+        List<FortuneContentEntity> initMonthFortuneList(LuckyVipEntity luckyVipEntity);
+
         List<FortuneContentEntity> initVipYearFortuneList(LuckyVipEntity luckyVipEntity);
 
         void initVipWeekChartsList(Context context, LuckyVipEntity luckyVipEntity, LineChart luckyVipLineChart);
