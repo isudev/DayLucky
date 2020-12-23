@@ -289,7 +289,7 @@ public class DayLuckVipPresenter extends BasePresenter<DayLuckVipContract.View> 
         String cont5 = luckyVipEntity.getWeek().getCont5();
         String cont7 = luckyVipEntity.getWeek().getCont7();
         String cont9 = luckyVipEntity.getWeek().getCont9();
-        if (TextUtils.isEmpty(cont1) || TextUtils.isEmpty(cont3) || TextUtils.isEmpty(cont5) || TextUtils.isEmpty(cont7) || TextUtils.isEmpty(cont9)) {
+        if (luckyVipEntity.getWeek().getLock() == 0) {
             return new ArrayList<>();
         } else {
             fortuneContentEntityList.add(new FortuneContentEntity(cont1));
@@ -309,7 +309,7 @@ public class DayLuckVipPresenter extends BasePresenter<DayLuckVipContract.View> 
         String cont5 = luckyVipEntity.getYear().getCont5();
         String cont7 = luckyVipEntity.getYear().getCont7();
         String cont9 = luckyVipEntity.getYear().getCont9();
-        if (luckyVipEntity.getYear().getLock() == 0) {
+        if (luckyVipEntity.getMonth().getLock() == 0) {
             return new ArrayList<>();
         } else {
             fortuneContentEntityList.add(new FortuneContentEntity(cont1));

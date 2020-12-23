@@ -109,7 +109,7 @@ public class VipMonthFragment extends BaseFragment<DayLuckVipPresenter> implemen
         /**
          * set bottom recycler view data
          */
-        List<FortuneContentEntity> fortuneContentEntities = getSupportPresenter().initVipWeekFortuneList(luckyVipMonthData);
+        List<FortuneContentEntity> fortuneContentEntities = getSupportPresenter().initMonthFortuneList(luckyVipMonthData);
         if (fortuneContentEntities.size() == 0) {
             luckyVipContent.setVisibility(View.GONE);
             vipMonthLockView.setVisibility(View.VISIBLE);
