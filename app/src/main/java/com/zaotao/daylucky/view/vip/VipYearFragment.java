@@ -1,14 +1,12 @@
 package com.zaotao.daylucky.view.vip;
 
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,25 +16,18 @@ import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.app.Constants;
 import com.zaotao.daylucky.base.BaseFragment;
 import com.zaotao.daylucky.contract.DayLuckVipContract;
 import com.zaotao.daylucky.module.entity.FortuneContentEntity;
-import com.zaotao.daylucky.module.entity.LuckyTodayEntity;
 import com.zaotao.daylucky.module.entity.LuckyVipEntity;
 import com.zaotao.daylucky.module.listener.OnVipDialogListener;
-import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
 import com.zaotao.daylucky.presenter.DayLuckVipPresenter;
 import com.zaotao.daylucky.view.adapter.VipLineChartHistogramAdapter;
 import com.zaotao.daylucky.view.adapter.VipLuckyContentAdapter;
 import com.zaotao.daylucky.widget.dialog.DialogUnlockedVip;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -65,6 +56,8 @@ public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> implement
     LinearLayout vipWeekLockButton;
     @BindView(R.id.vip_week_lock_view)
     RelativeLayout vipYearLockView;
+    @BindView(R.id.vip_lock_button_text)
+    TextView vipLockButtonText;
 
     private DialogUnlockedVip dialogUnlockedVip;
 
@@ -90,7 +83,7 @@ public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> implement
     @Override
     protected void initViewData(View view) {
         dialogUnlockedVip = new DialogUnlockedVip(mContext);
-
+        vipLockButtonText.setText(R.string.vip_year_lock_text);
         LuckyVipEntity luckyVipYearData = (LuckyVipEntity) getArguments().getSerializable("fragment_lucky_vip_week_year");
         String yearDate = luckyVipYearData.getDate().getMonth_abbr() + luckyVipYearData.getDate().getYear();
         luckyVipWeekText0.setText(yearDate);
@@ -152,7 +145,19 @@ public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> implement
          * register constellation index
          */
         getSupportPresenter().registerSelectPosition();
-        vipWeekLockButton.setOnClickListener(v -> dialogUnlockedVip.showDialog(mobile -> getSupportPresenter().aliPayOrder(mActivity,luckyVipYearData.getYear().getId(),mobile)));
+        /**
+         * order pay action
+         */
+        vipWeekLockButton.setOnClickListener(v -> dialogUnlockedVip.showDialog((mobile, payType) -> {
+            switch (payType){
+                case 0:
+                    getSupportPresenter().aliPayOrder(mActivity, luckyVipYearData.getYear().getId(), mobile);
+                    break;
+                case 1:
+                    getSupportPresenter().weChatPayOrder(mActivity,luckyVipYearData.getYear().getId(),mobile);
+                    break;
+            }
+        }));
 
     }
 

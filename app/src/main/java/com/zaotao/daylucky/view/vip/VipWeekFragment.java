@@ -22,7 +22,6 @@ import com.zaotao.daylucky.base.BaseFragment;
 import com.zaotao.daylucky.contract.DayLuckVipContract;
 import com.zaotao.daylucky.module.entity.FortuneContentEntity;
 import com.zaotao.daylucky.module.entity.LuckyVipEntity;
-import com.zaotao.daylucky.module.listener.OnVipDialogListener;
 import com.zaotao.daylucky.presenter.DayLuckVipPresenter;
 import com.zaotao.daylucky.view.adapter.VipLineChartHistogramAdapter;
 import com.zaotao.daylucky.view.adapter.VipLuckyContentAdapter;
@@ -56,6 +55,8 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> implement
     RelativeLayout vipWeekLockView;
     @BindView(R.id.lucky_vip_count)
     TextView luckyVipCount;
+    @BindView(R.id.vip_lock_button_text)
+    TextView vipLockButtonText;
 
     private DialogUnlockedVip dialogUnlockedVip;
 
@@ -81,7 +82,7 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> implement
     @Override
     protected void initViewData(View view) {
         dialogUnlockedVip = new DialogUnlockedVip(mContext);
-
+        vipLockButtonText.setText(R.string.vip_week_lock_text);
         LuckyVipEntity luckyVipWeekData = (LuckyVipEntity) getArguments().getSerializable("fragment_lucky_vip_week_year");
         luckyVipWeekText0.setText(luckyVipWeekData.getDate().getWeek().split("/")[0]);
         luckyVipWeekText1.setText(luckyVipWeekData.getDate().getWeek().split("/")[0]);
@@ -142,8 +143,19 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> implement
          * register constellation index
          */
         getSupportPresenter().registerSelectPosition();
-        vipWeekLockButton.setOnClickListener(v -> dialogUnlockedVip.showDialog(mobile -> getSupportPresenter().aliPayOrder(mActivity,luckyVipWeekData.getWeek().getId(),mobile)));
-
+        /**
+         * order pay action
+         */
+        vipWeekLockButton.setOnClickListener(v -> dialogUnlockedVip.showDialog((mobile, payType) -> {
+            switch (payType){
+                case 0:
+                    getSupportPresenter().aliPayOrder(mActivity, luckyVipWeekData.getWeek().getId(), mobile);
+                    break;
+                case 1:
+                    getSupportPresenter().weChatPayOrder(mActivity,luckyVipWeekData.getWeek().getId(),mobile);
+                    break;
+            }
+        }));
     }
 
     @Override

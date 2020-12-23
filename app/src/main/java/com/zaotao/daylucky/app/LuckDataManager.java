@@ -54,4 +54,11 @@ public class LuckDataManager {
         return SPUtils.getInstance().getString("zao_tao_local_mobile_data", "");
     }
 
+    public void setWxAppId(String wxAppId){
+        SPUtils.getInstance().put("zao_tao_local_wx_app_id",wxAppId);
+    }
+
+    public String getWxAppId(){
+        return SPUtils.getInstance().getString("zao_tao_local_wx_app_id", "");
+    }
 }

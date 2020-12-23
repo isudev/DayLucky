@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginStart="@dimen/dp_30"
     android:layout_marginTop="@dimen/dp_100"
     android:layout_marginEnd="@dimen/dp_30"
@@ -24,16 +25,16 @@
         android:layout_marginStart="@dimen/dp_22"
         android:layout_marginTop="@dimen/dp_28"
         android:layout_marginEnd="@dimen/dp_22"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:maxLength="11"
-        android:inputType="number"
         android:background="@drawable/ic_unlocked_vip_input_bg"
         android:gravity="center_vertical"
         android:hint="请输入手机号码"
+        android:inputType="number"
+        android:maxLength="11"
+        android:maxLines="1"
         android:paddingStart="@dimen/dp_15"
-        android:textColorHint="@color/colorD8D8D8"
+        android:singleLine="true"
         android:textColor="@color/color1C1C1C"
+        android:textColorHint="@color/colorD8D8D8"
         android:textSize="17sp" />
 
     <RelativeLayout
@@ -62,12 +63,68 @@
             android:textSize="15sp" />
     </RelativeLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.zaotao.daylucky.widget.appview.AppFakeBoldTextView
+            android:id="@+id/view_unlocked_vip_select_ali_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_22"
+            android:layout_marginTop="@dimen/dp_25"
+            android:drawableStart="@drawable/ic_select_pay_alipay"
+            android:drawablePadding="@dimen/dp_9"
+            android:text="支付宝支付"
+            android:textColor="@color/color4F5658"
+            android:textSize="@dimen/sp_15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/view_unlocked_vip_select_ali_pay_check_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_15"
+            android:layout_marginEnd="@dimen/dp_15"
+            android:src="@drawable/ic_unlocked_vip_selected"
+            android:padding="@dimen/dp_10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.zaotao.daylucky.widget.appview.AppFakeBoldTextView
+            android:id="@+id/view_unlocked_vip_select_we_chat_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_22"
+            android:layout_marginTop="@dimen/dp_20"
+            android:drawableStart="@drawable/ic_select_pay_wechat"
+            android:drawablePadding="@dimen/dp_9"
+            android:text="微信支付"
+            android:textColor="@color/color4F5658"
+            android:textSize="@dimen/sp_15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_unlocked_vip_select_ali_pay" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/view_unlocked_vip_select_we_chat_pay_check_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_marginEnd="@dimen/dp_15"
+            android:padding="@dimen/dp_10"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_unlocked_vip_select_un"
+            app:layout_constraintTop_toBottomOf="@id/view_unlocked_vip_select_ali_pay_check_box" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/view_unlocked_vip_button"
         android:layout_width="@dimen/dp_180"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_34"
+        android:layout_marginTop="@dimen/dp_24"
         android:layout_marginBottom="@dimen/dp_23"
         android:background="@drawable/ic_lock_button"
         android:text="确认解锁"

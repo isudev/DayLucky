@@ -58,6 +58,8 @@ public class VipMonthFragment extends BaseFragment<DayLuckVipPresenter> implemen
     AppFakeBoldTextView vipMonthChartRingText2;
     @BindView(R.id.vip_month_chart_ring_text3)
     AppFakeBoldTextView vipMonthChartRingText3;
+    @BindView(R.id.vip_lock_button_text)
+    TextView vipLockButtonText;
 
     private DialogUnlockedVip dialogUnlockedVip;
 
@@ -83,7 +85,7 @@ public class VipMonthFragment extends BaseFragment<DayLuckVipPresenter> implemen
     @Override
     protected void initViewData(View view) {
         dialogUnlockedVip = new DialogUnlockedVip(mContext);
-
+        vipLockButtonText.setText(R.string.vip_month_lock_text);
         LuckyVipEntity luckyVipMonthData = (LuckyVipEntity) getArguments().getSerializable("fragment_lucky_vip_month");
         luckyVipCount.setText(luckyVipMonthData.getMonth().getCont());
         String monthDate = luckyVipMonthData.getDate().getYear() + "." + luckyVipMonthData.getDate().getMonth();
@@ -123,7 +125,19 @@ public class VipMonthFragment extends BaseFragment<DayLuckVipPresenter> implemen
          * register constellation index
          */
         getSupportPresenter().registerSelectPosition();
-        vipMonthLockButton.setOnClickListener(v -> dialogUnlockedVip.showDialog(mobile -> getSupportPresenter().aliPayOrder(mActivity,luckyVipMonthData.getMonth().getId(),mobile)));
+        /**
+         * order pay action
+         */
+        vipMonthLockButton.setOnClickListener(v -> dialogUnlockedVip.showDialog((mobile, payType) -> {
+            switch (payType){
+                case 0:
+                    getSupportPresenter().aliPayOrder(mActivity, luckyVipMonthData.getMonth().getId(), mobile);
+                    break;
+                case 1:
+                    getSupportPresenter().weChatPayOrder(mActivity,luckyVipMonthData.getMonth().getId(),mobile);
+                    break;
+            }
+        }));
     }
 
     @Override

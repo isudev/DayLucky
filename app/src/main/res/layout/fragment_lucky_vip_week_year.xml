@@ -103,9 +103,9 @@
                         android:layout_marginStart="@dimen/dp_16"
                         android:layout_marginEnd="@dimen/dp_16"
                         android:layout_marginBottom="@dimen/dp_24"
-                        tools:text="在本周，双鱼座需要在花钱方面多加注意，可以给自己制定一个钱财的花销计划或者是设定一定的限额，避免情绪化消费。"
                         android:textColor="@color/color333333"
-                        android:textSize="@dimen/sp_14" />
+                        android:textSize="@dimen/sp_14"
+                        tools:text="在本周，双鱼座需要在花钱方面多加注意，可以给自己制定一个钱财的花销计划或者是设定一定的限额，避免情绪化消费。" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -182,12 +182,13 @@
                 android:src="@drawable/ic_lock_image" />
 
             <TextView
+                android:id="@+id/vip_lock_button_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp_7"
-                android:text="解锁专业周运"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/sp_15" />
+                android:textSize="@dimen/sp_15"
+                tools:text="解锁专业周运" />
 
         </LinearLayout>
     </RelativeLayout>

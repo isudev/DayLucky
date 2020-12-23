@@ -6,5 +6,10 @@ package com.zaotao.daylucky.module.listener;
  */
 public interface OnVipDialogListener {
 
-    void onClick(String mobile);
+    /**
+     * pay click listener
+     * @param mobile
+     * @param payType 0 aliPay 1 WeChatPay
+     */
+    void onClick(String mobile,int payType);
 }

@@ -16,10 +16,16 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.tencent.mm.opensdk.constants.Build;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mm.opensdk.modelpay.PayReq;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.zaotao.base.rx.RxBus;
 import com.zaotao.base.rx.RxBusSubscriber;
 import com.zaotao.base.rx.RxSchedulers;
 import com.zaotao.daylucky.R;
+import com.zaotao.daylucky.app.Constants;
 import com.zaotao.daylucky.app.LuckDataManager;
 import com.zaotao.daylucky.app.MD5Utils;
 import com.zaotao.daylucky.base.BasePresenter;
@@ -33,6 +39,7 @@ import com.zaotao.daylucky.module.entity.FortuneContentEntity;
 import com.zaotao.daylucky.module.entity.LuckyTodayEntity;
 import com.zaotao.daylucky.module.entity.LuckyVipEntity;
 import com.zaotao.daylucky.module.entity.OrderPayEntity;
+import com.zaotao.daylucky.module.entity.WxPayResult;
 import com.zaotao.daylucky.module.event.SelectEvent;
 
 import java.util.ArrayList;
@@ -158,6 +165,107 @@ public class DayLuckVipPresenter extends BasePresenter<DayLuckVipContract.View> 
                         getView().onSuccessOrderPay();
                         LuckDataManager.getInstance().setVipMobile(mobile);
                         RxBus.getDefault().post(new SelectEvent(LuckDataManager.getInstance().getSelectConstellationIndex()));
+                        onComplete();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        unSubscribe();
+                    }
+                });
+    }
+
+    @Override
+    public void weChatPayOrder(Activity activity, int reportId, String mobile) {
+        apiService.apiOrderPay(new OrderPayEntity(1,reportId, mobile))
+                .filter(new Predicate<BaseResult<OrderPayEntity>>() {
+                    @Override
+                    public boolean test(BaseResult<OrderPayEntity> orderPayResult) throws Exception {
+                        if (orderPayResult.failure()){
+                            getView().showToast("支付失败");
+                            return false;
+                        }
+                        return orderPayResult.success();
+                    }
+                })
+                .map(new Function<BaseResult<OrderPayEntity>, OrderPayEntity>() {
+                    @Override
+                    public OrderPayEntity apply(BaseResult<OrderPayEntity> orderPayResult) throws Exception {
+                        return orderPayResult.getData();
+                    }
+                })
+                .flatMap(new Function<OrderPayEntity, ObservableSource<WxPayResult>>() {
+                    @Override
+                    public ObservableSource<WxPayResult> apply(OrderPayEntity orderPayEntity) throws Exception {
+                        return Observable.create(new ObservableOnSubscribe<WxPayResult>() {
+                            @Override
+                            public void subscribe(ObservableEmitter<WxPayResult> emitter) throws Exception {
+                                OrderPayEntity.WeChatPayBean weChatPayBean = orderPayEntity.getWechatpay();
+                                LuckDataManager.getInstance().setWxAppId(weChatPayBean.getAppid());
+
+                                final IWXAPI msgApi = WXAPIFactory.createWXAPI(activity, null);
+                                msgApi.registerApp(LuckDataManager.getInstance().getWxAppId());
+
+                                if (msgApi.getWXAppSupportAPI() < Build.PAY_SUPPORTED_SDK_INT) {
+                                    emitter.onNext(new WxPayResult(WxPayResult.NOT_INSTALLED_WE_CHAT));
+                                    emitter.onComplete();
+                                    return;
+                                }
+                                PayReq request = new PayReq();
+                                request.appId = weChatPayBean.getAppid();
+                                request.partnerId = weChatPayBean.getPartnerid();
+                                request.prepayId = weChatPayBean.getPrepayid();
+                                request.packageValue = weChatPayBean.getPackageValue();
+                                request.nonceStr = weChatPayBean.getNoncestr();
+                                request.timeStamp = weChatPayBean.getTimestamp();
+                                request.sign = weChatPayBean.getSign();
+                                boolean isSend = msgApi.sendReq(request);
+                                if (!isSend) {
+                                    emitter.onNext(new WxPayResult(-1));
+                                } else {
+                                    addSubscribe(RxBus.getDefault().toObservable(BaseResp.class)
+                                            .subscribeOn(Schedulers.io())
+                                            .unsubscribeOn(Schedulers.io())
+                                            .observeOn(AndroidSchedulers.mainThread())
+                                            .subscribe(new Consumer<BaseResp>() {
+                                                @Override
+                                                public void accept(BaseResp baseResp) throws Exception {
+                                                    emitter.onNext(new WxPayResult(baseResp.errCode));
+
+                                                }
+                                            }, new Consumer<Throwable>() {
+                                                @Override
+                                                public void accept(Throwable throwable) throws Exception {
+
+                                                }
+                                            }));
+                                }
+                            }
+                        });
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<WxPayResult>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        addSubscribe(d);
+                    }
+
+                    @Override
+                    public void onNext(WxPayResult wxPayResult) {
+                        getView().showToast(wxPayResult.getErrInfo());
+                        if (wxPayResult.isSucceed()){
+                            LuckDataManager.getInstance().setVipMobile(mobile);
+                            RxBus.getDefault().post(new SelectEvent(LuckDataManager.getInstance().getSelectConstellationIndex()));
+                            getView().onSuccessOrderPay();
+                        }
                         onComplete();
                     }
 

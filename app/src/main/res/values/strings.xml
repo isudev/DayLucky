@@ -7,4 +7,7 @@
     <string name="theme_style_normal">默认</string>
     <string name="theme_style_other">其他</string>
     <string name="confirm">确认</string>
+    <string name="vip_week_lock_text">解锁专业周运</string>
+    <string name="vip_month_lock_text">解锁专业月运</string>
+    <string name="vip_year_lock_text">解锁专业年运</string>
 </resources>

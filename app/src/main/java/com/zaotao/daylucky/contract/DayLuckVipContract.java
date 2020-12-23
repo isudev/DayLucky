@@ -31,6 +31,8 @@ public interface DayLuckVipContract {
 
         void aliPayOrder(Activity activity, int reportId, String mobile);
 
+        void weChatPayOrder(Activity activity, int reportId, String mobile);
+
         List<FortuneContentEntity> initVipWeekFortuneList(LuckyVipEntity luckyVipEntity);
 
         List<FortuneContentEntity> initMonthFortuneList(LuckyVipEntity luckyVipEntity);
