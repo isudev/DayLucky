@@ -17,11 +17,12 @@ public interface DayLuckVipContract {
 
         void onSuccessLucky(LuckyVipEntity luckyVipEntity);
 
+        void onChangeConstellationIndex(int index);
     }
 
 
     interface Presenter extends BaseSimplePresenter<View> {
-
+        void registerSelectPosition();
 
         void initHomeLucky(int var,String mobile);
 

@@ -47,4 +47,11 @@ public class LuckDataManager {
         return Constants.CONSTELLATION_IMG[NetworkUtils.isConnected() ? getSelectConstellationIndex() : 0];
     }
 
+    public void setVipMobile(String mobile){
+        SPUtils.getInstance().put("zao_tao_local_mobile_data", mobile);
+    }
+    public String getVipMobile(){
+        return SPUtils.getInstance().getString("zao_tao_local_mobile_data", "");
+    }
+
 }

@@ -59,7 +59,9 @@ public class LuckyVipFragment extends BaseFragment<DayLuckVipPresenter> implemen
     @Override
     protected void initViewData(View view) {
 
-        getSupportPresenter().initHomeLucky(LuckDataManager.getInstance().getSelectConstellationIndex(), "15510062339");
+        getSupportPresenter().registerSelectPosition();
+
+        getSupportPresenter().initHomeLucky(LuckDataManager.getInstance().getSelectConstellationIndex(), LuckDataManager.getInstance().getVipMobile());
 
     }
 
@@ -78,6 +80,11 @@ public class LuckyVipFragment extends BaseFragment<DayLuckVipPresenter> implemen
 
         loadTabFragment(0);
         initIndicator();
+    }
+
+    @Override
+    public void onChangeConstellationIndex(int index) {
+        getSupportPresenter().initHomeLucky(LuckDataManager.getInstance().getSelectConstellationIndex(),  LuckDataManager.getInstance().getVipMobile());
     }
 
 

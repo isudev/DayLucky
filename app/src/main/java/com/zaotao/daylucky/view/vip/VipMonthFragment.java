@@ -11,14 +11,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.zaotao.daylucky.R;
+import com.zaotao.daylucky.app.Constants;
 import com.zaotao.daylucky.app.DateUtils;
 import com.zaotao.daylucky.base.BaseFragment;
+import com.zaotao.daylucky.contract.DayLuckVipContract;
 import com.zaotao.daylucky.module.entity.FortuneContentEntity;
 import com.zaotao.daylucky.module.entity.LuckyTodayEntity;
 import com.zaotao.daylucky.module.entity.LuckyVipEntity;
 import com.zaotao.daylucky.presenter.DayLuckVipPresenter;
 import com.zaotao.daylucky.view.adapter.VipLuckyContentAdapter;
 import com.zaotao.daylucky.widget.appview.AppFakeBoldTextView;
+import com.zaotao.daylucky.widget.dialog.DialogUnlockedVip;
 import com.zaotao.daylucky.widget.ringview.RingChartView;
 
 import java.util.List;
@@ -29,7 +32,7 @@ import butterknife.BindView;
  * Description VipMonthFragment
  * Created by wangisu@qq.com on 12/22/20.
  */
-public class VipMonthFragment extends BaseFragment<DayLuckVipPresenter> {
+public class VipMonthFragment extends BaseFragment<DayLuckVipPresenter> implements DayLuckVipContract.View {
 
     @BindView(R.id.lucky_vip_month_text0)
     TextView luckyVipMonthText0;
@@ -56,6 +59,8 @@ public class VipMonthFragment extends BaseFragment<DayLuckVipPresenter> {
     @BindView(R.id.vip_month_chart_ring_text3)
     AppFakeBoldTextView vipMonthChartRingText3;
 
+    private DialogUnlockedVip dialogUnlockedVip;
+
     public static VipMonthFragment newInstance(LuckyVipEntity luckyVipEntity) {
         Bundle args = new Bundle();
         args.putSerializable("fragment_lucky_vip_month", luckyVipEntity);
@@ -77,6 +82,8 @@ public class VipMonthFragment extends BaseFragment<DayLuckVipPresenter> {
 
     @Override
     protected void initViewData(View view) {
+        dialogUnlockedVip = new DialogUnlockedVip(mContext);
+
         LuckyVipEntity luckyVipMonthData = (LuckyVipEntity) getArguments().getSerializable("fragment_lucky_vip_month");
         luckyVipCount.setText(luckyVipMonthData.getMonth().getCont());
         String monthDate = luckyVipMonthData.getDate().getYear() + "." + luckyVipMonthData.getDate().getMonth();
@@ -112,10 +119,26 @@ public class VipMonthFragment extends BaseFragment<DayLuckVipPresenter> {
             luckyVipContent.setAdapter(vipLuckyContentAdapter);
             vipLuckyContentAdapter.notifyDataSetChanged(fortuneContentEntities);
         }
+        /**
+         * register constellation index
+         */
+        getSupportPresenter().registerSelectPosition();
     }
 
     @Override
     protected void initListener() {
+        vipMonthLockButton.setOnClickListener(v -> dialogUnlockedVip.showDialog(mobile -> {
+                    showToast(mobile);
+        }));
+    }
 
+    @Override
+    public void onSuccessLucky(LuckyVipEntity luckyVipEntity) {
+
+    }
+
+    @Override
+    public void onChangeConstellationIndex(int index) {
+        dialogUnlockedVip.setSelectText(Constants.CONSTELLATION_DESC[index]);
     }
 }

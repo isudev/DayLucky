@@ -1,14 +1,12 @@
 package com.zaotao.daylucky.view.vip;
 
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,20 +16,18 @@ import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.zaotao.daylucky.R;
+import com.zaotao.daylucky.app.Constants;
 import com.zaotao.daylucky.base.BaseFragment;
+import com.zaotao.daylucky.contract.DayLuckVipContract;
 import com.zaotao.daylucky.module.entity.FortuneContentEntity;
-import com.zaotao.daylucky.module.entity.LuckyTodayEntity;
 import com.zaotao.daylucky.module.entity.LuckyVipEntity;
+import com.zaotao.daylucky.module.listener.OnVipDialogListener;
 import com.zaotao.daylucky.presenter.DayLuckVipPresenter;
 import com.zaotao.daylucky.view.adapter.VipLineChartHistogramAdapter;
 import com.zaotao.daylucky.view.adapter.VipLuckyContentAdapter;
+import com.zaotao.daylucky.widget.dialog.DialogUnlockedVip;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -40,7 +36,7 @@ import butterknife.BindView;
  * Description VipWeekYearFragment
  * Created by wangisu@qq.com on 12/22/20.
  */
-public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> {
+public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> implements DayLuckVipContract.View {
 
     @BindView(R.id.lucky_vip_line_chart)
     LineChart luckyVipLineChart;
@@ -60,6 +56,8 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> {
     RelativeLayout vipWeekLockView;
     @BindView(R.id.lucky_vip_count)
     TextView luckyVipCount;
+
+    private DialogUnlockedVip dialogUnlockedVip;
 
     public static VipWeekFragment newInstance(LuckyVipEntity luckyVipEntity) {
         Bundle args = new Bundle();
@@ -82,6 +80,8 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> {
 
     @Override
     protected void initViewData(View view) {
+        dialogUnlockedVip = new DialogUnlockedVip(mContext);
+
         LuckyVipEntity luckyVipWeekData = (LuckyVipEntity) getArguments().getSerializable("fragment_lucky_vip_week_year");
         luckyVipWeekText0.setText(luckyVipWeekData.getDate().getWeek().split("/")[0]);
         luckyVipWeekText1.setText(luckyVipWeekData.getDate().getWeek().split("/")[0]);
@@ -122,7 +122,7 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> {
         vipLineChartHistogramAdapter.notifyDataSetChanged(luckyVipWeekData.getWeek_charts());
         luckyVipLineChartItems.setLayoutManager(new GridLayoutManager(mContext, 7));
         luckyVipLineChartItems.setAdapter(vipLineChartHistogramAdapter);
-        getSupportPresenter().initVipWeekChartsList(mContext,luckyVipWeekData,luckyVipLineChart);
+        getSupportPresenter().initVipWeekChartsList(mContext, luckyVipWeekData, luckyVipLineChart);
         /**
          * set bottom recycler view data
          */
@@ -138,12 +138,26 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> {
             luckyVipContent.setAdapter(vipLuckyContentAdapter);
             vipLuckyContentAdapter.notifyDataSetChanged(fortuneContentEntities);
         }
+        /**
+         * register constellation index
+         */
+        getSupportPresenter().registerSelectPosition();
     }
 
     @Override
     protected void initListener() {
-        vipWeekLockButton.setOnClickListener(v -> {
-            showToast("lock");
-        });
+        vipWeekLockButton.setOnClickListener(v -> dialogUnlockedVip.showDialog(mobile -> {
+            showToast(mobile);
+        }));
+    }
+
+    @Override
+    public void onSuccessLucky(LuckyVipEntity luckyVipEntity) {
+
+    }
+
+    @Override
+    public void onChangeConstellationIndex(int index) {
+        dialogUnlockedVip.setSelectText(Constants.CONSTELLATION_DESC[index]);
     }
 }

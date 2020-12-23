@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.core.content.ContextCompat;
 
@@ -13,8 +14,11 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.zaotao.base.rx.RxBus;
+import com.zaotao.base.rx.RxBusSubscriber;
 import com.zaotao.base.rx.RxSchedulers;
 import com.zaotao.daylucky.R;
+import com.zaotao.daylucky.app.LuckDataManager;
 import com.zaotao.daylucky.app.MD5Utils;
 import com.zaotao.daylucky.base.BasePresenter;
 import com.zaotao.daylucky.contract.DayLuckVipContract;
@@ -25,6 +29,7 @@ import com.zaotao.daylucky.module.api.BaseResult;
 import com.zaotao.daylucky.module.entity.FortuneContentEntity;
 import com.zaotao.daylucky.module.entity.LuckyTodayEntity;
 import com.zaotao.daylucky.module.entity.LuckyVipEntity;
+import com.zaotao.daylucky.module.event.SelectEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +47,23 @@ public class DayLuckVipPresenter extends BasePresenter<DayLuckVipContract.View> 
 
     @Override
     public void onPresenterDestroy() {
+    }
+
+    @Override
+    public void registerSelectPosition() {
+        RxBus.getDefault().toObservable(SelectEvent.class)
+                .compose(RxSchedulers.applySchedulers(getLifecycleProvider()))
+                .subscribe(new RxBusSubscriber<SelectEvent>() {
+                    @Override
+                    public void onEvent(SelectEvent selectEvent) {
+                        getView().onChangeConstellationIndex(selectEvent.getVar());
+                    }
+
+                    @Override
+                    public void onFailure(String errMsg) {
+
+                    }
+                });
     }
 
     @Override
@@ -186,11 +208,11 @@ public class DayLuckVipPresenter extends BasePresenter<DayLuckVipContract.View> 
 
     @Override
     public void initVipYearChartsList(Context context, LuckyVipEntity luckyVipEntity, LineChart luckyVipLineChart) {
-        int  currentYear = 0;
+        int currentYear = 0;
         List<Integer> points = new ArrayList<>();
         for (int i = 0; i < luckyVipEntity.getYear_charts().size(); i++) {
             LuckyTodayEntity luckyTodayEntity = luckyVipEntity.getYear_charts().get(i);
-            if (luckyTodayEntity.getX().equals(luckyVipEntity.getDate().getMonth())){
+            if (luckyTodayEntity.getX().equals(luckyVipEntity.getDate().getMonth())) {
                 currentYear = i;
             }
             points.add(luckyTodayEntity.getY());

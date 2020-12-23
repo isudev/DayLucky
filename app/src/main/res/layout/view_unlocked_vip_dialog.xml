@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/dp_30"
+    android:layout_marginTop="@dimen/dp_100"
+    android:layout_marginEnd="@dimen/dp_30"
+    android:background="@drawable/ic_unlocked_vip_dialog_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_28"
+        android:text="信息确认"
+        android:textColor="@color/color191919"
+        android:textSize="@dimen/sp_17" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/view_unlocked_vip_input"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_49"
+        android:layout_marginStart="@dimen/dp_22"
+        android:layout_marginTop="@dimen/dp_28"
+        android:layout_marginEnd="@dimen/dp_22"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:maxLength="11"
+        android:inputType="number"
+        android:background="@drawable/ic_unlocked_vip_input_bg"
+        android:gravity="center_vertical"
+        android:hint="请输入手机号码"
+        android:paddingStart="@dimen/dp_15"
+        android:textColorHint="@color/colorD8D8D8"
+        android:textColor="@color/color1C1C1C"
+        android:textSize="17sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_22"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginEnd="@dimen/dp_22">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="星座"
+            android:textColor="@color/color191919"
+            android:textSize="@dimen/sp_15" />
+
+        <TextView
+            android:id="@+id/view_unlocked_vip_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:drawableEnd="@drawable/ic_select_arrow"
+            android:drawablePadding="@dimen/dp_5"
+            android:text="双鱼座"
+            android:textColor="#ff5b5d62"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/view_unlocked_vip_button"
+        android:layout_width="@dimen/dp_180"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_34"
+        android:layout_marginBottom="@dimen/dp_23"
+        android:background="@drawable/ic_lock_button"
+        android:text="确认解锁"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+</LinearLayout>

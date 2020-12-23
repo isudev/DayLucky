@@ -23,14 +23,18 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.zaotao.daylucky.R;
+import com.zaotao.daylucky.app.Constants;
 import com.zaotao.daylucky.base.BaseFragment;
+import com.zaotao.daylucky.contract.DayLuckVipContract;
 import com.zaotao.daylucky.module.entity.FortuneContentEntity;
 import com.zaotao.daylucky.module.entity.LuckyTodayEntity;
 import com.zaotao.daylucky.module.entity.LuckyVipEntity;
+import com.zaotao.daylucky.module.listener.OnVipDialogListener;
 import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
 import com.zaotao.daylucky.presenter.DayLuckVipPresenter;
 import com.zaotao.daylucky.view.adapter.VipLineChartHistogramAdapter;
 import com.zaotao.daylucky.view.adapter.VipLuckyContentAdapter;
+import com.zaotao.daylucky.widget.dialog.DialogUnlockedVip;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +45,7 @@ import butterknife.BindView;
  * Description VipWeekYearFragment
  * Created by wangisu@qq.com on 12/22/20.
  */
-public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> {
+public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> implements DayLuckVipContract.View {
 
     @BindView(R.id.lucky_vip_week_text0)
     TextView luckyVipWeekText0;
@@ -60,7 +64,9 @@ public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> {
     @BindView(R.id.vip_week_lock_button)
     LinearLayout vipWeekLockButton;
     @BindView(R.id.vip_week_lock_view)
-    RelativeLayout vipWeekLockView;
+    RelativeLayout vipYearLockView;
+
+    private DialogUnlockedVip dialogUnlockedVip;
 
     public static VipYearFragment newInstance(LuckyVipEntity luckyVipEntity) {
         Bundle args = new Bundle();
@@ -83,6 +89,8 @@ public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> {
 
     @Override
     protected void initViewData(View view) {
+        dialogUnlockedVip = new DialogUnlockedVip(mContext);
+
         LuckyVipEntity luckyVipYearData = (LuckyVipEntity) getArguments().getSerializable("fragment_lucky_vip_week_year");
         String yearDate = luckyVipYearData.getDate().getMonth_abbr() + luckyVipYearData.getDate().getYear();
         luckyVipWeekText0.setText(yearDate);
@@ -131,19 +139,35 @@ public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> {
         List<FortuneContentEntity> fortuneContentEntities = getSupportPresenter().initVipYearFortuneList(luckyVipYearData);
         if (fortuneContentEntities.size() == 0) {
             luckyVipContent.setVisibility(View.GONE);
-            vipWeekLockView.setVisibility(View.VISIBLE);
+            vipYearLockView.setVisibility(View.VISIBLE);
         } else {
             luckyVipContent.setVisibility(View.VISIBLE);
-            vipWeekLockView.setVisibility(View.GONE);
+            vipYearLockView.setVisibility(View.GONE);
             luckyVipContent.setLayoutManager(new LinearLayoutManager(mContext));
             VipLuckyContentAdapter vipLuckyContentAdapter = new VipLuckyContentAdapter(mContext);
             luckyVipContent.setAdapter(vipLuckyContentAdapter);
             vipLuckyContentAdapter.notifyDataSetChanged(fortuneContentEntities);
         }
+        /**
+         * register constellation index
+         */
+        getSupportPresenter().registerSelectPosition();
     }
 
     @Override
     protected void initListener() {
+        vipYearLockView.setOnClickListener(v -> dialogUnlockedVip.showDialog(mobile -> {
+            showToast(mobile);
+        }));
+    }
 
+    @Override
+    public void onSuccessLucky(LuckyVipEntity luckyVipEntity) {
+
+    }
+
+    @Override
+    public void onChangeConstellationIndex(int index) {
+        dialogUnlockedVip.setSelectText(Constants.CONSTELLATION_DESC[index]);
     }
 }

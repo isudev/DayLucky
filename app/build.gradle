@@ -98,6 +98,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
     implementation 'com.github.duanhong169:colorpicker:1.1.6'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'com.github.razerdp:BasePopup:2.2.2.2'
     implementation project(':base')
     implementation project(':indicator')
 
