@@ -1,6 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:overScrollMode="never">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_100">
+
+                <com.zaotao.daylucky.widget.appview.AppFakeBoldTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dp_24"
+                    android:ems="1"
+                    android:text="概况"
+                    android:textColor="@color/color333333"
+                    android:textSize="@dimen/sp_17" />
+
+                <TextView
+                    android:id="@+id/lucky_vip_month_text0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_54"
+                    android:layout_marginTop="@dimen/dp_26"
+                    android:text="10.11-10.17"
+                    android:textColor="@color/color333333"
+                    android:textSize="@dimen/sp_14" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp_33"
+                    android:layout_height="@dimen/dp_6"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="@dimen/dp_54"
+                    android:layout_marginBottom="@dimen/dp_32"
+                    android:background="@drawable/vip_line" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/dp_18"
+                    android:src="@drawable/ic_vip_survey_image" />
+            </RelativeLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="@dimen/dp_10"
+                app:cardElevation="@dimen/dp_8"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:overScrollMode="never">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="@dimen/dp_300"
+                        android:layout_height="@dimen/dp_300"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/dp_27"
+                        android:layout_marginBottom="@dimen/dp_20"
+                        android:background="@drawable/ic_home_fortune_ring_bg">
+
+                        <com.zaotao.daylucky.widget.ringview.RingChartFortuneView
+                            android:id="@+id/vip_month_chart_ring1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="@dimen/dp_30"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.zaotao.daylucky.widget.ringview.RingChartFortuneView
+                            android:id="@+id/vip_month_chart_ring2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="@dimen/dp_55"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.zaotao.daylucky.widget.ringview.RingChartFortuneView
+                            android:id="@+id/vip_month_chart_ring3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="@dimen/dp_80"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.zaotao.daylucky.widget.appview.AppFakeBoldTextView
+                            android:id="@+id/vip_month_chart_ring_text1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_2"
+                            android:layout_marginEnd="@dimen/dp_20"
+                            android:text="月末"
+                            android:textColor="#ffdad8d8"
+                            android:textSize="@dimen/sp_9"
+                            app:layout_constraintEnd_toEndOf="@id/vip_month_chart_ring1"
+                            app:layout_constraintStart_toStartOf="@id/vip_month_chart_ring1"
+                            app:layout_constraintTop_toTopOf="@id/vip_month_chart_ring1" />
+
+                        <com.zaotao.daylucky.widget.appview.AppFakeBoldTextView
+                            android:id="@+id/vip_month_chart_ring_text2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_2"
+                            android:layout_marginEnd="@dimen/dp_20"
+                            android:text="月中"
+                            android:textColor="#ffdad8d8"
+                            android:textSize="@dimen/sp_9"
+                            app:layout_constraintEnd_toEndOf="@id/vip_month_chart_ring2"
+                            app:layout_constraintStart_toStartOf="@id/vip_month_chart_ring2"
+                            app:layout_constraintTop_toTopOf="@id/vip_month_chart_ring2" />
+
+                        <com.zaotao.daylucky.widget.appview.AppFakeBoldTextView
+                            android:id="@+id/vip_month_chart_ring_text3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_2"
+                            android:layout_marginEnd="@dimen/dp_20"
+                            android:text="月初"
+                            android:textColor="#ffdad8d8"
+                            android:textSize="@dimen/sp_9"
+                            app:layout_constraintEnd_toEndOf="@id/vip_month_chart_ring3"
+                            app:layout_constraintStart_toStartOf="@id/vip_month_chart_ring3"
+                            app:layout_constraintTop_toTopOf="@id/vip_month_chart_ring3" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <TextView
+                        android:id="@+id/lucky_vip_count"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:layout_marginEnd="@dimen/dp_16"
+                        android:layout_marginBottom="@dimen/dp_24"
+                        tools:text="在本周，双鱼座需要在花钱方面多加注意，可以给自己制定一个钱财的花销计划或者是设定一定的限额，避免情绪化消费。"
+                        android:textColor="@color/color333333"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_100">
+
+                <com.zaotao.daylucky.widget.appview.AppFakeBoldTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dp_24"
+                    android:ems="1"
+                    android:text="详情"
+                    android:textColor="@color/color333333"
+                    android:textSize="@dimen/sp_17" />
+
+                <TextView
+                    android:id="@+id/lucky_vip_month_text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_54"
+                    android:layout_marginTop="@dimen/dp_26"
+                    android:text="10.11-10.17"
+                    android:textColor="@color/color333333"
+                    android:textSize="@dimen/sp_14" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp_33"
+                    android:layout_height="@dimen/dp_6"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="@dimen/dp_54"
+                    android:layout_marginBottom="@dimen/dp_32"
+                    android:background="@drawable/vip_line" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/dp_18"
+                    android:src="@drawable/ic_vip_detail_image" />
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lucky_vip_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:id="@+id/vip_month_lock_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_400"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/ic_lock_bg">
+
+        <LinearLayout
+            android:id="@+id/vip_month_lock_button"
+            android:layout_width="@dimen/dp_245"
+            android:layout_height="@dimen/dp_44"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp_24"
+            android:background="@drawable/ic_lock_button"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_lock_image" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_7"
+                android:text="解锁专业周运"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/sp_15" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

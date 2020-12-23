@@ -24,6 +24,8 @@ public class DateUtils {
 
     public static String[] WEEK_TIMES = {"MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"};
 
+    public static String[] YEAR_TIMES = {"Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul","Aug","Sept","Oct","Nov","Dec"};
+
     public static String formatWeekText(long time) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date(System.currentTimeMillis()));
@@ -75,5 +77,12 @@ public class DateUtils {
             monthString = "December";
         }
         return monthString;
+    }
+
+    public static int formatCurrentDay(long currentTimeMillis) {
+        Calendar currentCalendar = Calendar.getInstance();
+        currentCalendar.setTime(new Date(currentTimeMillis));
+        int currentDay = currentCalendar.get(Calendar.DAY_OF_MONTH);
+        return currentDay;
     }
 }

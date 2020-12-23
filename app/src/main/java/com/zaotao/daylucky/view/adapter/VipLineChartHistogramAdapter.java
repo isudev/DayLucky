@@ -69,7 +69,12 @@ public class VipLineChartHistogramAdapter extends RecyclerView.Adapter<VipLineCh
                 itemHomeFortuneLineChartXImage.setVisibility(View.INVISIBLE);
                 itemHomeFortuneLineChartXText.setTextColor(ContextCompat.getColor(context, R.color.color666666));
             }
-            itemHomeFortuneLineChartXText.setText(DateUtils.WEEK_TIMES[position]);
+            if (items.size() == 7) {
+                itemHomeFortuneLineChartXText.setText(DateUtils.WEEK_TIMES[position]);
+            } else {
+                itemHomeFortuneLineChartXText.setText(DateUtils.YEAR_TIMES[position]);
+                itemHomeFortuneLineChartXText.setRotation(-45);
+            }
         }
     }
 

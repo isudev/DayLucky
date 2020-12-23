@@ -58,6 +58,8 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> {
     LinearLayout vipWeekLockButton;
     @BindView(R.id.vip_week_lock_view)
     RelativeLayout vipWeekLockView;
+    @BindView(R.id.lucky_vip_count)
+    TextView luckyVipCount;
 
     private VipLineChartHistogramAdapter vipLineChartHistogramAdapter;
     private VipLuckyContentAdapter vipLuckyContentAdapter;
@@ -86,6 +88,7 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> {
         LuckyVipEntity luckyVipWeekData = (LuckyVipEntity) getArguments().getSerializable("fragment_lucky_vip_week_year");
         luckyVipWeekText0.setText(luckyVipWeekData.getDate().getWeek().split("/")[0]);
         luckyVipWeekText1.setText(luckyVipWeekData.getDate().getWeek().split("/")[0]);
+        luckyVipCount.setText(luckyVipWeekData.getWeek().getCont());
 
         luckyVipLineChart.getDescription().setEnabled(false);
         luckyVipLineChart.setBackgroundColor(Color.WHITE);
@@ -122,13 +125,7 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> {
         vipLineChartHistogramAdapter.notifyDataSetChanged(luckyVipWeekData.getWeek_charts());
         luckyVipLineChartItems.setLayoutManager(new GridLayoutManager(mContext, 7));
         luckyVipLineChartItems.setAdapter(vipLineChartHistogramAdapter);
-
-        List<Integer> points = new ArrayList<>();
-        for (LuckyTodayEntity luckyTodayEntity :
-                luckyVipWeekData.getWeek_charts()) {
-            points.add(luckyTodayEntity.getY());
-        }
-        setLineChartData(points);
+        getSupportPresenter().initVipWeekChartsList(mContext,luckyVipWeekData,luckyVipLineChart);
         /**
          * set bottom recycler view data
          */
@@ -145,51 +142,6 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> {
             vipLuckyContentAdapter.notifyDataSetChanged(fortuneContentEntities);
         }
     }
-
-    private void setLineChartData(List<Integer> points) {
-        List<Entry> valuesCompPoint = new ArrayList<>();
-        List<Entry> valuesCompNormal = new ArrayList<>();
-        for (int i = 0; i < points.size(); i++) {
-            if (i == vipLineChartHistogramAdapter.getTodayPosition()) {
-                valuesCompPoint.add(new Entry(i * 10, points.get(i)));
-            }
-            valuesCompNormal.add(new Entry(i * 10, points.get(i)));
-        }
-        Drawable lineDataSetDrawable = ContextCompat.getDrawable(mContext, R.drawable.ic_line_chart_fill_bg);
-        LineDataSet lineDataSetPointStyle = new LineDataSet(valuesCompPoint, "");
-        lineDataSetPointStyle.setColor(ContextCompat.getColor(mContext, R.color.color6983FE));
-        lineDataSetPointStyle.setDrawCircles(true);
-        lineDataSetPointStyle.setCircleColor(Color.WHITE);
-        lineDataSetPointStyle.setCircleRadius(5f);
-        lineDataSetPointStyle.setCircleHoleRadius(4f);
-        lineDataSetPointStyle.setCircleHoleColor(ContextCompat.getColor(mContext, R.color.color6983FE));
-        lineDataSetPointStyle.setDrawValues(true);
-        lineDataSetPointStyle.setMode(LineDataSet.Mode.HORIZONTAL_BEZIER);
-        lineDataSetPointStyle.setLineWidth(3.5f);
-        lineDataSetPointStyle.setDrawFilled(false);
-        lineDataSetPointStyle.setFillDrawable(lineDataSetDrawable);
-        lineDataSetPointStyle.setValueTextColor(Color.WHITE);
-
-        LineDataSet lineDataSetNormalStyle = new LineDataSet(valuesCompNormal, "");
-        lineDataSetNormalStyle.setColor(ContextCompat.getColor(mContext, R.color.color6983FE));
-        lineDataSetNormalStyle.setDrawCircles(false);
-        lineDataSetNormalStyle.setDrawValues(false);
-        lineDataSetNormalStyle.setMode(LineDataSet.Mode.HORIZONTAL_BEZIER);
-        lineDataSetNormalStyle.setLineWidth(3.5f);
-        lineDataSetNormalStyle.setDrawFilled(false);
-        lineDataSetNormalStyle.setFillDrawable(lineDataSetDrawable);
-
-        List<ILineDataSet> dataSets = new ArrayList<>();
-        dataSets.add(lineDataSetPointStyle);
-        dataSets.add(lineDataSetNormalStyle);
-
-        LineData lineData = new LineData(dataSets);
-
-        luckyVipLineChart.setData(lineData);
-        luckyVipLineChart.invalidate();
-        luckyVipLineChart.setVisibility(View.VISIBLE);
-    }
-
 
     @Override
     protected void initListener() {
