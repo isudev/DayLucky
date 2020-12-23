@@ -42,10 +42,10 @@ public class VipMonthFragment extends BaseFragment<DayLuckVipPresenter> implemen
     TextView luckyVipMonthText1;
     @BindView(R.id.lucky_vip_content)
     RecyclerView luckyVipContent;
-    @BindView(R.id.vip_month_lock_button)
-    LinearLayout vipMonthLockButton;
-    @BindView(R.id.vip_month_lock_view)
-    RelativeLayout vipMonthLockView;
+    @BindView(R.id.vip_lock_button)
+    LinearLayout vipLockButton;
+    @BindView(R.id.vip_lock_view)
+    RelativeLayout vipLockView;
     @BindView(R.id.vip_month_chart_ring1)
     RingChartView vipMonthChartRing1;
     @BindView(R.id.vip_month_chart_ring2)
@@ -112,10 +112,10 @@ public class VipMonthFragment extends BaseFragment<DayLuckVipPresenter> implemen
         List<FortuneContentEntity> fortuneContentEntities = getSupportPresenter().initMonthFortuneList(luckyVipMonthData);
         if (fortuneContentEntities.size() == 0) {
             luckyVipContent.setVisibility(View.GONE);
-            vipMonthLockView.setVisibility(View.VISIBLE);
+            vipLockView.setVisibility(View.VISIBLE);
         } else {
             luckyVipContent.setVisibility(View.VISIBLE);
-            vipMonthLockView.setVisibility(View.GONE);
+            vipLockView.setVisibility(View.GONE);
             luckyVipContent.setLayoutManager(new LinearLayoutManager(mContext));
             VipLuckyContentAdapter vipLuckyContentAdapter = new VipLuckyContentAdapter(mContext);
             luckyVipContent.setAdapter(vipLuckyContentAdapter);
@@ -128,7 +128,7 @@ public class VipMonthFragment extends BaseFragment<DayLuckVipPresenter> implemen
         /**
          * order pay action
          */
-        vipMonthLockButton.setOnClickListener(v -> dialogUnlockedVip.showDialog((mobile, payType) -> {
+        vipLockButton.setOnClickListener(v -> dialogUnlockedVip.showDialog((mobile, payType) -> {
             switch (payType){
                 case 0:
                     getSupportPresenter().aliPayOrder(mActivity, luckyVipMonthData.getMonth().getId(), mobile);

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/vip_lock_view"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_400"
+    android:layout_alignParentBottom="true"
+    android:background="@drawable/ic_lock_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/vip_lock_button"
+            android:layout_width="@dimen/dp_245"
+            android:layout_height="@dimen/dp_44"
+            android:layout_marginBottom="@dimen/dp_14"
+            android:background="@drawable/ic_lock_button"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_lock_image" />
+
+            <TextView
+                android:id="@+id/vip_lock_button_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_7"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/sp_15"
+                tools:text="解锁专业月运" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/vip_lock_tip_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10"
+            android:text="解锁运势内容出现问题请联系客服微信(点击复制)"
+            android:textSize="@dimen/sp_10" />
+    </LinearLayout>
+</RelativeLayout>

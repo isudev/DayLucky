@@ -4,8 +4,8 @@ import android.widget.ImageView;
 
 import com.zaotao.daylucky.base.BaseSimplePresenter;
 import com.zaotao.daylucky.base.IView;
-import com.zaotao.daylucky.module.entity.LuckyEntity;
 import com.zaotao.daylucky.module.entity.FortuneContentEntity;
+import com.zaotao.daylucky.module.entity.LuckyEntity;
 import com.zaotao.daylucky.module.entity.SettingSelectEntity;
 import com.zaotao.daylucky.module.entity.SettingStyleEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
@@ -33,6 +33,10 @@ public interface DayLuckCoreContract {
         void initHomeLucky();
 
         void initHomeLucky(int var);
+
+        void selectChangeTheme(int position, ThemeEntity themeEntity);
+
+        List<ThemeEntity> initThemeList(ThemeEntity themeEntity);
 
         List<SettingSelectEntity> initSelectConstellationData();
 

@@ -49,10 +49,10 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> implement
     TextView luckyVipWeekText0;
     @BindView(R.id.lucky_vip_week_text1)
     TextView luckyVipWeekText1;
-    @BindView(R.id.vip_week_lock_button)
-    LinearLayout vipWeekLockButton;
-    @BindView(R.id.vip_week_lock_view)
-    RelativeLayout vipWeekLockView;
+    @BindView(R.id.vip_lock_button)
+    LinearLayout vipLockButton;
+    @BindView(R.id.vip_lock_view)
+    RelativeLayout vipLockView;
     @BindView(R.id.lucky_vip_count)
     TextView luckyVipCount;
     @BindView(R.id.vip_lock_button_text)
@@ -130,10 +130,10 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> implement
         List<FortuneContentEntity> fortuneContentEntities = getSupportPresenter().initVipWeekFortuneList(luckyVipWeekData);
         if (fortuneContentEntities.size() == 0) {
             luckyVipContent.setVisibility(View.GONE);
-            vipWeekLockView.setVisibility(View.VISIBLE);
+            vipLockView.setVisibility(View.VISIBLE);
         } else {
             luckyVipContent.setVisibility(View.VISIBLE);
-            vipWeekLockView.setVisibility(View.GONE);
+            vipLockView.setVisibility(View.GONE);
             luckyVipContent.setLayoutManager(new LinearLayoutManager(mContext));
             VipLuckyContentAdapter vipLuckyContentAdapter = new VipLuckyContentAdapter(mContext);
             luckyVipContent.setAdapter(vipLuckyContentAdapter);
@@ -146,7 +146,7 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> implement
         /**
          * order pay action
          */
-        vipWeekLockButton.setOnClickListener(v -> dialogUnlockedVip.showDialog((mobile, payType) -> {
+        vipLockButton.setOnClickListener(v -> dialogUnlockedVip.showDialog((mobile, payType) -> {
             switch (payType){
                 case 0:
                     getSupportPresenter().aliPayOrder(mActivity, luckyVipWeekData.getWeek().getId(), mobile);

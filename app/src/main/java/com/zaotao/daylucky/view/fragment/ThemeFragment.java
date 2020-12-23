@@ -7,21 +7,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
-import com.zaotao.base.rx.RxBus;
 import com.zaotao.base.utils.ToastUtils;
-import com.zaotao.base.utils.VibrateUtils;
 import com.zaotao.daylucky.R;
-import com.zaotao.daylucky.app.ColorManager;
-import com.zaotao.daylucky.app.LuckDataManager;
 import com.zaotao.daylucky.base.BaseFragment;
 import com.zaotao.daylucky.contract.DayLuckCoreContract;
 import com.zaotao.daylucky.module.entity.LuckyEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
-import com.zaotao.daylucky.module.listener.OnItemPositionClickListener;
 import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
 import com.zaotao.daylucky.view.adapter.ThemeStyleAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -32,7 +26,7 @@ public class ThemeFragment extends BaseFragment<DayLuckCorePresenter> implements
     @BindView(R.id.toolbar_layout)
     CollapsingToolbarLayout toolbarLayout;
 
-    private List<ThemeEntity> themeEntityList = new ArrayList<>();
+    private List<ThemeEntity> themeEntityList;
 
     private ThemeStyleAdapter themeStyleAdapter;
 
@@ -49,8 +43,8 @@ public class ThemeFragment extends BaseFragment<DayLuckCorePresenter> implements
     @Override
     protected void initViewData(View view) {
         toolbarLayout.setTitle(getString(R.string.main_bottom_bar_text_theme));
-        toolbarLayout.setCollapsedTitleTextColor(ContextCompat.getColor(mContext,R.color.color333333));
-        toolbarLayout.setExpandedTitleColor(ContextCompat.getColor(mContext,R.color.color333333));
+        toolbarLayout.setCollapsedTitleTextColor(ContextCompat.getColor(mContext, R.color.color333333));
+        toolbarLayout.setExpandedTitleColor(ContextCompat.getColor(mContext, R.color.color333333));
         getSupportPresenter().registerThemeInfo();
 
         themeStyleAdapter = new ThemeStyleAdapter(mContext);
@@ -61,25 +55,9 @@ public class ThemeFragment extends BaseFragment<DayLuckCorePresenter> implements
 
     @Override
     protected void initListener() {
-        themeStyleAdapter.setOnItemPositionClickListener(new OnItemPositionClickListener() {
-            @Override
-            public void onClick(int position) {
-                ThemeEntity themeEntity = themeEntityList.get(position);
-                if (position > 0) {
-                    themeEntity.setDayColor(ColorManager.normalWhiteColor);
-                    themeEntity.setWeekColor(ColorManager.normalWhiteColor);
-                    themeEntity.setMonthColor(ColorManager.normalWhiteColor);
-                    themeEntity.setTextColor(ColorManager.normalWhiteColor);
-                    themeEntity.setLuckyColor(ColorManager.normalWhiteColor);
-                } else {
-                    themeEntity.setLuckyColor(ColorManager.normalLuckColor);
-                    themeEntity.setTextColor(ColorManager.colorTextContent);
-                }
-
-                LuckDataManager.getInstance().saveThemeData(themeEntity);
-                RxBus.getDefault().post(themeEntity);
-                VibrateUtils.vibrate(120);
-            }
+        themeStyleAdapter.setOnItemPositionClickListener(position -> {
+            ThemeEntity themeEntity = themeEntityList.get(position);
+            getSupportPresenter().selectChangeTheme(position, themeEntity);
         });
     }
 
@@ -95,34 +73,9 @@ public class ThemeFragment extends BaseFragment<DayLuckCorePresenter> implements
 
     @Override
     public void onSuccessThemeInfo(ThemeEntity data) {
-        themeEntityList.clear();
-        LuckDataManager.getInstance().saveThemeData(data);
 
-        for (int i = 0; i < 16; i++) {
-            ThemeEntity themeEntity = new ThemeEntity();
-            themeEntity.setDay(data.getDay());
-            themeEntity.setWeek(data.getWeek());
-            themeEntity.setMonth(data.getMonth());
-            themeEntity.setText(data.getText());
-            themeEntity.setLucky(data.getLucky());
-            themeEntity.setBad(data.getBad());
-            themeEntity.setLuckyColor(data.getLuckyColor());
-            themeEntityList.add(themeEntity);
-        }
-        for (int i = 0; i < ColorManager.colorsLineBg.length; i++) {
-            for (int j = 0; j < ColorManager.colorsLineBg[i].length; j++) {
-                if (j == 0) {
-                    themeEntityList.get(i).setLineColor(ColorManager.colorsLineBg[i][j]);
-                    themeEntityList.get(i).setBadColor(ColorManager.colorsLineBg[i][j]);
-                    if (i == 0) {
-                        themeEntityList.get(i).setBadColor(ColorManager.normalBadColor);
-                    }
-                } else if (j == 1) {
-                    themeEntityList.get(i).setBgColor(ColorManager.colorsLineBg[i][j]);
-                }
-            }
-        }
+        themeEntityList = getSupportPresenter().initThemeList(data);
 
-        themeStyleAdapter.notifyDataSetChanged(themeEntityList);
+        themeStyleAdapter.notifyDataSetChanged(this.themeEntityList);
     }
 }

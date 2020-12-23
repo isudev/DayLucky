@@ -52,10 +52,10 @@ public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> implement
     TextView luckyVipWeekText1;
     @BindView(R.id.lucky_vip_content)
     RecyclerView luckyVipContent;
-    @BindView(R.id.vip_week_lock_button)
-    LinearLayout vipWeekLockButton;
-    @BindView(R.id.vip_week_lock_view)
-    RelativeLayout vipYearLockView;
+    @BindView(R.id.vip_lock_button)
+    LinearLayout vipLockButton;
+    @BindView(R.id.vip_lock_view)
+    RelativeLayout vipLockView;
     @BindView(R.id.vip_lock_button_text)
     TextView vipLockButtonText;
 
@@ -132,10 +132,10 @@ public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> implement
         List<FortuneContentEntity> fortuneContentEntities = getSupportPresenter().initVipYearFortuneList(luckyVipYearData);
         if (fortuneContentEntities.size() == 0) {
             luckyVipContent.setVisibility(View.GONE);
-            vipYearLockView.setVisibility(View.VISIBLE);
+            vipLockView.setVisibility(View.VISIBLE);
         } else {
             luckyVipContent.setVisibility(View.VISIBLE);
-            vipYearLockView.setVisibility(View.GONE);
+            vipLockView.setVisibility(View.GONE);
             luckyVipContent.setLayoutManager(new LinearLayoutManager(mContext));
             VipLuckyContentAdapter vipLuckyContentAdapter = new VipLuckyContentAdapter(mContext);
             luckyVipContent.setAdapter(vipLuckyContentAdapter);
@@ -148,7 +148,7 @@ public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> implement
         /**
          * order pay action
          */
-        vipWeekLockButton.setOnClickListener(v -> dialogUnlockedVip.showDialog((mobile, payType) -> {
+        vipLockButton.setOnClickListener(v -> dialogUnlockedVip.showDialog((mobile, payType) -> {
             switch (payType){
                 case 0:
                     getSupportPresenter().aliPayOrder(mActivity, luckyVipYearData.getYear().getId(), mobile);

@@ -7,6 +7,7 @@ import com.zaotao.base.rx.RxBus;
 import com.zaotao.base.rx.RxBusSubscriber;
 import com.zaotao.base.rx.RxSchedulers;
 import com.zaotao.base.utils.NetworkUtils;
+import com.zaotao.base.utils.VibrateUtils;
 import com.zaotao.daylucky.App;
 import com.zaotao.daylucky.app.ColorManager;
 import com.zaotao.daylucky.app.Constants;
@@ -18,8 +19,8 @@ import com.zaotao.daylucky.module.api.ApiNetwork;
 import com.zaotao.daylucky.module.api.ApiService;
 import com.zaotao.daylucky.module.api.ApiSubscriber;
 import com.zaotao.daylucky.module.api.BaseResult;
-import com.zaotao.daylucky.module.entity.LuckyEntity;
 import com.zaotao.daylucky.module.entity.FortuneContentEntity;
+import com.zaotao.daylucky.module.entity.LuckyEntity;
 import com.zaotao.daylucky.module.entity.SettingSelectEntity;
 import com.zaotao.daylucky.module.entity.SettingStyleEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
@@ -252,6 +253,56 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
                         initHomeLucky();
                     }
                 });
+    }
+
+    @Override
+    public List<ThemeEntity> initThemeList(ThemeEntity data) {
+        List<ThemeEntity> themeEntityList = new ArrayList<>();
+        LuckDataManager.getInstance().saveThemeData(data);
+
+        for (int i = 0; i < 16; i++) {
+            ThemeEntity themeEntity = new ThemeEntity();
+            themeEntity.setDay(data.getDay());
+            themeEntity.setWeek(data.getWeek());
+            themeEntity.setMonth(data.getMonth());
+            themeEntity.setText(data.getText());
+            themeEntity.setLucky(data.getLucky());
+            themeEntity.setBad(data.getBad());
+            themeEntity.setLuckyColor(data.getLuckyColor());
+            themeEntityList.add(themeEntity);
+        }
+        for (int i = 0; i < ColorManager.colorsLineBg.length; i++) {
+            for (int j = 0; j < ColorManager.colorsLineBg[i].length; j++) {
+                if (j == 0) {
+                    themeEntityList.get(i).setLineColor(ColorManager.colorsLineBg[i][j]);
+                    themeEntityList.get(i).setBadColor(ColorManager.colorsLineBg[i][j]);
+                    if (i == 0) {
+                        themeEntityList.get(i).setBadColor(ColorManager.normalBadColor);
+                    }
+                } else if (j == 1) {
+                    themeEntityList.get(i).setBgColor(ColorManager.colorsLineBg[i][j]);
+                }
+            }
+        }
+        return themeEntityList;
+    }
+
+    @Override
+    public void selectChangeTheme(int position, ThemeEntity themeEntity) {
+        if (position > 0) {
+            themeEntity.setDayColor(ColorManager.normalWhiteColor);
+            themeEntity.setWeekColor(ColorManager.normalWhiteColor);
+            themeEntity.setMonthColor(ColorManager.normalWhiteColor);
+            themeEntity.setTextColor(ColorManager.normalWhiteColor);
+            themeEntity.setLuckyColor(ColorManager.normalWhiteColor);
+        } else {
+            themeEntity.setLuckyColor(ColorManager.normalLuckColor);
+            themeEntity.setTextColor(ColorManager.colorTextContent);
+        }
+
+        LuckDataManager.getInstance().saveThemeData(themeEntity);
+        RxBus.getDefault().post(themeEntity);
+        VibrateUtils.vibrate(120);
     }
 
     @Override
