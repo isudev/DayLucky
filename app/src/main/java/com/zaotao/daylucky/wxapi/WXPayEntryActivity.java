@@ -11,7 +11,6 @@ import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.zaotao.base.rx.RxBus;
-import com.zaotao.daylucky.app.Constants;
 import com.zaotao.daylucky.app.LuckDataManager;
 
 /**

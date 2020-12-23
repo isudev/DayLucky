@@ -8,6 +8,7 @@ import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.base.BaseActivity;
 import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
 import com.zaotao.daylucky.view.adapter.AppFragmentPagerAdapter;
+import com.zaotao.daylucky.view.fragment.LuckyFragment;
 import com.zaotao.daylucky.view.fragment.StyleFragment;
 import com.zaotao.daylucky.view.fragment.ThemeFragment;
 import com.zaotao.daylucky.view.vip.LuckyVipFragment;
@@ -37,8 +38,7 @@ public class MainActivity extends BaseActivity<DayLuckCorePresenter>  {
     protected void initCreate(Bundle savedInstanceState) {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new LuckyVipFragment());
-//        fragments.add(new LuckyFragment());
-        fragments.add(new ThemeFragment());
+        fragments.add(new LuckyFragment());
         fragments.add(new ThemeFragment());
         fragments.add(new StyleFragment());
         viewPagerMain.setAdapter(new AppFragmentPagerAdapter(getSupportFragmentManager(), fragments));
