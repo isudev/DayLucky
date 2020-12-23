@@ -196,7 +196,7 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
         if (!NetworkUtils.isConnected()) {
             initHomeLucky();
         }
-        apiService.initHomeLucky(position)
+        apiService.apiMainLucky(position)
                 .filter(new Predicate<BaseResult<LuckyEntity>>() {
                     @Override
                     public boolean test(BaseResult<LuckyEntity> luckyEntityResult) throws Exception {

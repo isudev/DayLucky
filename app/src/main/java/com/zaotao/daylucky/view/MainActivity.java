@@ -8,9 +8,9 @@ import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.base.BaseActivity;
 import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
 import com.zaotao.daylucky.view.adapter.AppFragmentPagerAdapter;
-import com.zaotao.daylucky.view.vip.LuckyVipFragment;
 import com.zaotao.daylucky.view.fragment.StyleFragment;
 import com.zaotao.daylucky.view.fragment.ThemeFragment;
+import com.zaotao.daylucky.view.vip.LuckyVipFragment;
 import com.zaotao.daylucky.widget.navigation.BottomNavigationView;
 import com.zaotao.daylucky.widget.viewpager.NoScrollViewPager;
 

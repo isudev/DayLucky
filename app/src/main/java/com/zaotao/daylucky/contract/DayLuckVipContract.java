@@ -1,5 +1,6 @@
 package com.zaotao.daylucky.contract;
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -18,13 +19,17 @@ public interface DayLuckVipContract {
         void onSuccessLucky(LuckyVipEntity luckyVipEntity);
 
         void onChangeConstellationIndex(int index);
+
+        void onSuccessOrderPay();
     }
 
 
     interface Presenter extends BaseSimplePresenter<View> {
         void registerSelectPosition();
 
-        void initHomeLucky(int var,String mobile);
+        void initHomeLucky(int var, String mobile);
+
+        void aliPayOrder(Activity activity, int reportId, String mobile);
 
         List<FortuneContentEntity> initVipWeekFortuneList(LuckyVipEntity luckyVipEntity);
 

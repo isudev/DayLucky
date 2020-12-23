@@ -152,13 +152,12 @@ public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> implement
          * register constellation index
          */
         getSupportPresenter().registerSelectPosition();
+        vipWeekLockButton.setOnClickListener(v -> dialogUnlockedVip.showDialog(mobile -> getSupportPresenter().aliPayOrder(mActivity,luckyVipYearData.getYear().getId(),mobile)));
+
     }
 
     @Override
     protected void initListener() {
-        vipYearLockView.setOnClickListener(v -> dialogUnlockedVip.showDialog(mobile -> {
-            showToast(mobile);
-        }));
     }
 
     @Override
@@ -169,5 +168,10 @@ public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> implement
     @Override
     public void onChangeConstellationIndex(int index) {
         dialogUnlockedVip.setSelectText(Constants.CONSTELLATION_DESC[index]);
+    }
+
+    @Override
+    public void onSuccessOrderPay() {
+        dialogUnlockedVip.dismiss();
     }
 }

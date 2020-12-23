@@ -142,13 +142,12 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> implement
          * register constellation index
          */
         getSupportPresenter().registerSelectPosition();
+        vipWeekLockButton.setOnClickListener(v -> dialogUnlockedVip.showDialog(mobile -> getSupportPresenter().aliPayOrder(mActivity,luckyVipWeekData.getWeek().getId(),mobile)));
+
     }
 
     @Override
     protected void initListener() {
-        vipWeekLockButton.setOnClickListener(v -> dialogUnlockedVip.showDialog(mobile -> {
-            showToast(mobile);
-        }));
     }
 
     @Override
@@ -159,5 +158,10 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> implement
     @Override
     public void onChangeConstellationIndex(int index) {
         dialogUnlockedVip.setSelectText(Constants.CONSTELLATION_DESC[index]);
+    }
+
+    @Override
+    public void onSuccessOrderPay() {
+        dialogUnlockedVip.dismiss();
     }
 }

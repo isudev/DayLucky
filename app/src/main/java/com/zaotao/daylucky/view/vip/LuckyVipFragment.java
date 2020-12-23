@@ -45,7 +45,7 @@ public class LuckyVipFragment extends BaseFragment<DayLuckVipPresenter> implemen
     private VipWeekFragment vipWeekFragment;
     private VipMonthFragment vipMonthFragment;
     private VipYearFragment vipYearFragment;
-
+    private static final int NORMAL_INDEX = 0;
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_lucky_vip;
@@ -77,14 +77,18 @@ public class LuckyVipFragment extends BaseFragment<DayLuckVipPresenter> implemen
         vipWeekFragment = VipWeekFragment.newInstance(luckyVipEntity);
         vipMonthFragment = VipMonthFragment.newInstance(luckyVipEntity);
         vipYearFragment = VipYearFragment.newInstance(luckyVipEntity);
-
-        loadTabFragment(0);
+        loadTabFragment(NORMAL_INDEX);
         initIndicator();
     }
 
     @Override
     public void onChangeConstellationIndex(int index) {
         getSupportPresenter().initHomeLucky(LuckDataManager.getInstance().getSelectConstellationIndex(),  LuckDataManager.getInstance().getVipMobile());
+    }
+
+    @Override
+    public void onSuccessOrderPay() {
+
     }
 
 

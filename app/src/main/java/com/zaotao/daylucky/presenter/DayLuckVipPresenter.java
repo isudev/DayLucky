@@ -1,5 +1,6 @@
 package com.zaotao.daylucky.presenter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 
 import androidx.core.content.ContextCompat;
 
+import com.alipay.sdk.app.PayTask;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
@@ -26,15 +28,28 @@ import com.zaotao.daylucky.module.api.ApiNetwork;
 import com.zaotao.daylucky.module.api.ApiService;
 import com.zaotao.daylucky.module.api.ApiSubscriber;
 import com.zaotao.daylucky.module.api.BaseResult;
+import com.zaotao.daylucky.module.entity.AliPayResult;
 import com.zaotao.daylucky.module.entity.FortuneContentEntity;
 import com.zaotao.daylucky.module.entity.LuckyTodayEntity;
 import com.zaotao.daylucky.module.entity.LuckyVipEntity;
+import com.zaotao.daylucky.module.entity.OrderPayEntity;
 import com.zaotao.daylucky.module.event.SelectEvent;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.ObservableSource;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import io.reactivex.functions.Predicate;
+import io.reactivex.schedulers.Schedulers;
 
 public class DayLuckVipPresenter extends BasePresenter<DayLuckVipContract.View> implements DayLuckVipContract.Presenter {
 
@@ -71,7 +86,7 @@ public class DayLuckVipPresenter extends BasePresenter<DayLuckVipContract.View> 
         String key = "2ff63fe6443211ebb2cf00163e30eb65";
         String MD5code = mobile + var + key;
         String sign = MD5Utils.getMD5Code(MD5code);
-        apiService.initVipLucky(var, mobile, sign)
+        apiService.apiVipLucky(var, mobile, sign)
                 .map(new Function<BaseResult<LuckyVipEntity>, LuckyVipEntity>() {
                     @Override
                     public LuckyVipEntity apply(BaseResult<LuckyVipEntity> luckyVipResult) throws Exception {
@@ -88,6 +103,72 @@ public class DayLuckVipPresenter extends BasePresenter<DayLuckVipContract.View> 
                     @Override
                     public void onFailure(String errMsg) {
 
+                    }
+                });
+    }
+
+
+    @Override
+    public void aliPayOrder(Activity activity,int reportId, String mobile) {
+        apiService.apiOrderPay(new OrderPayEntity(2,reportId, mobile))
+                .filter(new Predicate<BaseResult<OrderPayEntity>>() {
+                    @Override
+                    public boolean test(BaseResult<OrderPayEntity> orderPayResult) throws Exception {
+                        return orderPayResult.success();
+                    }
+                })
+                .map(new Function<BaseResult<OrderPayEntity>, OrderPayEntity>() {
+                    @Override
+                    public OrderPayEntity apply(BaseResult<OrderPayEntity> orderPayResult) throws Exception {
+                        return orderPayResult.getData();
+                    }
+                })
+                .flatMap(new Function<OrderPayEntity, ObservableSource<AliPayResult>>() {
+                    @Override
+                    public ObservableSource<AliPayResult> apply(OrderPayEntity orderPayResult) throws Exception {
+                        return Observable.create(new ObservableOnSubscribe<AliPayResult>() {
+                            @Override
+                            public void subscribe(ObservableEmitter<AliPayResult> emitter) throws Exception {
+                                PayTask payTask = new PayTask(activity);
+                                Map<String, String> result = payTask.payV2(orderPayResult.getOrderinfo(), true);
+                                AliPayResult aliPayResult = new AliPayResult(result);
+                                emitter.onNext(aliPayResult);
+                            }
+                        });
+                    }
+                })
+                .observeOn(Schedulers.io())
+                .filter(new Predicate<AliPayResult>() {
+                    @Override
+                    public boolean test(AliPayResult aliPayResult) throws Exception {
+                        return aliPayResult.isPaySuccess();
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<AliPayResult>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        addSubscribe(d);
+                    }
+
+                    @Override
+                    public void onNext(AliPayResult aliPayResult) {
+                        getView().onSuccessOrderPay();
+                        LuckDataManager.getInstance().setVipMobile(mobile);
+                        RxBus.getDefault().post(new SelectEvent(LuckDataManager.getInstance().getSelectConstellationIndex()));
+                        onComplete();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        unSubscribe();
                     }
                 });
     }

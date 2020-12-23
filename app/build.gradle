@@ -101,6 +101,7 @@ dependencies {
     implementation 'com.github.razerdp:BasePopup:2.2.2.2'
     implementation project(':base')
     implementation project(':indicator')
+    implementation(name: 'alipaySdk-15.6.8', ext: 'aar')
 
     implementation "com.umeng.umsdk:common:9.1.0"
     implementation "com.umeng.umsdk:asms:1.1.3"
