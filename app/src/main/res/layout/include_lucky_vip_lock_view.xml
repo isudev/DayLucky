@@ -45,6 +45,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/dp_10"
             android:paddingBottom="@dimen/dp_10"
+            android:visibility="gone"
             android:text="解锁运势内容出现问题请联系客服微信(点击复制)"
             android:textSize="@dimen/sp_10" />
     </LinearLayout>
