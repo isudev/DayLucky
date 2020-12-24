@@ -6,7 +6,6 @@ import android.widget.ImageView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.zaotao.base.rx.RxBus;
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.app.LuckDataManager;
 import com.zaotao.daylucky.base.BaseActivity;
@@ -46,7 +45,7 @@ public class SelectActivity extends BaseActivity<DayLuckCorePresenter> {
         settingSelectAdapter.setOnItemPositionClickListener(new OnItemPositionClickListener() {
             @Override
             public void onClick(int position) {
-                RxBus.getDefault().post(new SelectEvent(position));
+                sendEvent(new SelectEvent(position));
                 LuckDataManager.getInstance().setSelectConstellationIndex(position);
                 finish();
             }

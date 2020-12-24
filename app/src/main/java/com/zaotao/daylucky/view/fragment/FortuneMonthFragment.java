@@ -16,9 +16,6 @@ import com.zaotao.daylucky.module.entity.ThemeEntity;
 import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
 import com.zaotao.daylucky.view.adapter.LuckyContentAdapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
 
 public class FortuneMonthFragment extends BaseFragment<DayLuckCorePresenter> implements DayLuckCoreContract.View {
@@ -29,7 +26,8 @@ public class FortuneMonthFragment extends BaseFragment<DayLuckCorePresenter> imp
     RecyclerView recyclerViewFragmentHomeFortuneMonth;
     @BindView(R.id.fragment_home_fortune_month_desc)
     TextView fragmentHomeFortuneMonthDesc;
-    private LuckyEntity homeDataBean;
+
+    private LuckyContentAdapter luckyContentAdapter;
 
     public static FortuneMonthFragment newInstance(LuckyEntity luckyEntity) {
         Bundle args = new Bundle();
@@ -53,20 +51,15 @@ public class FortuneMonthFragment extends BaseFragment<DayLuckCorePresenter> imp
     protected void initViewData(View view) {
         getSupportPresenter().registerLuckyData();
 
-        homeDataBean = (LuckyEntity) getArguments().getSerializable("fragment_home_fortune_month");
+        LuckyEntity luckyEntity = (LuckyEntity) getArguments().getSerializable("fragment_home_fortune_month");
 
-        LuckyContentEntity luckyContentMonth = homeDataBean.getMonth();
-        fragmentHomeFortuneMonthDesc.setText(homeDataBean.getMonth().getCont());
+        LuckyContentEntity luckyContentMonth = luckyEntity.getMonth();
+        fragmentHomeFortuneMonthDesc.setText(luckyEntity.getMonth().getCont());
         /**
          * init list data
          */
-        List<String> contItems = new ArrayList<>();
-        contItems.add(luckyContentMonth.getCont1());
-        contItems.add(luckyContentMonth.getCont3());
-        contItems.add(luckyContentMonth.getCont5());
-        contItems.add(luckyContentMonth.getCont7());
-        contItems.add(luckyContentMonth.getCont9());
-        LuckyContentAdapter luckyContentAdapter = new LuckyContentAdapter(mContext);
+
+        luckyContentAdapter = new LuckyContentAdapter(mContext);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false) {
             @Override
             public boolean canScrollVertically() {
@@ -74,8 +67,8 @@ public class FortuneMonthFragment extends BaseFragment<DayLuckCorePresenter> imp
             }
         };
         recyclerViewFragmentHomeFortuneMonth.setLayoutManager(linearLayoutManager);
-        luckyContentAdapter.notifyDataSetChanged(getSupportPresenter().initFortuneLuckyData(contItems));
         recyclerViewFragmentHomeFortuneMonth.setAdapter(luckyContentAdapter);
+        luckyContentAdapter.notifyDataSetChanged(getSupportPresenter().initFortuneLuckyData(luckyContentMonth));
     }
 
     @Override
@@ -84,36 +77,11 @@ public class FortuneMonthFragment extends BaseFragment<DayLuckCorePresenter> imp
     }
 
     @Override
-    public void showToast(String msg) {
-
-    }
-
-    @Override
     public void onSuccessLucky(LuckyEntity luckyEntity) {
+        LuckyContentEntity luckyContentMonth = luckyEntity.getMonth();
+        fragmentHomeFortuneMonthDesc.setText(luckyEntity.getMonth().getCont());
 
-        homeDataBean = luckyEntity;
-
-        LuckyContentEntity luckyContentMonth = homeDataBean.getMonth();
-        fragmentHomeFortuneMonthDesc.setText(homeDataBean.getMonth().getCont());
-        /**
-         * init list data
-         */
-        List<String> contItems = new ArrayList<>();
-        contItems.add(luckyContentMonth.getCont1());
-        contItems.add(luckyContentMonth.getCont3());
-        contItems.add(luckyContentMonth.getCont5());
-        contItems.add(luckyContentMonth.getCont7());
-        contItems.add(luckyContentMonth.getCont9());
-        LuckyContentAdapter luckyContentAdapter = new LuckyContentAdapter(mContext);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false) {
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-        };
-        recyclerViewFragmentHomeFortuneMonth.setLayoutManager(linearLayoutManager);
-        luckyContentAdapter.notifyDataSetChanged(getSupportPresenter().initFortuneLuckyData(contItems));
-        recyclerViewFragmentHomeFortuneMonth.setAdapter(luckyContentAdapter);
+        luckyContentAdapter.notifyDataSetChanged(getSupportPresenter().initFortuneLuckyData(luckyContentMonth));
     }
 
     @Override

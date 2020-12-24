@@ -4,9 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
 
 import androidx.core.content.ContextCompat;
 
@@ -25,7 +23,6 @@ import com.zaotao.base.rx.RxBus;
 import com.zaotao.base.rx.RxBusSubscriber;
 import com.zaotao.base.rx.RxSchedulers;
 import com.zaotao.daylucky.R;
-import com.zaotao.daylucky.app.Constants;
 import com.zaotao.daylucky.app.LuckDataManager;
 import com.zaotao.daylucky.app.MD5Utils;
 import com.zaotao.daylucky.base.BasePresenter;
@@ -164,7 +161,7 @@ public class DayLuckVipPresenter extends BasePresenter<DayLuckVipContract.View> 
                     public void onNext(AliPayResult aliPayResult) {
                         getView().onSuccessOrderPay();
                         LuckDataManager.getInstance().setVipMobile(mobile);
-                        RxBus.getDefault().post(new SelectEvent(LuckDataManager.getInstance().getSelectConstellationIndex()));
+                        sendEvent(new SelectEvent(LuckDataManager.getInstance().getSelectConstellationIndex()));
                         onComplete();
                     }
 
@@ -263,7 +260,7 @@ public class DayLuckVipPresenter extends BasePresenter<DayLuckVipContract.View> 
                         getView().showToast(wxPayResult.getErrInfo());
                         if (wxPayResult.isSucceed()){
                             LuckDataManager.getInstance().setVipMobile(mobile);
-                            RxBus.getDefault().post(new SelectEvent(LuckDataManager.getInstance().getSelectConstellationIndex()));
+                            sendEvent(new SelectEvent(LuckDataManager.getInstance().getSelectConstellationIndex()));
                             getView().onSuccessOrderPay();
                         }
                         onComplete();

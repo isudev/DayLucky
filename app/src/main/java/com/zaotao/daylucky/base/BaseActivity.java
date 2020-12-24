@@ -17,6 +17,7 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity;
+import com.zaotao.base.rx.RxBus;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -151,6 +152,10 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatA
             mPresenter.detachView();
         }
         mUnBinder.unbind();
+    }
+
+    protected void sendEvent(Object o){
+        RxBus.getDefault().post(o);
     }
 
     @Override

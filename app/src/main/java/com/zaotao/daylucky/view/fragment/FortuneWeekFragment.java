@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.zaotao.base.utils.ToastUtils;
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.base.BaseFragment;
 import com.zaotao.daylucky.contract.DayLuckCoreContract;
@@ -41,8 +40,9 @@ public class FortuneWeekFragment extends BaseFragment<DayLuckCorePresenter> impl
     TextView fragmentHomeFortuneWeekDesc;
     @BindView(R.id.fragment_home_fortune_week_date)
     TextView fragmentHomeFortuneWeekDate;
-    private LuckyEntity homeDataBean;
     private LuckyWeekLineAdapter luckyWeekLineAdapter;
+
+    private LuckyContentAdapter luckyContentAdapter;
 
     public static FortuneWeekFragment newInstance(LuckyEntity luckyEntity) {
         Bundle args = new Bundle();
@@ -66,10 +66,10 @@ public class FortuneWeekFragment extends BaseFragment<DayLuckCorePresenter> impl
     protected void initViewData(View view) {
         getSupportPresenter().registerLuckyData();
 
-        homeDataBean = (LuckyEntity) getArguments().getSerializable("fragment_home_fortune_week");
-        fragmentHomeFortuneWeekDesc.setText(homeDataBean.getWeek().getCont());
-        fragmentHomeFortuneWeekDate.setText(homeDataBean.getDate().getWeek());
-        LuckyContentEntity luckyContentWeek = homeDataBean.getWeek();
+        LuckyEntity luckyEntity = (LuckyEntity) getArguments().getSerializable("fragment_home_fortune_week");
+        fragmentHomeFortuneWeekDesc.setText(luckyEntity.getWeek().getCont());
+        fragmentHomeFortuneWeekDate.setText(luckyEntity.getDate().getWeek());
+        LuckyContentEntity luckyContentWeek = luckyEntity.getWeek();
         /**
          * init x data
          */
@@ -78,24 +78,16 @@ public class FortuneWeekFragment extends BaseFragment<DayLuckCorePresenter> impl
         homeFortuneLineChartBottomRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 7));
         homeFortuneLineChartBottomRecyclerView.setAdapter(luckyWeekLineAdapter);
 
-        if (homeDataBean != null && homeDataBean.getToday_affection() != null) {
-            homeLuckyLineItemResults.addAll(homeDataBean.getToday_fortune());
+        if (luckyEntity.getToday_affection() != null) {
+            homeLuckyLineItemResults.addAll(luckyEntity.getToday_fortune());
         }
         luckyWeekLineAdapter.notifyDataSetChanged(homeLuckyLineItemResults);
-
-
         /**
          * init list data
          */
-        List<String> contItems = new ArrayList<>();
-        contItems.add(luckyContentWeek.getCont1());
-        contItems.add(luckyContentWeek.getCont3());
-        contItems.add(luckyContentWeek.getCont5());
-        contItems.add(luckyContentWeek.getCont7());
-        contItems.add(luckyContentWeek.getCont9());
-        LuckyContentAdapter luckyContentAdapter = new LuckyContentAdapter(mContext);
+        luckyContentAdapter = new LuckyContentAdapter(mContext);
         recyclerViewFragmentHomeFortuneWeek.setLayoutManager(new LinearLayoutManager(mContext));
-        luckyContentAdapter.notifyDataSetChanged(getSupportPresenter().initFortuneLuckyData(contItems));
+        luckyContentAdapter.notifyDataSetChanged(getSupportPresenter().initFortuneLuckyData(luckyContentWeek));
         recyclerViewFragmentHomeFortuneWeek.setAdapter(luckyContentAdapter);
     }
 
@@ -105,16 +97,10 @@ public class FortuneWeekFragment extends BaseFragment<DayLuckCorePresenter> impl
     }
 
     @Override
-    public void showToast(String msg) {
-        ToastUtils.showShort(msg);
-    }
-
-    @Override
     public void onSuccessLucky(LuckyEntity luckyEntity) {
-        homeDataBean = luckyEntity;
-        fragmentHomeFortuneWeekDesc.setText(homeDataBean.getWeek().getCont());
-        fragmentHomeFortuneWeekDate.setText(homeDataBean.getDate().getWeek());
-        LuckyContentEntity luckyContentWeek = homeDataBean.getWeek();
+        fragmentHomeFortuneWeekDesc.setText(luckyEntity.getWeek().getCont());
+        fragmentHomeFortuneWeekDate.setText(luckyEntity.getDate().getWeek());
+        LuckyContentEntity luckyContentWeek = luckyEntity.getWeek();
         /**
          * init x data
          */
@@ -123,8 +109,8 @@ public class FortuneWeekFragment extends BaseFragment<DayLuckCorePresenter> impl
         homeFortuneLineChartBottomRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 7));
         homeFortuneLineChartBottomRecyclerView.setAdapter(luckyWeekLineAdapter);
 
-        if (homeDataBean != null && homeDataBean.getToday_affection() != null) {
-            homeLuckyLineItemResults.addAll(homeDataBean.getToday_fortune());
+        if (luckyEntity.getToday_affection() != null) {
+            homeLuckyLineItemResults.addAll(luckyEntity.getToday_fortune());
         }
         luckyWeekLineAdapter.notifyDataSetChanged(homeLuckyLineItemResults);
 
@@ -132,16 +118,7 @@ public class FortuneWeekFragment extends BaseFragment<DayLuckCorePresenter> impl
         /**
          * init list data
          */
-        List<String> contItems = new ArrayList<>();
-        contItems.add(luckyContentWeek.getCont1());
-        contItems.add(luckyContentWeek.getCont3());
-        contItems.add(luckyContentWeek.getCont5());
-        contItems.add(luckyContentWeek.getCont7());
-        contItems.add(luckyContentWeek.getCont9());
-        LuckyContentAdapter luckyContentAdapter = new LuckyContentAdapter(mContext);
-        recyclerViewFragmentHomeFortuneWeek.setLayoutManager(new LinearLayoutManager(mContext));
-        luckyContentAdapter.notifyDataSetChanged(getSupportPresenter().initFortuneLuckyData(contItems));
-        recyclerViewFragmentHomeFortuneWeek.setAdapter(luckyContentAdapter);
+        luckyContentAdapter.notifyDataSetChanged(getSupportPresenter().initFortuneLuckyData(luckyContentWeek));
     }
 
     @Override

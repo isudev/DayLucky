@@ -1,6 +1,7 @@
 package com.zaotao.daylucky.base;
 
 import com.trello.rxlifecycle3.LifecycleProvider;
+import com.zaotao.base.rx.RxBus;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -49,6 +50,21 @@ public abstract class BasePresenter<T extends IView> implements BaseSimplePresen
         }
     }
 
+    /**
+     * post event
+     * @param o Object event
+     */
+    protected void sendEvent(Object o){
+        RxBus.getDefault().post(o);
+    }
+
+    /**
+     * post sticky event
+     * @param o Object event
+     */
+    protected void sendEventSticky(Object o){
+        RxBus.getDefault().postSticky(o);
+    }
 
     protected LifecycleProvider getLifecycleProvider() {
         LifecycleProvider provider = null;

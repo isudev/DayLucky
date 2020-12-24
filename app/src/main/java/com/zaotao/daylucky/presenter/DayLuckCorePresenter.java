@@ -20,6 +20,7 @@ import com.zaotao.daylucky.module.api.ApiService;
 import com.zaotao.daylucky.module.api.ApiSubscriber;
 import com.zaotao.daylucky.module.api.BaseResult;
 import com.zaotao.daylucky.module.entity.FortuneContentEntity;
+import com.zaotao.daylucky.module.entity.LuckyContentEntity;
 import com.zaotao.daylucky.module.entity.LuckyEntity;
 import com.zaotao.daylucky.module.entity.SettingSelectEntity;
 import com.zaotao.daylucky.module.entity.SettingStyleEntity;
@@ -168,7 +169,7 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
                         themeEntity.setBadColor(ColorManager.normalBadColor);
 
                         if (LuckDataManager.getInstance().isEmptyLocalTheme()) {
-                            RxBus.getDefault().post(themeEntity);
+                            sendEvent(themeEntity);
                         } else {
                             themeEntity = LuckDataManager.getInstance().getThemeData();
                             themeEntity.setBad(luckyEntity.getToday().getBad());
@@ -178,9 +179,9 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
                             themeEntity.setMonth(DateUtils.formatMonthText(luckyEntity.getDate().getTime()));
                             themeEntity.setWeek(DateUtils.formatWeekText(luckyEntity.getDate().getTime()));
                             LuckDataManager.getInstance().saveThemeData(themeEntity);
-                            RxBus.getDefault().post(LuckDataManager.getInstance().getThemeData());
+                            sendEvent(LuckDataManager.getInstance().getThemeData());
                         }
-                        RxBus.getDefault().postSticky(luckyEntity);
+                        sendEventSticky(luckyEntity);
                         getView().onSuccessLucky(luckyEntity);
                     }
 
@@ -231,7 +232,7 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
                         themeEntity.setBadColor(ColorManager.normalBadColor);
 
                         if (LuckDataManager.getInstance().isEmptyLocalTheme()) {
-                            RxBus.getDefault().post(themeEntity);
+                            sendEvent(themeEntity);
                         } else {
                             themeEntity = LuckDataManager.getInstance().getThemeData();
                             themeEntity.setBad(luckyEntity.getToday().getBad());
@@ -241,9 +242,9 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
                             themeEntity.setMonth(DateUtils.formatMonthText(luckyEntity.getDate().getTime()));
                             themeEntity.setWeek(DateUtils.formatWeekText(luckyEntity.getDate().getTime()));
                             LuckDataManager.getInstance().saveThemeData(themeEntity);
-                            RxBus.getDefault().post(LuckDataManager.getInstance().getThemeData());
+                            sendEvent(LuckDataManager.getInstance().getThemeData());
                         }
-                        RxBus.getDefault().postSticky(luckyEntity);
+                        sendEventSticky(luckyEntity);
                         getView().onSuccessLucky(luckyEntity);
 
                     }
@@ -301,7 +302,7 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
         }
 
         LuckDataManager.getInstance().saveThemeData(themeEntity);
-        RxBus.getDefault().post(themeEntity);
+        sendEvent(themeEntity);
         VibrateUtils.vibrate(120);
     }
 
@@ -318,7 +319,13 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
     }
 
     @Override
-    public List<FortuneContentEntity> initFortuneLuckyData(List<String> contItems) {
+    public List<FortuneContentEntity> initFortuneLuckyData(LuckyContentEntity luckyContentEntity) {
+        List<String> contItems = new ArrayList<>();
+        contItems.add(luckyContentEntity.getCont1());
+        contItems.add(luckyContentEntity.getCont3());
+        contItems.add(luckyContentEntity.getCont5());
+        contItems.add(luckyContentEntity.getCont7());
+        contItems.add(luckyContentEntity.getCont9());
         List<FortuneContentEntity> fortuneContentEntityList = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             FortuneContentEntity fortuneContentEntity = new FortuneContentEntity();

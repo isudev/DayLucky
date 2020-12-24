@@ -5,6 +5,7 @@ import android.widget.ImageView;
 import com.zaotao.daylucky.base.BaseSimplePresenter;
 import com.zaotao.daylucky.base.IView;
 import com.zaotao.daylucky.module.entity.FortuneContentEntity;
+import com.zaotao.daylucky.module.entity.LuckyContentEntity;
 import com.zaotao.daylucky.module.entity.LuckyEntity;
 import com.zaotao.daylucky.module.entity.SettingSelectEntity;
 import com.zaotao.daylucky.module.entity.SettingStyleEntity;
@@ -40,7 +41,7 @@ public interface DayLuckCoreContract {
 
         List<SettingSelectEntity> initSelectConstellationData();
 
-        List<FortuneContentEntity> initFortuneLuckyData(List<String> contItems);
+        List<FortuneContentEntity> initFortuneLuckyData(LuckyContentEntity luckyContentEntity);
 
         List<SettingStyleEntity> initSettingStyleData();
 
