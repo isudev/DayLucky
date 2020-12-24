@@ -13,6 +13,7 @@ import com.zaotao.base.view.CircleImageView;
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.app.Constants;
 import com.zaotao.daylucky.app.AppDataManager;
+import com.zaotao.daylucky.app.StatisticsUtils;
 import com.zaotao.daylucky.base.BaseFragment;
 import com.zaotao.daylucky.contract.DayLuckVipContract;
 import com.zaotao.daylucky.module.entity.LuckyVipEntity;
@@ -144,16 +145,19 @@ public class LuckyVipFragment extends BaseFragment<DayLuckVipPresenter> implemen
 
     public void loadTabFragment(int index) {
         if (index == 0) {
+            StatisticsUtils.onClickWeekPay(mContext);
             getChildFragmentManager()
                     .beginTransaction()
                     .replace(R.id.view_pager_vip_lucky, vipWeekFragment, VipWeekFragment.class.getSimpleName())
                     .commitAllowingStateLoss();
         } else if (index == 1) {
+            StatisticsUtils.onClickMonthPay(mContext);
             getChildFragmentManager()
                     .beginTransaction()
                     .replace(R.id.view_pager_vip_lucky, vipMonthFragment, VipMonthFragment.class.getSimpleName())
                     .commitAllowingStateLoss();
         } else if (index == 2) {
+            StatisticsUtils.onClickYearPay(mContext);
             getChildFragmentManager()
                     .beginTransaction()
                     .replace(R.id.view_pager_vip_lucky, vipYearFragment, VipYearFragment.class.getSimpleName())

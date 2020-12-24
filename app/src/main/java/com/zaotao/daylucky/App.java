@@ -13,8 +13,6 @@ import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
 import com.zaotao.base.utils.Utils;
 
-import static android.bluetooth.BluetoothAssignedNumbers.GOOGLE;
-
 public class App extends Application {
 
     private static Application app;
@@ -31,6 +29,7 @@ public class App extends Application {
         Utils.init(this);
         //umeng
         String brand = Build.BRAND.toLowerCase();
+        brand = brand.equals("unknown") ? "other" : brand;
         Log.i("DayLucky", "brand: " + brand);
         UMConfigure.init(this, "5fd8612f498d9e0d4d8f3c86", brand, UMConfigure.DEVICE_TYPE_PHONE, "");
         UMConfigure.setLogEnabled(true);
