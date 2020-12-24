@@ -307,6 +307,39 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
     }
 
     @Override
+    public void settingThemeStyle(int position,int color) {
+        ThemeEntity themeEntity = LuckDataManager.getInstance().getThemeData();
+        switch (position) {
+            case 0:
+                themeEntity.setBgColor(color);
+                break;
+            case 1:
+                themeEntity.setDayColor(color);
+                break;
+            case 2:
+                themeEntity.setWeekColor(color);
+                break;
+            case 3:
+                themeEntity.setMonthColor(color);
+                break;
+            case 4:
+                themeEntity.setTextColor(color);
+                break;
+            case 5:
+                themeEntity.setLuckyColor(color);
+                break;
+            case 6:
+                themeEntity.setBadColor(color);
+                break;
+            case 7:
+                themeEntity.setLineColor(color);
+                break;
+        }
+        LuckDataManager.getInstance().saveThemeData(themeEntity);
+        getView().onSuccessThemeInfo(themeEntity);
+    }
+
+    @Override
     public List<SettingSelectEntity> initSelectConstellationData() {
         List<SettingSelectEntity> settingSelectEntities = new ArrayList<>();
         for (int i = 0; i < 12; i++) {

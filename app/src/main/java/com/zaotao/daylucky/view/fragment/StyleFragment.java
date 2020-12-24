@@ -85,7 +85,7 @@ public class StyleFragment extends BaseFragment<DayLuckCorePresenter> implements
                         .enableBrightness(false) // Enable brightness slider or not
                         .enableAlpha(false) // Enable alpha slider or not
                         .okTitle(getString(R.string.confirm))
-                        .cancelTitle("")
+                        .cancelTitle(getString(R.string.cancel))
                         .showIndicator(true)
                         .showValue(false)
                         .build()
@@ -94,36 +94,7 @@ public class StyleFragment extends BaseFragment<DayLuckCorePresenter> implements
                             public void onColorPicked(int color) {
                                 settingStyleEntityList.get(position).setColor(color);
                                 settingStyleAdapter.notifyDataSetChanged(settingStyleEntityList);
-                                ThemeEntity themeEntity = LuckDataManager.getInstance().getThemeData();
-                                switch (position) {
-                                    case 0:
-                                        themeEntity.setBgColor(color);
-                                        break;
-                                    case 1:
-                                        themeEntity.setDayColor(color);
-                                        break;
-                                    case 2:
-                                        themeEntity.setWeekColor(color);
-                                        break;
-                                    case 3:
-                                        themeEntity.setMonthColor(color);
-                                        break;
-                                    case 4:
-                                        themeEntity.setTextColor(color);
-                                        break;
-                                    case 5:
-                                        themeEntity.setLuckyColor(color);
-                                        break;
-                                    case 6:
-                                        themeEntity.setBadColor(color);
-                                        break;
-                                    case 7:
-                                        themeEntity.setLineColor(color);
-                                        break;
-                                }
-                                LuckDataManager.getInstance().saveThemeData(themeEntity);
-                                onSuccessThemeInfo(themeEntity);
-
+                                getSupportPresenter().settingThemeStyle(position, color);
                             }
                         });
                 UpdateAppWidget.getInstance().updateAppWidget();

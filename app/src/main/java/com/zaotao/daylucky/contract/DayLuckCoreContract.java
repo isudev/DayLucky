@@ -37,6 +37,8 @@ public interface DayLuckCoreContract {
 
         void selectChangeTheme(int position, ThemeEntity themeEntity);
 
+        void settingThemeStyle(int position,int color);
+
         List<ThemeEntity> initThemeList(ThemeEntity themeEntity);
 
         List<SettingSelectEntity> initSelectConstellationData();
