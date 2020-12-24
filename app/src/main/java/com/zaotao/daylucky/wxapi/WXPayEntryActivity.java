@@ -11,7 +11,7 @@ import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.zaotao.base.rx.RxBus;
-import com.zaotao.daylucky.app.LuckDataManager;
+import com.zaotao.daylucky.app.AppDataManager;
 
 /**
  * Description WXPayEntryActivity
@@ -24,7 +24,7 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        api = WXAPIFactory.createWXAPI(this, LuckDataManager.getInstance().getWxAppId());
+        api = WXAPIFactory.createWXAPI(this, AppDataManager.getInstance().getWxAppId());
         api.handleIntent(getIntent(), this);
     }
 

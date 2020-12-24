@@ -9,10 +9,10 @@ import com.zaotao.base.rx.RxSchedulers;
 import com.zaotao.base.utils.NetworkUtils;
 import com.zaotao.base.utils.VibrateUtils;
 import com.zaotao.daylucky.App;
-import com.zaotao.daylucky.app.ColorManager;
+import com.zaotao.daylucky.app.ColorsManager;
 import com.zaotao.daylucky.app.Constants;
 import com.zaotao.daylucky.app.DateUtils;
-import com.zaotao.daylucky.app.LuckDataManager;
+import com.zaotao.daylucky.app.AppDataManager;
 import com.zaotao.daylucky.base.BasePresenter;
 import com.zaotao.daylucky.contract.DayLuckCoreContract;
 import com.zaotao.daylucky.module.api.ApiNetwork;
@@ -60,7 +60,7 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
                     @Override
                     public void onEvent(SelectEvent selectEvent) {
                         initHomeLucky(selectEvent.getVar());
-                        imageView.setImageResource(LuckDataManager.getInstance().getImageRes());
+                        imageView.setImageResource(AppDataManager.getInstance().getImageRes());
                     }
 
                     @Override
@@ -159,27 +159,27 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
                         themeEntity.setDay(DateUtils.formatDayText(luckyEntity.getDate().getTime()));
                         themeEntity.setMonth(DateUtils.formatMonthText(luckyEntity.getDate().getTime()));
                         themeEntity.setWeek(DateUtils.formatWeekText(luckyEntity.getDate().getTime()));
-                        themeEntity.setLineColor(ColorManager.colorsLineBg[0][0]);
-                        themeEntity.setBgColor(ColorManager.colorsLineBg[0][1]);
-                        themeEntity.setDayColor(ColorManager.colorTextView);
-                        themeEntity.setWeekColor(ColorManager.colorTextView);
-                        themeEntity.setMonthColor(ColorManager.colorTextView);
-                        themeEntity.setTextColor(ColorManager.colorTextContent);
-                        themeEntity.setLuckyColor(ColorManager.normalLuckColor);
-                        themeEntity.setBadColor(ColorManager.normalBadColor);
+                        themeEntity.setLineColor(ColorsManager.colorsLineBg[0][0]);
+                        themeEntity.setBgColor(ColorsManager.colorsLineBg[0][1]);
+                        themeEntity.setDayColor(ColorsManager.colorTextView);
+                        themeEntity.setWeekColor(ColorsManager.colorTextView);
+                        themeEntity.setMonthColor(ColorsManager.colorTextView);
+                        themeEntity.setTextColor(ColorsManager.colorTextContent);
+                        themeEntity.setLuckyColor(ColorsManager.normalLuckColor);
+                        themeEntity.setBadColor(ColorsManager.normalBadColor);
 
-                        if (LuckDataManager.getInstance().isEmptyLocalTheme()) {
+                        if (AppDataManager.getInstance().isEmptyLocalTheme()) {
                             sendEvent(themeEntity);
                         } else {
-                            themeEntity = LuckDataManager.getInstance().getThemeData();
+                            themeEntity = AppDataManager.getInstance().getThemeData();
                             themeEntity.setBad(luckyEntity.getToday().getBad());
                             themeEntity.setLucky(luckyEntity.getToday().getLuck());
                             themeEntity.setText(luckyEntity.getToday().getCont());
                             themeEntity.setDay(DateUtils.formatDayText(luckyEntity.getDate().getTime()));
                             themeEntity.setMonth(DateUtils.formatMonthText(luckyEntity.getDate().getTime()));
                             themeEntity.setWeek(DateUtils.formatWeekText(luckyEntity.getDate().getTime()));
-                            LuckDataManager.getInstance().saveThemeData(themeEntity);
-                            sendEvent(LuckDataManager.getInstance().getThemeData());
+                            AppDataManager.getInstance().saveThemeData(themeEntity);
+                            sendEvent(AppDataManager.getInstance().getThemeData());
                         }
                         sendEventSticky(luckyEntity);
                         getView().onSuccessLucky(luckyEntity);
@@ -222,27 +222,27 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
                         themeEntity.setDay(DateUtils.formatDayText(luckyEntity.getDate().getTime()));
                         themeEntity.setMonth(DateUtils.formatMonthText(luckyEntity.getDate().getTime()));
                         themeEntity.setWeek(DateUtils.formatWeekText(luckyEntity.getDate().getTime()));
-                        themeEntity.setLineColor(ColorManager.colorsLineBg[0][0]);
-                        themeEntity.setBgColor(ColorManager.colorsLineBg[0][1]);
-                        themeEntity.setDayColor(ColorManager.colorTextView);
-                        themeEntity.setWeekColor(ColorManager.colorTextView);
-                        themeEntity.setMonthColor(ColorManager.colorTextView);
-                        themeEntity.setTextColor(ColorManager.colorTextContent);
-                        themeEntity.setLuckyColor(ColorManager.normalLuckColor);
-                        themeEntity.setBadColor(ColorManager.normalBadColor);
+                        themeEntity.setLineColor(ColorsManager.colorsLineBg[0][0]);
+                        themeEntity.setBgColor(ColorsManager.colorsLineBg[0][1]);
+                        themeEntity.setDayColor(ColorsManager.colorTextView);
+                        themeEntity.setWeekColor(ColorsManager.colorTextView);
+                        themeEntity.setMonthColor(ColorsManager.colorTextView);
+                        themeEntity.setTextColor(ColorsManager.colorTextContent);
+                        themeEntity.setLuckyColor(ColorsManager.normalLuckColor);
+                        themeEntity.setBadColor(ColorsManager.normalBadColor);
 
-                        if (LuckDataManager.getInstance().isEmptyLocalTheme()) {
+                        if (AppDataManager.getInstance().isEmptyLocalTheme()) {
                             sendEvent(themeEntity);
                         } else {
-                            themeEntity = LuckDataManager.getInstance().getThemeData();
+                            themeEntity = AppDataManager.getInstance().getThemeData();
                             themeEntity.setBad(luckyEntity.getToday().getBad());
                             themeEntity.setLucky(luckyEntity.getToday().getLuck());
                             themeEntity.setText(luckyEntity.getToday().getCont());
                             themeEntity.setDay(DateUtils.formatDayText(luckyEntity.getDate().getTime()));
                             themeEntity.setMonth(DateUtils.formatMonthText(luckyEntity.getDate().getTime()));
                             themeEntity.setWeek(DateUtils.formatWeekText(luckyEntity.getDate().getTime()));
-                            LuckDataManager.getInstance().saveThemeData(themeEntity);
-                            sendEvent(LuckDataManager.getInstance().getThemeData());
+                            AppDataManager.getInstance().saveThemeData(themeEntity);
+                            sendEvent(AppDataManager.getInstance().getThemeData());
                         }
                         sendEventSticky(luckyEntity);
                         getView().onSuccessLucky(luckyEntity);
@@ -259,7 +259,7 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
     @Override
     public List<ThemeEntity> initThemeList(ThemeEntity data) {
         List<ThemeEntity> themeEntityList = new ArrayList<>();
-        LuckDataManager.getInstance().saveThemeData(data);
+        AppDataManager.getInstance().saveThemeData(data);
 
         for (int i = 0; i < 16; i++) {
             ThemeEntity themeEntity = new ThemeEntity();
@@ -272,16 +272,16 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
             themeEntity.setLuckyColor(data.getLuckyColor());
             themeEntityList.add(themeEntity);
         }
-        for (int i = 0; i < ColorManager.colorsLineBg.length; i++) {
-            for (int j = 0; j < ColorManager.colorsLineBg[i].length; j++) {
+        for (int i = 0; i < ColorsManager.colorsLineBg.length; i++) {
+            for (int j = 0; j < ColorsManager.colorsLineBg[i].length; j++) {
                 if (j == 0) {
-                    themeEntityList.get(i).setLineColor(ColorManager.colorsLineBg[i][j]);
-                    themeEntityList.get(i).setBadColor(ColorManager.colorsLineBg[i][j]);
+                    themeEntityList.get(i).setLineColor(ColorsManager.colorsLineBg[i][j]);
+                    themeEntityList.get(i).setBadColor(ColorsManager.colorsLineBg[i][j]);
                     if (i == 0) {
-                        themeEntityList.get(i).setBadColor(ColorManager.normalBadColor);
+                        themeEntityList.get(i).setBadColor(ColorsManager.normalBadColor);
                     }
                 } else if (j == 1) {
-                    themeEntityList.get(i).setBgColor(ColorManager.colorsLineBg[i][j]);
+                    themeEntityList.get(i).setBgColor(ColorsManager.colorsLineBg[i][j]);
                 }
             }
         }
@@ -291,24 +291,24 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
     @Override
     public void selectChangeTheme(int position, ThemeEntity themeEntity) {
         if (position > 0) {
-            themeEntity.setDayColor(ColorManager.normalWhiteColor);
-            themeEntity.setWeekColor(ColorManager.normalWhiteColor);
-            themeEntity.setMonthColor(ColorManager.normalWhiteColor);
-            themeEntity.setTextColor(ColorManager.normalWhiteColor);
-            themeEntity.setLuckyColor(ColorManager.normalWhiteColor);
+            themeEntity.setDayColor(ColorsManager.normalWhiteColor);
+            themeEntity.setWeekColor(ColorsManager.normalWhiteColor);
+            themeEntity.setMonthColor(ColorsManager.normalWhiteColor);
+            themeEntity.setTextColor(ColorsManager.normalWhiteColor);
+            themeEntity.setLuckyColor(ColorsManager.normalWhiteColor);
         } else {
-            themeEntity.setLuckyColor(ColorManager.normalLuckColor);
-            themeEntity.setTextColor(ColorManager.colorTextContent);
+            themeEntity.setLuckyColor(ColorsManager.normalLuckColor);
+            themeEntity.setTextColor(ColorsManager.colorTextContent);
         }
 
-        LuckDataManager.getInstance().saveThemeData(themeEntity);
+        AppDataManager.getInstance().saveThemeData(themeEntity);
         sendEvent(themeEntity);
         VibrateUtils.vibrate(120);
     }
 
     @Override
     public void settingThemeStyle(int position,int color) {
-        ThemeEntity themeEntity = LuckDataManager.getInstance().getThemeData();
+        ThemeEntity themeEntity = AppDataManager.getInstance().getThemeData();
         switch (position) {
             case 0:
                 themeEntity.setBgColor(color);
@@ -335,7 +335,7 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
                 themeEntity.setLineColor(color);
                 break;
         }
-        LuckDataManager.getInstance().saveThemeData(themeEntity);
+        AppDataManager.getInstance().saveThemeData(themeEntity);
         getView().onSuccessThemeInfo(themeEntity);
     }
 

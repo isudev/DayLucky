@@ -13,8 +13,8 @@ import android.widget.RemoteViews;
 import com.zaotao.base.utils.ScreenUtils;
 import com.zaotao.daylucky.App;
 import com.zaotao.daylucky.R;
-import com.zaotao.daylucky.app.ColorManager;
-import com.zaotao.daylucky.app.LuckDataManager;
+import com.zaotao.daylucky.app.ColorsManager;
+import com.zaotao.daylucky.app.AppDataManager;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 
 public class UpdateAppWidget {
@@ -44,7 +44,7 @@ public class UpdateAppWidget {
     }
 
     private RemoteViews getRemoteViews(String packageName){
-        ThemeEntity themeEntity = LuckDataManager.getInstance().getThemeData();
+        ThemeEntity themeEntity = AppDataManager.getInstance().getThemeData();
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(packageName, R.layout.day_lucky_app_widget);
         views.setTextViewText(R.id.item_theme_style_day_text, themeEntity.getDay());
@@ -61,12 +61,12 @@ public class UpdateAppWidget {
         views.setTextColor(R.id.item_theme_style_day_bad_text, themeEntity.getBadColor());
         views.setTextColor(R.id.item_theme_style_content_text, themeEntity.getTextColor());
 
-        if (themeEntity.getBgColor() == ColorManager.normalWhiteColor) {
-            views.setTextColor(R.id.item_theme_style_day_lucky, ColorManager.colorTextView);
-            views.setTextColor(R.id.item_theme_style_day_bad, ColorManager.colorTextView);
+        if (themeEntity.getBgColor() == ColorsManager.normalWhiteColor) {
+            views.setTextColor(R.id.item_theme_style_day_lucky, ColorsManager.colorTextView);
+            views.setTextColor(R.id.item_theme_style_day_bad, ColorsManager.colorTextView);
         } else {
-            views.setTextColor(R.id.item_theme_style_day_lucky, ColorManager.normalWhiteColor);
-            views.setTextColor(R.id.item_theme_style_day_bad, ColorManager.normalWhiteColor);
+            views.setTextColor(R.id.item_theme_style_day_lucky, ColorsManager.normalWhiteColor);
+            views.setTextColor(R.id.item_theme_style_day_bad, ColorsManager.normalWhiteColor);
         }
 
         Bitmap bitmap0 = Bitmap.createBitmap(6, 80, Bitmap.Config.ARGB_8888);

@@ -12,17 +12,17 @@ import java.security.NoSuchAlgorithmException;
 public class MD5Utils {
 
     //加密字符串
-    public static  String getMD5Code(String info){
+    public static String getMD5Code(String info) {
         try {
-            MessageDigest md5=MessageDigest.getInstance("MD5");
+            MessageDigest md5 = MessageDigest.getInstance("MD5");
             md5.update(info.getBytes("utf-8"));
-            byte[]encryption=md5.digest();
-            StringBuffer stringBuffer=new StringBuffer();
-            for(int i=0;i<encryption.length;i++){
-                if(Integer.toHexString(0xff &encryption[i]).length()==1){
-                    stringBuffer.append("0").append(Integer.toHexString(0xff&encryption[i]));
-                }else {
-                    stringBuffer.append(Integer.toHexString(0xff&encryption[i]));
+            byte[] encryption = md5.digest();
+            StringBuffer stringBuffer = new StringBuffer();
+            for (int i = 0; i < encryption.length; i++) {
+                if (Integer.toHexString(0xff & encryption[i]).length() == 1) {
+                    stringBuffer.append("0").append(Integer.toHexString(0xff & encryption[i]));
+                } else {
+                    stringBuffer.append(Integer.toHexString(0xff & encryption[i]));
                 }
             }
             return stringBuffer.toString();
@@ -31,21 +31,22 @@ public class MD5Utils {
             return "";
         }
     }
+
     //加密文件
-    public static String md5ForFile(File file){
+    public static String md5ForFile(File file) {
         int buffersize = 1024;
         FileInputStream fis = null;
         DigestInputStream dis = null;
 
         try {
             //创建MD5转换器和文件流
-            MessageDigest messageDigest =MessageDigest.getInstance("MD5");
+            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
             fis = new FileInputStream(file);
-            dis = new DigestInputStream(fis,messageDigest);
+            dis = new DigestInputStream(fis, messageDigest);
 
             byte[] buffer = new byte[buffersize];
             //DigestInputStream实际上在流处理文件时就在内部就进行了一定的处理
-            while (dis.read(buffer) > 0);
+            while (dis.read(buffer) > 0) ;
 
             //通过DigestInputStream对象得到一个最终的MessageDigest对象。
             messageDigest = dis.getMessageDigest();
@@ -55,7 +56,7 @@ public class MD5Utils {
             // 同样，把字节数组转换成字符串
             StringBuilder hex = new StringBuilder(array.length * 2);
             for (byte b : array) {
-                if ((b & 0xFF) < 0x10){
+                if ((b & 0xFF) < 0x10) {
                     hex.append("0");
                 }
                 hex.append(Integer.toHexString(b & 0xFF));

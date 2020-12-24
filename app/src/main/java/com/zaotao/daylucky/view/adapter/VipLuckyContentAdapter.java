@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.zaotao.daylucky.R;
-import com.zaotao.daylucky.app.ColorManager;
+import com.zaotao.daylucky.app.ColorsManager;
 import com.zaotao.daylucky.app.Constants;
 import com.zaotao.daylucky.module.entity.FortuneContentEntity;
 import com.zaotao.daylucky.module.listener.OnItemPositionClickListener;
@@ -76,8 +76,8 @@ public class VipLuckyContentAdapter extends RecyclerView.Adapter<VipLuckyContent
 
         public void bind(int position) {
             FortuneContentEntity fortuneContentEntity = items.get(position);
-            itemVipLuckyTitleText.setTextColor(ColorManager.FORTUNE_VIP_TITLE_TEXT_COLOR[position]);
-            itemVipLuckyViewLine.setBackgroundColor(ColorManager.FORTUNE_VIP_TITLE_LINE_COLOR[position]);
+            itemVipLuckyTitleText.setTextColor(ColorsManager.FORTUNE_VIP_TITLE_TEXT_COLOR[position]);
+            itemVipLuckyViewLine.setBackgroundColor(ColorsManager.FORTUNE_VIP_TITLE_LINE_COLOR[position]);
             itemVipLuckyTitleText.setText(Constants.FORTUNE_DESC[position]);
             itemVipLuckyViewTitleImage.setImageResource(Constants.FORTUNE_VIP_IMG[position]);
 

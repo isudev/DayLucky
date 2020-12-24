@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.zaotao.base.view.RoundImageView;
 import com.zaotao.daylucky.R;
-import com.zaotao.daylucky.app.LuckDataManager;
 import com.zaotao.daylucky.base.BaseFragment;
 import com.zaotao.daylucky.contract.DayLuckCoreContract;
 import com.zaotao.daylucky.module.entity.LuckyEntity;

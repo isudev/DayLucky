@@ -1,6 +1,6 @@
 package com.zaotao.daylucky.module.entity;
 
-import com.zaotao.daylucky.app.ColorManager;
+import com.zaotao.daylucky.app.ColorsManager;
 
 public class ThemeEntity {
     private String day;
@@ -8,9 +8,9 @@ public class ThemeEntity {
     private String month;
     private int lineColor;
     private int bgColor;
-    private int dayColor = ColorManager.colorTextView;
-    private int weekColor = ColorManager.colorTextView;
-    private int monthColor = ColorManager.colorTextView;
+    private int dayColor = ColorsManager.colorTextView;
+    private int weekColor = ColorsManager.colorTextView;
+    private int monthColor = ColorsManager.colorTextView;
     private String lucky;
     private String bad;
     private String text;

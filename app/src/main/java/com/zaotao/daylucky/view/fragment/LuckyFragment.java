@@ -14,7 +14,7 @@ import androidx.core.content.ContextCompat;
 import com.zaotao.base.view.CircleImageView;
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.app.DateUtils;
-import com.zaotao.daylucky.app.LuckDataManager;
+import com.zaotao.daylucky.app.AppDataManager;
 import com.zaotao.daylucky.base.BaseFragment;
 import com.zaotao.daylucky.contract.DayLuckCoreContract;
 import com.zaotao.daylucky.module.entity.LuckyEntity;
@@ -70,7 +70,7 @@ public class LuckyFragment extends BaseFragment<DayLuckCorePresenter> implements
     protected void initViewData(View view) {
         getSupportPresenter().initHomeLucky();
 
-        getSupportPresenter().initHomeLucky(LuckDataManager.getInstance().getSelectConstellationIndex());
+        getSupportPresenter().initHomeLucky(AppDataManager.getInstance().getSelectConstellationIndex());
 
         getSupportPresenter().registerSelectPosition(fragmentLuckyImageClick);
 
@@ -92,7 +92,7 @@ public class LuckyFragment extends BaseFragment<DayLuckCorePresenter> implements
                 + DateUtils.formatMonthText(luckyEntity.getDate().getTime()) + " "
                 + DateUtils.formatWeekText(luckyEntity.getDate().getTime());
         fragmentLuckyTextDate.setText(dataText);
-        fragmentLuckyImageClick.setImageResource(LuckDataManager.getInstance().getImageRes());
+        fragmentLuckyImageClick.setImageResource(AppDataManager.getInstance().getImageRes());
 
         fragmentLuckyText1.setText(luckyEntity.getToday().getCont());
         fragmentLuckyText2.setText(luckyEntity.getToday().getTitle());

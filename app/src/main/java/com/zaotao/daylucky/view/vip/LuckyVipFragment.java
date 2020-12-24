@@ -6,14 +6,13 @@ import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
 import com.zaotao.base.view.CircleImageView;
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.app.Constants;
-import com.zaotao.daylucky.app.LuckDataManager;
+import com.zaotao.daylucky.app.AppDataManager;
 import com.zaotao.daylucky.base.BaseFragment;
 import com.zaotao.daylucky.contract.DayLuckVipContract;
 import com.zaotao.daylucky.module.entity.LuckyVipEntity;
@@ -46,6 +45,7 @@ public class LuckyVipFragment extends BaseFragment<DayLuckVipPresenter> implemen
     private VipMonthFragment vipMonthFragment;
     private VipYearFragment vipYearFragment;
     private static final int NORMAL_INDEX = 0;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_lucky_vip;
@@ -61,7 +61,7 @@ public class LuckyVipFragment extends BaseFragment<DayLuckVipPresenter> implemen
 
         getSupportPresenter().registerSelectPosition();
 
-        getSupportPresenter().initHomeLucky(LuckDataManager.getInstance().getSelectConstellationIndex(), LuckDataManager.getInstance().getVipMobile());
+        getSupportPresenter().initHomeLucky(AppDataManager.getInstance().getSelectConstellationIndex(), AppDataManager.getInstance().getVipMobile());
 
     }
 
@@ -72,8 +72,8 @@ public class LuckyVipFragment extends BaseFragment<DayLuckVipPresenter> implemen
 
     @Override
     public void onSuccessLucky(LuckyVipEntity luckyVipEntity) {
-        vipConstellationImage.setImageResource(LuckDataManager.getInstance().getImageRes());
-        vipConstellationText.setText(Constants.CONSTELLATION_DESC[LuckDataManager.getInstance().getSelectConstellationIndex()]);
+        vipConstellationImage.setImageResource(AppDataManager.getInstance().getImageRes());
+        vipConstellationText.setText(Constants.CONSTELLATION_DESC[AppDataManager.getInstance().getSelectConstellationIndex()]);
         vipWeekFragment = VipWeekFragment.newInstance(luckyVipEntity);
         vipMonthFragment = VipMonthFragment.newInstance(luckyVipEntity);
         vipYearFragment = VipYearFragment.newInstance(luckyVipEntity);
@@ -83,7 +83,7 @@ public class LuckyVipFragment extends BaseFragment<DayLuckVipPresenter> implemen
 
     @Override
     public void onChangeConstellationIndex(int index) {
-        getSupportPresenter().initHomeLucky(LuckDataManager.getInstance().getSelectConstellationIndex(),  LuckDataManager.getInstance().getVipMobile());
+        getSupportPresenter().initHomeLucky(AppDataManager.getInstance().getSelectConstellationIndex(), AppDataManager.getInstance().getVipMobile());
     }
 
     @Override

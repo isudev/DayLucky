@@ -7,15 +7,15 @@ import com.zaotao.base.utils.NetworkUtils;
 import com.zaotao.base.utils.SPUtils;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 
-public class LuckDataManager {
+public class AppDataManager {
 
-    private static volatile LuckDataManager instance;
+    private static volatile AppDataManager instance;
 
-    public static LuckDataManager getInstance() {
+    public static AppDataManager getInstance() {
         if (instance == null) {
-            synchronized (LuckDataManager.class) {
+            synchronized (AppDataManager.class) {
                 if (instance == null) {
-                    instance = new LuckDataManager();
+                    instance = new AppDataManager();
                 }
             }
         }

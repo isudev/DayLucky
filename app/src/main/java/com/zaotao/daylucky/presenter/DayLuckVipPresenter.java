@@ -23,7 +23,7 @@ import com.zaotao.base.rx.RxBus;
 import com.zaotao.base.rx.RxBusSubscriber;
 import com.zaotao.base.rx.RxSchedulers;
 import com.zaotao.daylucky.R;
-import com.zaotao.daylucky.app.LuckDataManager;
+import com.zaotao.daylucky.app.AppDataManager;
 import com.zaotao.daylucky.app.MD5Utils;
 import com.zaotao.daylucky.base.BasePresenter;
 import com.zaotao.daylucky.contract.DayLuckVipContract;
@@ -160,8 +160,8 @@ public class DayLuckVipPresenter extends BasePresenter<DayLuckVipContract.View> 
                     @Override
                     public void onNext(AliPayResult aliPayResult) {
                         getView().onSuccessOrderPay();
-                        LuckDataManager.getInstance().setVipMobile(mobile);
-                        sendEvent(new SelectEvent(LuckDataManager.getInstance().getSelectConstellationIndex()));
+                        AppDataManager.getInstance().setVipMobile(mobile);
+                        sendEvent(new SelectEvent(AppDataManager.getInstance().getSelectConstellationIndex()));
                         onComplete();
                     }
 
@@ -203,10 +203,10 @@ public class DayLuckVipPresenter extends BasePresenter<DayLuckVipContract.View> 
                             @Override
                             public void subscribe(ObservableEmitter<WxPayResult> emitter) throws Exception {
                                 OrderPayEntity.WeChatPayBean weChatPayBean = orderPayEntity.getWechatpay();
-                                LuckDataManager.getInstance().setWxAppId(weChatPayBean.getAppid());
+                                AppDataManager.getInstance().setWxAppId(weChatPayBean.getAppid());
 
                                 final IWXAPI msgApi = WXAPIFactory.createWXAPI(activity, null);
-                                msgApi.registerApp(LuckDataManager.getInstance().getWxAppId());
+                                msgApi.registerApp(AppDataManager.getInstance().getWxAppId());
 
                                 if (msgApi.getWXAppSupportAPI() < Build.PAY_SUPPORTED_SDK_INT) {
                                     emitter.onNext(new WxPayResult(WxPayResult.NOT_INSTALLED_WE_CHAT));
@@ -259,8 +259,8 @@ public class DayLuckVipPresenter extends BasePresenter<DayLuckVipContract.View> 
                     public void onNext(WxPayResult wxPayResult) {
                         getView().showToast(wxPayResult.getErrInfo());
                         if (wxPayResult.isSucceed()){
-                            LuckDataManager.getInstance().setVipMobile(mobile);
-                            sendEvent(new SelectEvent(LuckDataManager.getInstance().getSelectConstellationIndex()));
+                            AppDataManager.getInstance().setVipMobile(mobile);
+                            sendEvent(new SelectEvent(AppDataManager.getInstance().getSelectConstellationIndex()));
                             getView().onSuccessOrderPay();
                         }
                         onComplete();

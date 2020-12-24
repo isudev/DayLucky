@@ -1,10 +1,10 @@
 package com.zaotao.daylucky.module.entity;
 
-import com.zaotao.daylucky.app.ColorManager;
+import com.zaotao.daylucky.app.ColorsManager;
 
 public class SettingStyleEntity {
     private String name;
-    private int color = ColorManager.colorsLineBg[0][1];
+    private int color = ColorsManager.colorsLineBg[0][1];
 
     public SettingStyleEntity(String name) {
         this.name = name;

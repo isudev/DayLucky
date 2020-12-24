@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -15,7 +14,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.app.Constants;
-import com.zaotao.daylucky.app.LuckDataManager;
+import com.zaotao.daylucky.app.AppDataManager;
 import com.zaotao.daylucky.module.listener.OnVipDialogListener;
 import com.zaotao.daylucky.view.activity.SelectActivity;
 import com.zaotao.daylucky.widget.appview.AppFakeBoldTextView;
@@ -113,7 +112,7 @@ public class DialogUnlockedVip extends BasePopupWindow {
 
     public void showDialog(OnVipDialogListener onVipDialogListener) {
         this.onVipDialogListener = onVipDialogListener;
-        viewUnlockedVipSelect.setText(Constants.CONSTELLATION_DESC[LuckDataManager.getInstance().getSelectConstellationIndex()]);
+        viewUnlockedVipSelect.setText(Constants.CONSTELLATION_DESC[AppDataManager.getInstance().getSelectConstellationIndex()]);
         viewUnlockedVipInput.setText("");
         showPopupWindow();
     }

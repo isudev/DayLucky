@@ -4,7 +4,7 @@ import android.graphics.Color;
 
 import com.zaotao.daylucky.R;
 
-public class ColorManager {
+public class ColorsManager {
 
     /**
      * theme view line & bg color
