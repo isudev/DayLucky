@@ -134,7 +134,7 @@ public class LuckyVipFragment extends BaseFragment<DayLuckVipPresenter> implemen
                 indicator.setYOffset(UIUtil.dip2px(context, 5));
                 indicator.setLineWidth(UIUtil.dip2px(context, 33));
                 indicator.setLineHeight(UIUtil.dip2px(context, 3));
-                indicator.setColors(ContextCompat.getColor(mContext, R.color.color85E9E6));
+                indicator.setColors(ContextCompat.getColor(mContext, R.color.color7F96FE));
                 return indicator;
             }
         });
