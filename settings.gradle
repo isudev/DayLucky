@@ -1,4 +1,5 @@
 include ':base'
+include ':push'
 include ':indicator'
 include ':app'
 rootProject.name = "DayLucky"

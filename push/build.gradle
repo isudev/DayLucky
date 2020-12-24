@@ -1,0 +1,38 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    api fileTree(dir: "libs", include: ["*.jar"])
+
+    //友盟push相关依赖(必须)
+    api 'com.umeng.umsdk:push:6.2.0'
+    api 'com.umeng.umsdk:alicloud-httpdns:1.2.5'
+    api 'com.umeng.umsdk:alicloud-utils:1.1.5'
+    api 'com.umeng.umsdk:alicloud_beacon:1.0.1'
+
+    api 'com.umeng.umsdk:agoo-accs:3.3.9.7-open'
+    api 'com.umeng.umsdk:agoo_networksdk:3.5.5'
+    api 'com.umeng.umsdk:agoo_tlog:3.0.0.17'
+    api 'com.umeng.umsdk:agoo_tnet4android:3.1.14.9'
+}
