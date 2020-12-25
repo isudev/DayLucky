@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.app.Notification;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,7 @@ import com.umeng.message.UmengMessageHandler;
 import com.umeng.message.UmengNotificationClickHandler;
 import com.umeng.message.entity.UMessage;
 import com.zaotao.base.utils.Utils;
+import com.zaotao.daylucky.view.MainActivity;
 
 public class App extends Application {
 
@@ -89,8 +91,6 @@ public class App extends Application {
         mPushAgent.register(new IUmengRegisterCallback() {
             @Override
             public void onSuccess(String deviceToken) {
-                Log.i(TAG, "onSuccess: "+deviceToken);
-//                UserInfoManager.getInstance().setDeviceToken(deviceToken);
             }
 
             @Override
@@ -178,10 +178,11 @@ public class App extends Application {
 
             @Override
             public void launchApp(Context context, UMessage msg) {
-                String type = msg.extra.get("type");
-
-
                 super.launchApp(context, msg);
+                Intent intent = new Intent();
+                intent.setClass(context,MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             }
 
             @Override
