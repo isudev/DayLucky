@@ -155,7 +155,7 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
                         ThemeEntity themeEntity = new ThemeEntity();
                         themeEntity.setBad(luckyEntity.getToday().getBad());
                         themeEntity.setLucky(luckyEntity.getToday().getLuck());
-                        themeEntity.setText(luckyEntity.getToday().getCont());
+                        themeEntity.setText(luckyEntity.getToday().getLuck_desc());
                         themeEntity.setDay(DateUtils.formatDayText(luckyEntity.getDate().getTime()));
                         themeEntity.setMonth(DateUtils.formatMonthText(luckyEntity.getDate().getTime()));
                         themeEntity.setWeek(DateUtils.formatWeekText(luckyEntity.getDate().getTime()));
@@ -174,7 +174,7 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
                             themeEntity = AppDataManager.getInstance().getThemeData();
                             themeEntity.setBad(luckyEntity.getToday().getBad());
                             themeEntity.setLucky(luckyEntity.getToday().getLuck());
-                            themeEntity.setText(luckyEntity.getToday().getCont());
+                            themeEntity.setText(luckyEntity.getToday().getLuck_desc());
                             themeEntity.setDay(DateUtils.formatDayText(luckyEntity.getDate().getTime()));
                             themeEntity.setMonth(DateUtils.formatMonthText(luckyEntity.getDate().getTime()));
                             themeEntity.setWeek(DateUtils.formatWeekText(luckyEntity.getDate().getTime()));
@@ -218,7 +218,7 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
                         ThemeEntity themeEntity = new ThemeEntity();
                         themeEntity.setBad(luckyEntity.getToday().getBad());
                         themeEntity.setLucky(luckyEntity.getToday().getLuck());
-                        themeEntity.setText(luckyEntity.getToday().getCont());
+                        themeEntity.setText(luckyEntity.getToday().getLuck_desc());
                         themeEntity.setDay(DateUtils.formatDayText(luckyEntity.getDate().getTime()));
                         themeEntity.setMonth(DateUtils.formatMonthText(luckyEntity.getDate().getTime()));
                         themeEntity.setWeek(DateUtils.formatWeekText(luckyEntity.getDate().getTime()));
@@ -237,7 +237,7 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
                             themeEntity = AppDataManager.getInstance().getThemeData();
                             themeEntity.setBad(luckyEntity.getToday().getBad());
                             themeEntity.setLucky(luckyEntity.getToday().getLuck());
-                            themeEntity.setText(luckyEntity.getToday().getCont());
+                            themeEntity.setText(luckyEntity.getToday().getLuck_desc());
                             themeEntity.setDay(DateUtils.formatDayText(luckyEntity.getDate().getTime()));
                             themeEntity.setMonth(DateUtils.formatMonthText(luckyEntity.getDate().getTime()));
                             themeEntity.setWeek(DateUtils.formatWeekText(luckyEntity.getDate().getTime()));

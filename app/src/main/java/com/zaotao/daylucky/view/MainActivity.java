@@ -2,6 +2,7 @@ package com.zaotao.daylucky.view;
 
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.zaotao.daylucky.R;
@@ -36,6 +37,7 @@ public class MainActivity extends BaseActivity<DayLuckCorePresenter>  {
 
     @Override
     protected void initCreate(Bundle savedInstanceState) {
+        getWindow().setNavigationBarColor(ContextCompat.getColor(mContext, R.color.colorCDCDCD));
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new LuckyVipFragment());
         fragments.add(new LuckyFragment());

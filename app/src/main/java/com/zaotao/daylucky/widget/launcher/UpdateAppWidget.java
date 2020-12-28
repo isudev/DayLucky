@@ -72,7 +72,7 @@ public class UpdateAppWidget {
         Bitmap bitmap0 = Bitmap.createBitmap(6, 80, Bitmap.Config.ARGB_8888);
         bitmap0.eraseColor(themeEntity.getLineColor());
         views.setImageViewBitmap(R.id.item_theme_style_line, bitmap0);
-        Bitmap bitmap = getBitmap(ScreenUtils.getScreenWidth(), 400, themeEntity.getBgColor());
+        Bitmap bitmap = getBitmap(ScreenUtils.getScreenWidth(), 450, themeEntity.getBgColor());
         views.setImageViewBitmap(R.id.item_theme_style_bg, bitmap);
 
         return views;
