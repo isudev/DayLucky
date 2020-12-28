@@ -18,6 +18,7 @@
             android:layout_marginStart="@dimen/dp_10"
             android:layout_marginTop="@dimen/dp_5"
             android:layout_marginEnd="@dimen/dp_10"
+            android:visibility="gone"
             app:cardBackgroundColor="@android:color/white"
             app:cardCornerRadius="@dimen/dp_10"
             app:cardElevation="@dimen/dp_8"
