@@ -1,1 +1,8 @@
+v1.0.0
+
 http://user.astro90.com/DayLucky_v1.0.0_release_29b8a44a56a4.apk
+
+v2.0.0
+
+http://user.astro90.com/DayLucky_v2.0.0_release_e2bc85d731bb.apk
+
