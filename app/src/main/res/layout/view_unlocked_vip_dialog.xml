@@ -64,7 +64,9 @@
     </RelativeLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/view_unlocked_vip_select_pay_parent"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="wrap_content">
 
         <com.zaotao.daylucky.widget.appview.AppFakeBoldTextView

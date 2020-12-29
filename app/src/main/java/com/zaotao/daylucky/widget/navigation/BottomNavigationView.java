@@ -50,7 +50,7 @@ public class BottomNavigationView extends LinearLayout {
     }
 
     public int getNormalIndex() {
-        return TAB_VIP;
+        return TAB_LUCKY;
     }
 
     public BottomNavigationView(Context context) {
@@ -106,7 +106,7 @@ public class BottomNavigationView extends LinearLayout {
         });
 
 
-        initBottomTabs(TAB_VIP);
+        initBottomTabs(getNormalIndex());
     }
 
     private void initBottomTabs(int position) {

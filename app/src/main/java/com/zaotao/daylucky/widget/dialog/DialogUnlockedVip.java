@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.app.Constants;
@@ -28,6 +29,7 @@ import razerdp.basepopup.BasePopupWindow;
 public class DialogUnlockedVip extends BasePopupWindow {
     private AppCompatEditText viewUnlockedVipInput;
     private TextView viewUnlockedVipSelect;
+    private ConstraintLayout viewUnlockedVipSelectPayParent;
     private AppFakeBoldTextView viewUnlockedVipSelectAliPay;
     private AppCompatImageView viewUnlockedVipSelectAliPayCheckBox;
     private AppFakeBoldTextView viewUnlockedVipSelectWeChatPay;
@@ -37,17 +39,25 @@ public class DialogUnlockedVip extends BasePopupWindow {
     private String mobile;
     private int checkPosition;
     private OnVipDialogListener onVipDialogListener;
+    private boolean onlyAliPay;
 
     public DialogUnlockedVip(Context context) {
         super(context);
 
         viewUnlockedVipInput = findViewById(R.id.view_unlocked_vip_input);
         viewUnlockedVipSelect = findViewById(R.id.view_unlocked_vip_select);
+        viewUnlockedVipSelectPayParent = findViewById(R.id.view_unlocked_vip_select_pay_parent);
         viewUnlockedVipSelectAliPay = findViewById(R.id.view_unlocked_vip_select_ali_pay);
         viewUnlockedVipSelectAliPayCheckBox = findViewById(R.id.view_unlocked_vip_select_ali_pay_check_box);
         viewUnlockedVipSelectWeChatPay = findViewById(R.id.view_unlocked_vip_select_we_chat_pay);
         viewUnlockedVipSelectWeChatPayCheckBox = findViewById(R.id.view_unlocked_vip_select_we_chat_pay_check_box);
         viewUnlockedVipButton = findViewById(R.id.view_unlocked_vip_button);
+
+        /**
+         * aliPay mode
+         */
+        setOnlyAliPay();
+
 
         viewUnlockedVipSelectAliPay.setOnClickListener(v -> {
             viewUnlockedVipSelectAliPayCheckBox.setImageResource(R.drawable.ic_unlocked_vip_selected);
@@ -96,7 +106,7 @@ public class DialogUnlockedVip extends BasePopupWindow {
 
         viewUnlockedVipButton.setOnClickListener(v -> {
             if (!TextUtils.isEmpty(mobile) && mobile.length() == 11) {
-                onVipDialogListener.onClick(mobile,checkPosition);
+                onVipDialogListener.onClick(mobile, checkPosition);
             }
         });
     }
@@ -106,14 +116,19 @@ public class DialogUnlockedVip extends BasePopupWindow {
         return createPopupById(R.layout.view_unlocked_vip_dialog);
     }
 
-    public void setSelectText(String name){
+    public void setSelectText(String name) {
         viewUnlockedVipSelect.setText(name);
+    }
+
+    public void setOnlyAliPay() {
+        onlyAliPay = true;
     }
 
     public void showDialog(OnVipDialogListener onVipDialogListener) {
         this.onVipDialogListener = onVipDialogListener;
         viewUnlockedVipSelect.setText(Constants.CONSTELLATION_DESC[AppDataManager.getInstance().getSelectConstellationIndex()]);
         viewUnlockedVipInput.setText("");
+        viewUnlockedVipSelectPayParent.setVisibility(onlyAliPay ? View.GONE : View.VISIBLE);
         showPopupWindow();
     }
 }
