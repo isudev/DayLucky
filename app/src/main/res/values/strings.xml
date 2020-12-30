@@ -8,9 +8,12 @@
     <string name="theme_style_other">其他</string>
     <string name="confirm">确认</string>
     <string name="cancel">取消</string>
-    <string name="vip_week_lock_text">解锁专业周运</string>
-    <string name="vip_month_lock_text">解锁专业月运</string>
-    <string name="vip_year_lock_text">解锁专业年运</string>
+    <string name="current_week_lucky_text">本周运势</string>
+    <string name="current_month_lucky_text">本月运势</string>
+    <string name="current_year_lucky_text">本年运势</string>
+    <string name="vip_week_lock_text">解锁专业周运 6元</string>
+    <string name="vip_month_lock_text">解锁专业月运 12元</string>
+    <string name="vip_year_lock_text">解锁专业年运 30元</string>
     <string name="about_us">关于</string>
     <string name="title_bar_text_agreement">用户协议</string>
     <string name="title_bar_text_privacy">隐私政策</string>

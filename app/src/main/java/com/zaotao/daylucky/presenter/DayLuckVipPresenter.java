@@ -113,8 +113,8 @@ public class DayLuckVipPresenter extends BasePresenter<DayLuckVipContract.View> 
 
 
     @Override
-    public void aliPayOrder(Activity activity,int reportId, String mobile) {
-        apiService.apiOrderPay(new OrderPayEntity(2,reportId, mobile))
+    public void aliPayOrder(Activity activity, int reportId, String mobile) {
+        apiService.apiOrderPay(new OrderPayEntity(2, reportId, mobile))
                 .filter(new Predicate<BaseResult<OrderPayEntity>>() {
                     @Override
                     public boolean test(BaseResult<OrderPayEntity> orderPayResult) throws Exception {
@@ -179,11 +179,11 @@ public class DayLuckVipPresenter extends BasePresenter<DayLuckVipContract.View> 
 
     @Override
     public void weChatPayOrder(Activity activity, int reportId, String mobile) {
-        apiService.apiOrderPay(new OrderPayEntity(1,reportId, mobile))
+        apiService.apiOrderPay(new OrderPayEntity(1, reportId, mobile))
                 .filter(new Predicate<BaseResult<OrderPayEntity>>() {
                     @Override
                     public boolean test(BaseResult<OrderPayEntity> orderPayResult) throws Exception {
-                        if (orderPayResult.failure()){
+                        if (orderPayResult.failure()) {
                             getView().showToast("支付失败");
                             return false;
                         }
@@ -258,7 +258,7 @@ public class DayLuckVipPresenter extends BasePresenter<DayLuckVipContract.View> 
                     @Override
                     public void onNext(WxPayResult wxPayResult) {
                         getView().showToast(wxPayResult.getErrInfo());
-                        if (wxPayResult.isSucceed()){
+                        if (wxPayResult.isSucceed()) {
                             AppDataManager.getInstance().setVipMobile(mobile);
                             sendEvent(new SelectEvent(AppDataManager.getInstance().getSelectConstellationIndex()));
                             getView().onSuccessOrderPay();
@@ -446,5 +446,11 @@ public class DayLuckVipPresenter extends BasePresenter<DayLuckVipContract.View> 
         luckyVipLineChart.setVisibility(View.VISIBLE);
     }
 
+    @Override
+    public String[] initTitles(Context context) {
+        return new String[]{context.getString(R.string.current_week_lucky_text),
+                context.getString(R.string.current_month_lucky_text),
+                context.getString(R.string.current_year_lucky_text)};
+    }
 
 }

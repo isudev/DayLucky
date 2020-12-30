@@ -1,6 +1,7 @@
 package com.zaotao.daylucky.contract;
 
 import android.app.Activity;
+import android.content.Context;
 import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
@@ -52,5 +53,6 @@ public interface DayLuckCoreContract {
 
         List<Fragment> initFragments(Activity activity);
 
+        String[] initTitles(Context context);
     }
 }

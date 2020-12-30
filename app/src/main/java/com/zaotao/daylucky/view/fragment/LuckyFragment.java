@@ -52,7 +52,6 @@ public class LuckyFragment extends BaseFragment<DayLuckCorePresenter> implements
     @BindView(R.id.fragment_lucky_image_click)
     CircleImageView fragmentLuckyImageClick;
 
-    private String[] titles = {"本周运势", "本月运势"};
     private FortuneWeekFragment fortuneWeekFragment;
     private FortuneMonthFragment fortuneMonthFragment;
 
@@ -118,7 +117,7 @@ public class LuckyFragment extends BaseFragment<DayLuckCorePresenter> implements
         commonNavigator.setAdapter(new CommonNavigatorAdapter() {
             @Override
             public int getCount() {
-                return titles.length;
+                return getSupportPresenter().initTitles(mContext).length;
             }
 
             @Override
@@ -128,7 +127,7 @@ public class LuckyFragment extends BaseFragment<DayLuckCorePresenter> implements
                 simplePagerTitleView.setPadding(padding, 0, padding, 0);
                 simplePagerTitleView.setSingleLine();
                 simplePagerTitleView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
-                simplePagerTitleView.setText(titles[index]);
+                simplePagerTitleView.setText(getSupportPresenter().initTitles(mContext)[index]);
                 simplePagerTitleView.setTextSize(15);
                 simplePagerTitleView.setNormalColor(ContextCompat.getColor(mContext, R.color.color999999));
                 simplePagerTitleView.setSelectedColor(ContextCompat.getColor(mContext, R.color.color191919));

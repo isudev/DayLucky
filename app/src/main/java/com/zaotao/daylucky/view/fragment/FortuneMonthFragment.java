@@ -58,7 +58,6 @@ public class FortuneMonthFragment extends BaseFragment<DayLuckCorePresenter> imp
         /**
          * init list data
          */
-
         luckyContentAdapter = new LuckyContentAdapter(mContext);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false) {
             @Override

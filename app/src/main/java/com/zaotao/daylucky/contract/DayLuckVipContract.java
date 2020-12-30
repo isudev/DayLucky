@@ -43,5 +43,6 @@ public interface DayLuckVipContract {
 
         void initVipYearChartsList(Context context, LuckyVipEntity luckyVipEntity, LineChart luckyVipLineChart);
 
+        String[] initTitles(Context context);
     }
 }

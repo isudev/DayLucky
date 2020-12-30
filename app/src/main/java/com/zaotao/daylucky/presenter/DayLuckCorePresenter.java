@@ -1,6 +1,7 @@
 package com.zaotao.daylucky.presenter;
 
 import android.app.Activity;
+import android.content.Context;
 import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,7 @@ import com.isuu.base.rx.RxSchedulers;
 import com.isuu.base.utils.NetworkUtils;
 import com.isuu.base.utils.VibrateUtils;
 import com.zaotao.daylucky.App;
+import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.app.AppDataManager;
 import com.zaotao.daylucky.app.ColorsManager;
 import com.zaotao.daylucky.app.Constants;
@@ -398,5 +400,11 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
             settingStyleEntityList.add(new SettingStyleEntity(Constants.SETTING_STYLE[i]));
         }
         return settingStyleEntityList;
+    }
+
+    @Override
+    public String[] initTitles(Context context) {
+        return new String[]{context.getString(R.string.current_week_lucky_text),
+                context.getString(R.string.current_month_lucky_text)};
     }
 }
