@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.isuu.base.view.RoundImageView;
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.base.BaseFragment;
@@ -53,6 +54,8 @@ public class StyleFragment extends BaseFragment<DayLuckCorePresenter> implements
     RecyclerView recyclerViewFragmentStyle;
     @BindView(R.id.about_us_button)
     TextView aboutUsButton;
+    @BindView(R.id.toolbar_layout)
+    CollapsingToolbarLayout toolbarLayout;
 
     private SettingStyleAdapter settingStyleAdapter;
     private List<SettingStyleEntity> settingStyleEntityList;
@@ -69,6 +72,9 @@ public class StyleFragment extends BaseFragment<DayLuckCorePresenter> implements
 
     @Override
     protected void initViewData(View view) {
+        toolbarLayout.setTitle(getString(R.string.main_bottom_bar_text_style));
+        toolbarLayout.setCollapsedTitleTextColor(ContextCompat.getColor(mContext, R.color.color333333));
+        toolbarLayout.setExpandedTitleColor(ContextCompat.getColor(mContext, R.color.color333333));
         getSupportPresenter().registerThemeInfo();
         settingStyleEntityList = getSupportPresenter().initSettingStyleData();
         settingStyleAdapter = new SettingStyleAdapter(mContext);

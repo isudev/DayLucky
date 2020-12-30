@@ -1,23 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorF9FAF9"
-    android:orientation="vertical">
+    android:fitsSystemWindows="true"
+    android:background="@color/colorF9FAF9">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_25"
-        android:layout_marginTop="@dimen/dp_54"
-        android:text="@string/main_bottom_bar_text_style"
-        android:textColor="@color/color333333"
-        android:textSize="@dimen/sp_34" />
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_120"
+        android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:expandedTitleMarginStart="@dimen/dp_25"
+            android:background="@color/colorF9FAF9"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar">
+
+            <androidx.appcompat.widget.Toolbar
+                app:titleTextColor="@color/color333333"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay"/>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:overScrollMode="never">
 
         <LinearLayout
@@ -29,7 +47,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp_25"
-                android:layout_marginTop="@dimen/dp_34"
                 android:layout_marginEnd="@dimen/dp_25">
 
                 <com.isuu.base.view.RoundImageView
@@ -167,13 +184,13 @@
                 android:layout_height="@dimen/dp_44"
                 android:gravity="center"
                 android:layout_marginTop="@dimen/dp_20"
-                android:layout_marginBottom="@dimen/dp_20"
                 android:background="@android:color/white"
-                android:text="关于"
+                android:text="@string/about_us"
                 android:textColor="@color/color333333"
                 android:textSize="@dimen/sp_17" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-</LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
