@@ -1,7 +1,7 @@
 package com.zaotao.daylucky.base;
 
+import com.isuu.base.rx.RxBus;
 import com.trello.rxlifecycle3.LifecycleProvider;
-import com.zaotao.base.rx.RxBus;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;

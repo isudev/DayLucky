@@ -23,7 +23,7 @@
                 android:orientation="vertical">
 
 
-                <com.zaotao.base.view.CircleImageView
+                <com.isuu.base.view.CircleImageView
                     android:id="@+id/vip_constellation_image"
                     android:layout_width="@dimen/dp_45"
                     android:layout_height="@dimen/dp_45"

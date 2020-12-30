@@ -16,8 +16,8 @@ import android.widget.Toast;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 
+import com.isuu.base.rx.RxBus;
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity;
-import com.zaotao.base.rx.RxBus;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;

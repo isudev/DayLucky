@@ -48,7 +48,7 @@
                     app:layout_constraintTop_toBottomOf="@id/fragment_lucky_text_date"
                     tools:text="月亮刑太阳 月亮冲本星 月亮刑火星" />
 
-                <com.zaotao.base.view.CircleImageView
+                <com.isuu.base.view.CircleImageView
                     android:id="@+id/fragment_lucky_image_click"
                     android:layout_width="@dimen/dp_45"
                     android:layout_height="@dimen/dp_45"

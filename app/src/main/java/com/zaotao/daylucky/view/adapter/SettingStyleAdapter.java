@@ -1,23 +1,18 @@
 package com.zaotao.daylucky.view.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.zaotao.base.view.CircleImageView;
+import com.isuu.base.view.CircleImageView;
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.module.entity.SettingStyleEntity;
-import com.zaotao.daylucky.module.entity.ThemeEntity;
 import com.zaotao.daylucky.module.listener.OnItemPositionClickListener;
 
 import java.util.List;

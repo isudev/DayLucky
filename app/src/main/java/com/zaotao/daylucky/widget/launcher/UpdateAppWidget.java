@@ -10,7 +10,7 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.widget.RemoteViews;
 
-import com.zaotao.base.utils.ScreenUtils;
+import com.isuu.base.utils.ScreenUtils;
 import com.zaotao.daylucky.App;
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.app.ColorsManager;

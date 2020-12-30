@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.zaotao.base.view.RoundImageView;
+import com.isuu.base.view.RoundImageView;
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 import com.zaotao.daylucky.module.listener.OnItemPositionClickListener;

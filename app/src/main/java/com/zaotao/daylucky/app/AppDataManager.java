@@ -3,8 +3,8 @@ package com.zaotao.daylucky.app;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
-import com.zaotao.base.utils.NetworkUtils;
-import com.zaotao.base.utils.SPUtils;
+import com.isuu.base.utils.NetworkUtils;
+import com.isuu.base.utils.SPUtils;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 
 public class AppDataManager {

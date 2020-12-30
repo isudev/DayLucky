@@ -11,4 +11,10 @@
     <string name="vip_week_lock_text">解锁专业周运</string>
     <string name="vip_month_lock_text">解锁专业月运</string>
     <string name="vip_year_lock_text">解锁专业年运</string>
+    <string name="about_us">关于</string>
+    <string name="title_bar_text_agreement">用户协议</string>
+    <string name="title_bar_text_privacy">隐私政策</string>
+    <string name="title_bar_text_contacts_us">联系我们</string>
+    <string name="about_us_copyright_text">北京妥妥科技有限公司</string>
+    <string name="toast_copy_success">复制成功</string>
 </resources>

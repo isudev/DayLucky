@@ -71,7 +71,7 @@ public class Constants {
             "健康"
     };
 
-    public static String[] SETTING_STYLE={
+    public static String[] SETTING_STYLE = {
             "背景",
             "日期",
             "星期",

@@ -1,7 +1,8 @@
 package com.zaotao.daylucky.module.api;
 
 
-import com.zaotao.base.utils.NetworkUtils;
+
+import com.isuu.base.utils.NetworkUtils;
 
 import java.io.IOException;
 

@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.zaotao.base.view.RoundImageView;
+import com.isuu.base.view.RoundImageView;
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.base.BaseFragment;
 import com.zaotao.daylucky.contract.DayLuckCoreContract;
@@ -19,6 +19,7 @@ import com.zaotao.daylucky.module.entity.SettingStyleEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 import com.zaotao.daylucky.module.listener.OnItemPositionClickListener;
 import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
+import com.zaotao.daylucky.view.activity.AboutUsActivity;
 import com.zaotao.daylucky.view.adapter.SettingStyleAdapter;
 import com.zaotao.daylucky.widget.launcher.UpdateAppWidget;
 
@@ -50,6 +51,8 @@ public class StyleFragment extends BaseFragment<DayLuckCorePresenter> implements
     RoundImageView itemThemeStyleBg;
     @BindView(R.id.recycler_view_fragment_style)
     RecyclerView recyclerViewFragmentStyle;
+    @BindView(R.id.about_us_button)
+    TextView aboutUsButton;
 
     private SettingStyleAdapter settingStyleAdapter;
     private List<SettingStyleEntity> settingStyleEntityList;
@@ -99,6 +102,8 @@ public class StyleFragment extends BaseFragment<DayLuckCorePresenter> implements
                 UpdateAppWidget.getInstance().updateAppWidget();
             }
         });
+
+        aboutUsButton.setOnClickListener(v -> startActivity(AboutUsActivity.class));
     }
 
     @Override

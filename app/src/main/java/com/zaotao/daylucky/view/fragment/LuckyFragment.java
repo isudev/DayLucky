@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 
-import com.zaotao.base.view.CircleImageView;
+import com.isuu.base.view.CircleImageView;
 import com.zaotao.daylucky.R;
 import com.zaotao.daylucky.app.DateUtils;
 import com.zaotao.daylucky.app.AppDataManager;

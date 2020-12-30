@@ -23,7 +23,7 @@
         android:foreground="?android:attr/selectableItemBackground">
 
 
-        <com.zaotao.base.view.RoundImageView
+        <com.isuu.base.view.RoundImageView
             android:id="@+id/item_theme_style_bg"
             android:layout_width="0dp"
             android:layout_height="0dp"
