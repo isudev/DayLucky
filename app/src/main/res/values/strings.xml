@@ -17,4 +17,8 @@
     <string name="title_bar_text_contacts_us">联系我们</string>
     <string name="about_us_copyright_text">北京妥妥科技有限公司</string>
     <string name="toast_copy_success">复制成功</string>
+    <string name="privacy_agree">同意</string>
+    <string name="privacy_disagree">暂不使用</string>
+    <string name="privacy_title">用户隐私保护声明</string>
+    <string name="privacy_hint_text">感谢您选择DayLucky。我们非常重视你的个人信息和隐私保护。为了向你提供更好的服务我们需要获得个人信息等相关授权，在你使用我们的产品前，请仔细阅读《用户协议》和《隐私政策》的全部内容。同意并接受全部条款后，开始使用我们的产品和服务。</string>
 </resources>

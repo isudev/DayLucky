@@ -25,7 +25,7 @@ import com.zaotao.daylucky.module.entity.LuckyVipEntity;
 import com.zaotao.daylucky.presenter.DayLuckVipPresenter;
 import com.zaotao.daylucky.view.adapter.VipLineChartHistogramAdapter;
 import com.zaotao.daylucky.view.adapter.VipLuckyContentAdapter;
-import com.zaotao.daylucky.widget.dialog.DialogUnlockedVip;
+import com.zaotao.daylucky.widget.dialog.UnlockedVipDialog;
 
 import java.util.List;
 
@@ -58,7 +58,7 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> implement
     @BindView(R.id.vip_lock_button_text)
     TextView vipLockButtonText;
 
-    private DialogUnlockedVip dialogUnlockedVip;
+    private UnlockedVipDialog unlockedVipDialog;
 
     public static VipWeekFragment newInstance(LuckyVipEntity luckyVipEntity) {
         Bundle args = new Bundle();
@@ -81,7 +81,7 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> implement
 
     @Override
     protected void initViewData(View view) {
-        dialogUnlockedVip = new DialogUnlockedVip(mContext);
+        unlockedVipDialog = new UnlockedVipDialog(mContext);
         vipLockButtonText.setText(R.string.vip_week_lock_text);
         LuckyVipEntity luckyVipWeekData = (LuckyVipEntity) getArguments().getSerializable("fragment_lucky_vip_week_year");
         luckyVipWeekText0.setText(luckyVipWeekData.getDate().getWeek().split("/")[0]);
@@ -146,7 +146,7 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> implement
         /**
          * order pay action
          */
-        vipLockButton.setOnClickListener(v -> dialogUnlockedVip.showDialog((mobile, payType) -> {
+        vipLockButton.setOnClickListener(v -> unlockedVipDialog.showDialog((mobile, payType) -> {
             switch (payType){
                 case 0:
                     getSupportPresenter().aliPayOrder(mActivity, luckyVipWeekData.getWeek().getId(), mobile);
@@ -169,11 +169,11 @@ public class VipWeekFragment extends BaseFragment<DayLuckVipPresenter> implement
 
     @Override
     public void onChangeConstellationIndex(int index) {
-        dialogUnlockedVip.setSelectText(Constants.CONSTELLATION_DESC[index]);
+        unlockedVipDialog.setSelectText(Constants.CONSTELLATION_DESC[index]);
     }
 
     @Override
     public void onSuccessOrderPay() {
-        dialogUnlockedVip.dismiss();
+        unlockedVipDialog.dismiss();
     }
 }

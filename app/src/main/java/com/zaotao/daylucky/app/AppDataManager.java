@@ -61,4 +61,12 @@ public class AppDataManager {
     public String getWxAppId(){
         return SPUtils.getInstance().getString("zao_tao_local_wx_app_id", "");
     }
+
+    public boolean getPrivacyShowed() {
+        return SPUtils.getInstance().getBoolean("zao_tao_local_privacy_show_popup");
+    }
+
+    public void setPrivacyShowStatus() {
+        SPUtils.getInstance().put("zao_tao_local_privacy_show_popup", true);
+    }
 }

@@ -1,6 +1,9 @@
 package com.zaotao.daylucky.presenter;
 
+import android.app.Activity;
 import android.widget.ImageView;
+
+import androidx.fragment.app.Fragment;
 
 import com.google.gson.Gson;
 import com.isuu.base.rx.RxBus;
@@ -26,6 +29,11 @@ import com.zaotao.daylucky.module.entity.SettingSelectEntity;
 import com.zaotao.daylucky.module.entity.SettingStyleEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 import com.zaotao.daylucky.module.event.SelectEvent;
+import com.zaotao.daylucky.view.fragment.LuckyFragment;
+import com.zaotao.daylucky.view.fragment.StyleFragment;
+import com.zaotao.daylucky.view.fragment.ThemeFragment;
+import com.zaotao.daylucky.view.vip.LuckyVipFragment;
+import com.zaotao.daylucky.widget.dialog.PrivacyDialog;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -40,7 +48,6 @@ import io.reactivex.functions.Predicate;
 
 public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View> implements DayLuckCoreContract.Presenter {
 
-
     private ApiService apiService;
 
     @Override
@@ -50,6 +57,19 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
 
     @Override
     public void onPresenterDestroy() {
+    }
+
+    @Override
+    public List<Fragment> initFragments(Activity activity) {
+        PrivacyDialog privacyDialog = new PrivacyDialog(activity);
+        privacyDialog.show(v -> activity.finish());
+
+        List<Fragment> fragments = new ArrayList<>();
+        fragments.add(new LuckyVipFragment());
+        fragments.add(new LuckyFragment());
+        fragments.add(new ThemeFragment());
+        fragments.add(new StyleFragment());
+        return fragments;
     }
 
     @Override

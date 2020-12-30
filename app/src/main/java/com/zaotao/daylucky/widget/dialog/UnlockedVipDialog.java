@@ -14,8 +14,8 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.zaotao.daylucky.R;
-import com.zaotao.daylucky.app.Constants;
 import com.zaotao.daylucky.app.AppDataManager;
+import com.zaotao.daylucky.app.Constants;
 import com.zaotao.daylucky.module.listener.OnVipDialogListener;
 import com.zaotao.daylucky.view.activity.SelectActivity;
 import com.zaotao.daylucky.widget.appview.AppFakeBoldTextView;
@@ -26,7 +26,7 @@ import razerdp.basepopup.BasePopupWindow;
  * Description DialogUnlockedVip
  * Created by wangisu@qq.com on 12/23/20.
  */
-public class DialogUnlockedVip extends BasePopupWindow {
+public class UnlockedVipDialog extends BasePopupWindow {
     private AppCompatEditText viewUnlockedVipInput;
     private TextView viewUnlockedVipSelect;
     private ConstraintLayout viewUnlockedVipSelectPayParent;
@@ -41,7 +41,7 @@ public class DialogUnlockedVip extends BasePopupWindow {
     private OnVipDialogListener onVipDialogListener;
     private boolean onlyAliPay;
 
-    public DialogUnlockedVip(Context context) {
+    public UnlockedVipDialog(Context context) {
         super(context);
 
         viewUnlockedVipInput = findViewById(R.id.view_unlocked_vip_input);

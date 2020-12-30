@@ -22,11 +22,10 @@ import com.zaotao.daylucky.base.BaseFragment;
 import com.zaotao.daylucky.contract.DayLuckVipContract;
 import com.zaotao.daylucky.module.entity.FortuneContentEntity;
 import com.zaotao.daylucky.module.entity.LuckyVipEntity;
-import com.zaotao.daylucky.module.listener.OnVipDialogListener;
 import com.zaotao.daylucky.presenter.DayLuckVipPresenter;
 import com.zaotao.daylucky.view.adapter.VipLineChartHistogramAdapter;
 import com.zaotao.daylucky.view.adapter.VipLuckyContentAdapter;
-import com.zaotao.daylucky.widget.dialog.DialogUnlockedVip;
+import com.zaotao.daylucky.widget.dialog.UnlockedVipDialog;
 
 import java.util.List;
 
@@ -59,7 +58,7 @@ public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> implement
     @BindView(R.id.vip_lock_button_text)
     TextView vipLockButtonText;
 
-    private DialogUnlockedVip dialogUnlockedVip;
+    private UnlockedVipDialog unlockedVipDialog;
 
     public static VipYearFragment newInstance(LuckyVipEntity luckyVipEntity) {
         Bundle args = new Bundle();
@@ -82,7 +81,7 @@ public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> implement
 
     @Override
     protected void initViewData(View view) {
-        dialogUnlockedVip = new DialogUnlockedVip(mContext);
+        unlockedVipDialog = new UnlockedVipDialog(mContext);
         vipLockButtonText.setText(R.string.vip_year_lock_text);
         LuckyVipEntity luckyVipYearData = (LuckyVipEntity) getArguments().getSerializable("fragment_lucky_vip_week_year");
         String yearDate = luckyVipYearData.getDate().getMonth_abbr() + luckyVipYearData.getDate().getYear();
@@ -148,7 +147,7 @@ public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> implement
         /**
          * order pay action
          */
-        vipLockButton.setOnClickListener(v -> dialogUnlockedVip.showDialog((mobile, payType) -> {
+        vipLockButton.setOnClickListener(v -> unlockedVipDialog.showDialog((mobile, payType) -> {
             switch (payType){
                 case 0:
                     getSupportPresenter().aliPayOrder(mActivity, luckyVipYearData.getYear().getId(), mobile);
@@ -172,11 +171,11 @@ public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> implement
 
     @Override
     public void onChangeConstellationIndex(int index) {
-        dialogUnlockedVip.setSelectText(Constants.CONSTELLATION_DESC[index]);
+        unlockedVipDialog.setSelectText(Constants.CONSTELLATION_DESC[index]);
     }
 
     @Override
     public void onSuccessOrderPay() {
-        dialogUnlockedVip.dismiss();
+        unlockedVipDialog.dismiss();
     }
 }

@@ -21,7 +21,7 @@ import com.zaotao.daylucky.module.entity.LuckyVipEntity;
 import com.zaotao.daylucky.presenter.DayLuckVipPresenter;
 import com.zaotao.daylucky.view.adapter.VipLuckyContentAdapter;
 import com.zaotao.daylucky.widget.appview.AppFakeBoldTextView;
-import com.zaotao.daylucky.widget.dialog.DialogUnlockedVip;
+import com.zaotao.daylucky.widget.dialog.UnlockedVipDialog;
 import com.zaotao.daylucky.widget.ringview.RingChartView;
 
 import java.util.List;
@@ -61,7 +61,7 @@ public class VipMonthFragment extends BaseFragment<DayLuckVipPresenter> implemen
     @BindView(R.id.vip_lock_button_text)
     TextView vipLockButtonText;
 
-    private DialogUnlockedVip dialogUnlockedVip;
+    private UnlockedVipDialog unlockedVipDialog;
 
     public static VipMonthFragment newInstance(LuckyVipEntity luckyVipEntity) {
         Bundle args = new Bundle();
@@ -84,7 +84,7 @@ public class VipMonthFragment extends BaseFragment<DayLuckVipPresenter> implemen
 
     @Override
     protected void initViewData(View view) {
-        dialogUnlockedVip = new DialogUnlockedVip(mContext);
+        unlockedVipDialog = new UnlockedVipDialog(mContext);
         vipLockButtonText.setText(R.string.vip_month_lock_text);
         LuckyVipEntity luckyVipMonthData = (LuckyVipEntity) getArguments().getSerializable("fragment_lucky_vip_month");
         luckyVipCount.setText(luckyVipMonthData.getMonth().getCont());
@@ -128,7 +128,7 @@ public class VipMonthFragment extends BaseFragment<DayLuckVipPresenter> implemen
         /**
          * order pay action
          */
-        vipLockButton.setOnClickListener(v -> dialogUnlockedVip.showDialog((mobile, payType) -> {
+        vipLockButton.setOnClickListener(v -> unlockedVipDialog.showDialog((mobile, payType) -> {
             switch (payType){
                 case 0:
                     getSupportPresenter().aliPayOrder(mActivity, luckyVipMonthData.getMonth().getId(), mobile);
@@ -152,11 +152,11 @@ public class VipMonthFragment extends BaseFragment<DayLuckVipPresenter> implemen
 
     @Override
     public void onChangeConstellationIndex(int index) {
-        dialogUnlockedVip.setSelectText(Constants.CONSTELLATION_DESC[index]);
+        unlockedVipDialog.setSelectText(Constants.CONSTELLATION_DESC[index]);
     }
 
     @Override
     public void onSuccessOrderPay() {
-        dialogUnlockedVip.dismiss();
+        unlockedVipDialog.dismiss();
     }
 }

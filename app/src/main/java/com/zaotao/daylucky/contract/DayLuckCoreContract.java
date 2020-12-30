@@ -1,6 +1,9 @@
 package com.zaotao.daylucky.contract;
 
+import android.app.Activity;
 import android.widget.ImageView;
+
+import androidx.fragment.app.Fragment;
 
 import com.zaotao.daylucky.base.BaseSimplePresenter;
 import com.zaotao.daylucky.base.IView;
@@ -46,6 +49,8 @@ public interface DayLuckCoreContract {
         List<FortuneContentEntity> initFortuneLuckyData(LuckyContentEntity luckyContentEntity);
 
         List<SettingStyleEntity> initSettingStyleData();
+
+        List<Fragment> initFragments(Activity activity);
 
     }
 }
