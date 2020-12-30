@@ -22,6 +22,7 @@ import com.umeng.message.PushAgent;
 import com.umeng.message.UmengMessageHandler;
 import com.umeng.message.UmengNotificationClickHandler;
 import com.umeng.message.entity.UMessage;
+import com.zaotao.daylucky.app.AppUtils;
 import com.zaotao.daylucky.view.MainActivity;
 
 public class App extends Application {
@@ -40,51 +41,50 @@ public class App extends Application {
         //init base module
         Utils.init(this);
         //umeng
-        String brand = Build.BRAND.toLowerCase();
-        brand = brand.equals("unknown") ? "other" : brand;
-        Log.i("DayLucky", "brand: " + brand);
-        UMConfigure.init(this, "5fd8612f498d9e0d4d8f3c86", brand, UMConfigure.DEVICE_TYPE_PHONE, "7458c44800e5aa1c99fe73f8f09284a9");
+        UMConfigure.init(this, "5fd8612f498d9e0d4d8f3c86", AppUtils.getDeviceBrand(), UMConfigure.DEVICE_TYPE_PHONE, "7458c44800e5aa1c99fe73f8f09284a9");
         UMConfigure.setLogEnabled(true);
         MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
-        registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
-            @Override
-            public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
-                PushAgent.getInstance(activity).onAppStart();
-            }
-
-            @Override
-            public void onActivityStarted(@NonNull Activity activity) {
-
-            }
-
-            @Override
-            public void onActivityResumed(@NonNull Activity activity) {
-                MobclickAgent.onResume(activity);
-            }
-
-            @Override
-            public void onActivityPaused(@NonNull Activity activity) {
-                MobclickAgent.onPause(activity);
-            }
-
-            @Override
-            public void onActivityStopped(@NonNull Activity activity) {
-
-            }
-
-            @Override
-            public void onActivitySaveInstanceState(@NonNull Activity activity, @NonNull Bundle outState) {
-
-            }
-
-            @Override
-            public void onActivityDestroyed(@NonNull Activity activity) {
-
-            }
-        });
-
+        registerActivityLifecycleCallbacks(new StatisticActivityLifecycleCallback());
         initPush(this);
     }
+
+    private class StatisticActivityLifecycleCallback implements ActivityLifecycleCallbacks {
+        @Override
+        public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
+            PushAgent.getInstance(activity).onAppStart();
+        }
+
+        @Override
+        public void onActivityStarted(@NonNull Activity activity) {
+
+        }
+
+        @Override
+        public void onActivityResumed(@NonNull Activity activity) {
+            MobclickAgent.onResume(activity);
+        }
+
+        @Override
+        public void onActivityPaused(@NonNull Activity activity) {
+            MobclickAgent.onPause(activity);
+        }
+
+        @Override
+        public void onActivityStopped(@NonNull Activity activity) {
+
+        }
+
+        @Override
+        public void onActivitySaveInstanceState(@NonNull Activity activity, @NonNull Bundle outState) {
+
+        }
+
+        @Override
+        public void onActivityDestroyed(@NonNull Activity activity) {
+
+        }
+    }
+
 
     public void initPush(Context context) {
         PushAgent mPushAgent = PushAgent.getInstance(context);

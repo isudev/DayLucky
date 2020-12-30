@@ -238,7 +238,7 @@
         </RelativeLayout>
 
 
-        <com.zaotao.indicator.MagicIndicator
+        <com.isuu.indicator.MagicIndicator
             android:id="@+id/tab_fragment_lucky"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_45"

@@ -21,14 +21,14 @@ import com.zaotao.daylucky.module.entity.LuckyEntity;
 import com.zaotao.daylucky.module.entity.ThemeEntity;
 import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
 import com.zaotao.daylucky.view.activity.SelectActivity;
-import com.zaotao.indicator.MagicIndicator;
-import com.zaotao.indicator.buildins.UIUtil;
-import com.zaotao.indicator.buildins.commonnavigator.CommonNavigator;
-import com.zaotao.indicator.buildins.commonnavigator.abs.CommonNavigatorAdapter;
-import com.zaotao.indicator.buildins.commonnavigator.abs.IPagerIndicator;
-import com.zaotao.indicator.buildins.commonnavigator.abs.IPagerTitleView;
-import com.zaotao.indicator.buildins.commonnavigator.indicators.LinePagerIndicator;
-import com.zaotao.indicator.buildins.commonnavigator.titles.SimplePagerBoldTitleView;
+import com.isuu.indicator.MagicIndicator;
+import com.isuu.indicator.buildins.UIUtil;
+import com.isuu.indicator.buildins.commonnavigator.CommonNavigator;
+import com.isuu.indicator.buildins.commonnavigator.abs.CommonNavigatorAdapter;
+import com.isuu.indicator.buildins.commonnavigator.abs.IPagerIndicator;
+import com.isuu.indicator.buildins.commonnavigator.abs.IPagerTitleView;
+import com.isuu.indicator.buildins.commonnavigator.indicators.LinePagerIndicator;
+import com.isuu.indicator.buildins.commonnavigator.titles.SimplePagerBoldTitleView;
 
 import butterknife.BindView;
 

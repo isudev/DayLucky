@@ -3,6 +3,7 @@ package com.zaotao.daylucky.app;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.os.Build;
 
 import com.zaotao.daylucky.R;
 
@@ -16,6 +17,12 @@ public class AppUtils {
         ClipboardManager cm = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData mClipData = ClipData.newPlainText(context.getString(R.string.app_name), content);
         cm.setPrimaryClip(mClipData);
+    }
+
+    public static String getDeviceBrand() {
+        String brand = Build.BRAND.toLowerCase();
+        brand = brand.equals("unknown") ? Build.MANUFACTURER.toLowerCase() : brand;
+        return brand;
     }
 
 }
