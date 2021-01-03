@@ -48,7 +48,7 @@ public class App extends Application {
         initPush(this);
     }
 
-    private class StatisticActivityLifecycleCallback implements ActivityLifecycleCallbacks {
+    private static class StatisticActivityLifecycleCallback implements ActivityLifecycleCallbacks {
         @Override
         public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
             PushAgent.getInstance(activity).onAppStart();

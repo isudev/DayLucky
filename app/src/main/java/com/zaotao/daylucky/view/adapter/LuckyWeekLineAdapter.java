@@ -68,7 +68,7 @@ public class LuckyWeekLineAdapter extends RecyclerView.Adapter<LuckyWeekLineAdap
             itemLuckyWeekLineTextView.setText(DateUtils.WEEK_TIMES[position]);
             itemLuckyWeekLineProgressView.setProgress(items.get(position).getY());
             itemLuckyWeekLineProgressView.setFinishColor(ContextCompat.getColor(context, R.color.color00D1CB));
-            itemLuckyWeekLineTextView.setTextColor(ContextCompat.getColor(context, items.get(position).getX().equals("今天") ? R.color.color00D1CB : R.color.color666666));
+            itemLuckyWeekLineTextView.setTextColor(ContextCompat.getColor(context, items.get(position).getX().equals(context.getString(R.string.today)) ? R.color.color00D1CB : R.color.color666666));
             itemView.setOnClickListener(v -> {
                 if (onClickListener != null) {
                     onClickListener.onClick(v);

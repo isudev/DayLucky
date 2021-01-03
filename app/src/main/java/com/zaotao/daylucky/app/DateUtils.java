@@ -51,23 +51,23 @@ public class DateUtils {
 
     public static String formatMonthText(long time) {
         String monthString = new SimpleDateFormat("MM").format(time * 1000);
-        if (monthString.equals("1")) {
+        if (monthString.equals("01")) {
             monthString = "January";
-        } else if (monthString.equals("2")) {
+        } else if (monthString.equals("02")) {
             monthString = "February";
-        } else if (monthString.equals("3")) {
+        } else if (monthString.equals("03")) {
             monthString = "March";
-        } else if (monthString.equals("4")) {
+        } else if (monthString.equals("04")) {
             monthString = "April";
-        } else if (monthString.equals("5")) {
+        } else if (monthString.equals("05")) {
             monthString = "May";
-        } else if (monthString.equals("6")) {
+        } else if (monthString.equals("06")) {
             monthString = "June";
-        } else if (monthString.equals("7")) {
+        } else if (monthString.equals("07")) {
             monthString = "July";
-        } else if (monthString.equals("8")) {
+        } else if (monthString.equals("08")) {
             monthString = "August";
-        } else if (monthString.equals("9")) {
+        } else if (monthString.equals("09")) {
             monthString = "September";
         } else if (monthString.equals("10")) {
             monthString = "October";

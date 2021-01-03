@@ -60,7 +60,7 @@ public class VipLineChartHistogramAdapter extends RecyclerView.Adapter<VipLineCh
         }
 
         public void bind(int position) {
-            if (items.get(position).getX().equals("今天")) {
+            if (items.get(position).getX().equals(context.getString(R.string.today))) {
                 todayPosition = position;
                 itemHomeFortuneLineChartXImage.setVisibility(View.VISIBLE);
                 itemHomeFortuneLineChartXImage.setImageResource(R.drawable.ic_line_chart_fill_bg);
@@ -81,7 +81,7 @@ public class VipLineChartHistogramAdapter extends RecyclerView.Adapter<VipLineCh
     public void notifyDataSetChanged(List<LuckyTodayEntity> items) {
         this.items = items;
         for (int i = 0; i < items.size(); i++) {
-            if (items.get(i).getX().equals("今天")) {
+            if (items.get(i).getX().equals(context.getString(R.string.today))) {
                 todayPosition = i;
             }
         }

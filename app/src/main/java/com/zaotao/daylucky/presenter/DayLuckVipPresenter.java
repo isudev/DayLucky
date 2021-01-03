@@ -344,7 +344,7 @@ public class DayLuckVipPresenter extends BasePresenter<DayLuckVipContract.View> 
         List<Integer> points = new ArrayList<>();
         for (int i = 0; i < luckyVipEntity.getWeek_charts().size(); i++) {
             LuckyTodayEntity luckyTodayEntity = luckyVipEntity.getWeek_charts().get(i);
-            if (luckyTodayEntity.getX().equals("今天")) {
+            if (luckyTodayEntity.getX().equals(context.getString(R.string.today))) {
                 todayPosition = i;
             }
             points.add(luckyTodayEntity.getY());
