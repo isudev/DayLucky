@@ -53,12 +53,6 @@ public class UnlockedVipDialog extends BasePopupWindow {
         viewUnlockedVipSelectWeChatPayCheckBox = findViewById(R.id.view_unlocked_vip_select_we_chat_pay_check_box);
         viewUnlockedVipButton = findViewById(R.id.view_unlocked_vip_button);
 
-        /**
-         * aliPay mode
-         */
-        setOnlyAliPay();
-
-
         viewUnlockedVipSelectAliPay.setOnClickListener(v -> {
             viewUnlockedVipSelectAliPayCheckBox.setImageResource(R.drawable.ic_unlocked_vip_selected);
             viewUnlockedVipSelectWeChatPayCheckBox.setImageResource(R.drawable.ic_unlocked_vip_select_un);
