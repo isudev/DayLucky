@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/dp_10"
+    android:layout_marginTop="-10dp"
     android:layout_marginEnd="@dimen/dp_10"
     app:cardBackgroundColor="@android:color/white"
     app:cardCornerRadius="@dimen/dp_10"
@@ -46,9 +47,9 @@
         <ImageView
             android:id="@+id/item_vip_lucky_view_line"
             android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_2"
             android:layout_marginStart="@dimen/dp_16"
             android:layout_marginEnd="@dimen/dp_16"
-            android:layout_height="@dimen/dp_2"
             android:background="@color/colorFF9696" />
 
         <TextView
