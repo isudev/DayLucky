@@ -62,7 +62,7 @@ public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> implement
 
     public static VipYearFragment newInstance(LuckyVipEntity luckyVipEntity) {
         Bundle args = new Bundle();
-        args.putSerializable("fragment_lucky_vip_week_year", luckyVipEntity);
+        args.putSerializable(Constants.LUCKY_VIP_PARAMS, luckyVipEntity);
         VipYearFragment fragment = new VipYearFragment();
         fragment.setArguments(args);
         return fragment;
@@ -83,7 +83,7 @@ public class VipYearFragment extends BaseFragment<DayLuckVipPresenter> implement
     protected void initViewData(View view) {
         unlockedVipDialog = new UnlockedVipDialog(mContext);
         vipLockButtonText.setText(R.string.vip_year_lock_text);
-        LuckyVipEntity luckyVipYearData = (LuckyVipEntity) getArguments().getSerializable("fragment_lucky_vip_week_year");
+        LuckyVipEntity luckyVipYearData = (LuckyVipEntity) getArguments().getSerializable(Constants.LUCKY_VIP_PARAMS);
         String yearDate = luckyVipYearData.getDate().getMonth_abbr() + luckyVipYearData.getDate().getYear();
         luckyVipWeekText0.setText(yearDate);
         luckyVipWeekText1.setText(yearDate);

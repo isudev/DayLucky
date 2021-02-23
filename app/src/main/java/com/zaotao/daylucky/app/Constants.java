@@ -81,4 +81,8 @@ public class Constants {
             "忌",
             "分割线",
     };
+
+    public static final String LUCKY_PARAMS = "lucky_params";
+
+    public static final String LUCKY_VIP_PARAMS = "lucky_vip_params";
 }

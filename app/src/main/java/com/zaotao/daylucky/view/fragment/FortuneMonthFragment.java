@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.zaotao.daylucky.R;
+import com.zaotao.daylucky.app.Constants;
 import com.zaotao.daylucky.base.BaseFragment;
 import com.zaotao.daylucky.contract.DayLuckCoreContract;
 import com.zaotao.daylucky.module.entity.LuckyContentEntity;
@@ -31,7 +32,7 @@ public class FortuneMonthFragment extends BaseFragment<DayLuckCorePresenter> imp
 
     public static FortuneMonthFragment newInstance(LuckyEntity luckyEntity) {
         Bundle args = new Bundle();
-        args.putSerializable("fragment_home_fortune_month", luckyEntity);
+        args.putSerializable(Constants.LUCKY_PARAMS, luckyEntity);
         FortuneMonthFragment fragment = new FortuneMonthFragment();
         fragment.setArguments(args);
         return fragment;
@@ -51,7 +52,7 @@ public class FortuneMonthFragment extends BaseFragment<DayLuckCorePresenter> imp
     protected void initViewData(View view) {
         getSupportPresenter().registerLuckyData();
 
-        LuckyEntity luckyEntity = (LuckyEntity) getArguments().getSerializable("fragment_home_fortune_month");
+        LuckyEntity luckyEntity = (LuckyEntity) getArguments().getSerializable(Constants.LUCKY_PARAMS);
 
         LuckyContentEntity luckyContentMonth = luckyEntity.getMonth();
         fragmentHomeFortuneMonthDesc.setText(luckyEntity.getMonth().getCont());
