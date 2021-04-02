@@ -329,7 +329,7 @@ public class DayLuckCorePresenter extends BasePresenter<DayLuckCoreContract.View
     }
 
     @Override
-    public void settingThemeStyle(int position,int color) {
+    public void settingThemeStyle(int position, int color) {
         ThemeEntity themeEntity = AppDataManager.getInstance().getThemeData();
         switch (position) {
             case 0:

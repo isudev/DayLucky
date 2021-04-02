@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">DayLucky</string>
+    <string name="main_bottom_bar_text_vip">VIP</string>
+    <string name="main_bottom_bar_text_lucky">Lucky</string>
+    <string name="main_bottom_bar_text_theme">Theme</string>
+    <string name="main_bottom_bar_text_style">Style</string>
+    <string name="theme_style_normal">Normal</string>
+    <string name="theme_style_other">Other</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="current_week_lucky_text">Week Lucky</string>
+    <string name="current_month_lucky_text">Month Lucky</string>
+    <string name="current_year_lucky_text">Year Lucky</string>
+    <string name="vip_week_lock_text">Unlock WeekPro 6CNY</string>
+    <string name="vip_month_lock_text">Unlock MonthPro 12CNY</string>
+    <string name="vip_year_lock_text">Unlock YearPro 30CNY</string>
+    <string name="about_us">About Us</string>
+    <string name="title_bar_text_agreement">User Protocol</string>
+    <string name="title_bar_text_privacy">Privacy Policy</string>
+    <string name="title_bar_text_contacts_us">Contacts Us</string>
+    <string name="about_us_copyright_text">Beijing TuoTuo Technology Co., Ltd.</string>
+    <string name="toast_copy_success">Copy Success</string>
+    <string name="privacy_agree">Agree</string>
+    <string name="privacy_disagree">Disagree</string>
+    <string name="privacy_title">User privacy protection statement</string>
+    <string name="privacy_hint_text">Thank you for choosing DayLucky. We take your personal information and privacy protection very seriously. In order to provide you with better services, we need to obtain personal information and other related authorizations. Before you use our products, please read the entire contents of the 《User Protocol》 and 《Privacy Policy》 carefully. After agreeing and accepting all the terms, start using our products and services.</string>
+    <string name="today">Today</string>
+    <string name="toast_pay_failure">Pay Failure</string>
+</resources>

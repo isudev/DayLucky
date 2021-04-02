@@ -184,7 +184,7 @@ public class DayLuckVipPresenter extends BasePresenter<DayLuckVipContract.View> 
                     @Override
                     public boolean test(BaseResult<OrderPayEntity> orderPayResult) throws Exception {
                         if (orderPayResult.failure()) {
-                            getView().showToast("支付失败");
+                            getView().showToast(activity.getString(R.string.toast_pay_failure));
                             return false;
                         }
                         return orderPayResult.success();

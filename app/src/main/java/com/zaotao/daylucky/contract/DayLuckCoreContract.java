@@ -54,5 +54,6 @@ public interface DayLuckCoreContract {
         List<Fragment> initFragments(Activity activity);
 
         String[] initTitles(Context context);
+
     }
 }
