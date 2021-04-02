@@ -8,7 +8,7 @@ android {
         applicationId "com.zaotao.daylucky"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 1
+        versionCode 200
         versionName "2.0.0"
         ndk {
             abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
