@@ -10,7 +10,7 @@ import com.zaotao.daylucky.base.BaseActivity;
 import com.zaotao.daylucky.presenter.DayLuckCorePresenter;
 import com.zaotao.daylucky.view.adapter.AppFragmentPagerAdapter;
 import com.zaotao.daylucky.widget.navigation.BottomNavigationView;
-import com.zaotao.daylucky.widget.viewpager.NoScrollViewPager;
+import com.isuu.base.widget.viewpager.NoScrollViewPager;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.zaotao.daylucky.widget.viewpager;
+package com.isuu.base.widget.viewpager;
 
 import android.content.Context;
 import android.util.AttributeSet;

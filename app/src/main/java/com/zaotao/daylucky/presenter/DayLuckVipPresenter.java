@@ -301,11 +301,11 @@ public class DayLuckVipPresenter extends BasePresenter<DayLuckVipContract.View> 
     @Override
     public List<FortuneContentEntity> initMonthFortuneList(LuckyVipEntity luckyVipEntity) {
         List<FortuneContentEntity> fortuneContentEntityList = new ArrayList<>();
-        String cont1 = luckyVipEntity.getYear().getCont1();
-        String cont3 = luckyVipEntity.getYear().getCont3();
-        String cont5 = luckyVipEntity.getYear().getCont5();
-        String cont7 = luckyVipEntity.getYear().getCont7();
-        String cont9 = luckyVipEntity.getYear().getCont9();
+        String cont1 = luckyVipEntity.getMonth().getCont1();
+        String cont3 = luckyVipEntity.getMonth().getCont3();
+        String cont5 = luckyVipEntity.getMonth().getCont5();
+        String cont7 = luckyVipEntity.getMonth().getCont7();
+        String cont9 = luckyVipEntity.getMonth().getCont9();
         if (luckyVipEntity.getMonth().getLock() == 0) {
             return new ArrayList<>();
         } else {
