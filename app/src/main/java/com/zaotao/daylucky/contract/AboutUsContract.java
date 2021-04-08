@@ -16,10 +16,10 @@ public interface AboutUsContract {
 
     interface Presenter extends BaseSimplePresenter<View> {
 
-        String htmlAgreement();
+        String htmlUserProtocol();
 
-        String htmlPrivacy();
+        String htmlPrivatePrivacy();
 
-        String htmlContacts();
+        String htmlContactsUs();
     }
 }

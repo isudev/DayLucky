@@ -6,7 +6,6 @@ import android.widget.TextView;
 
 import com.isuu.base.widget.title.AppTitleBarLayout;
 import com.zaotao.daylucky.R;
-import com.zaotao.daylucky.app.Constants;
 import com.zaotao.daylucky.base.BaseActivity;
 import com.zaotao.daylucky.presenter.AboutUsPresenter;
 
@@ -39,9 +38,9 @@ public class AboutUsActivity extends BaseActivity<AboutUsPresenter> {
 
     @Override
     protected void initListener() {
-        aboutUsItem0.setOnClickListener(v -> AppWebViewActivity.startAppWebViewActivity(mContext, getSupportPresenter().htmlAgreement(), getString(R.string.title_bar_text_agreement)));
-        aboutUsItem1.setOnClickListener(v -> AppWebViewActivity.startAppWebViewActivity(mContext, getSupportPresenter().htmlPrivacy(), getString(R.string.title_bar_text_privacy)));
-        aboutUsItem2.setOnClickListener(v -> AppWebViewActivity.startAppWebViewActivity(mContext, getSupportPresenter().htmlContacts(), getString(R.string.title_bar_text_contacts_us)));
+        aboutUsItem0.setOnClickListener(v -> AppWebViewActivity.startAppWebViewActivity(mContext, getSupportPresenter().htmlUserProtocol(), getString(R.string.title_bar_text_agreement)));
+        aboutUsItem1.setOnClickListener(v -> AppWebViewActivity.startAppWebViewActivity(mContext, getSupportPresenter().htmlPrivatePrivacy(), getString(R.string.title_bar_text_privacy)));
+        aboutUsItem2.setOnClickListener(v -> AppWebViewActivity.startAppWebViewActivity(mContext, getSupportPresenter().htmlContactsUs(), getString(R.string.title_bar_text_contacts_us)));
     }
 
     @Override
